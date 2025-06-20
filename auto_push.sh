@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the path to the parent folder
-FOLDER="/Users/PC/E/Kunwu/School/Undergrad/Carleton/Activities/ISO/OPT/MK Research/Tournaments/Sage/cospectral-tournaments"
+FOLDER="/Users/lyuk/Downloads/cospectral-tournaments"
 
 # Change to that directory
 cd "$FOLDER" || { echo "Folder not found: $FOLDER"; exit 1; }
