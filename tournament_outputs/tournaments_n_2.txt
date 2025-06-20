@@ -1,0 +1,9 @@
+
+================= Order n = 2 =================
+
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^2 + 1
+Number of tournaments: 1
+Only one tournament - trivially switching equivalent.
+

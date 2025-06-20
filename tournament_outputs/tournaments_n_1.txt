@@ -1,0 +1,9 @@
+
+================= Order n = 1 =================
+
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x
+Number of tournaments: 1
+Only one tournament - trivially switching equivalent.
+

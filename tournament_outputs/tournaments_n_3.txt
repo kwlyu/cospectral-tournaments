@@ -1,0 +1,37 @@
+
+================= Order n = 3 =================
+
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^3 + 3*x
+Number of tournaments: 2
+All tournaments in this class are mutually switching equivalent.
+
+--- Tournament 0 ---
+[0 0 0]
+[1 0 0]
+[1 1 0]
+
+   Switch to Tournament 1 using subset [1]:
+[0 1 0]
+[0 0 1]
+[1 0 0]
+  Isomorphism mapping:
+    0 → 0
+    1 → 2
+    2 → 1
+
+--- Tournament 1 ---
+[0 0 1]
+[1 0 0]
+[0 1 0]
+
+   Switch to Tournament 0 using subset [0]:
+[0 1 0]
+[0 0 0]
+[1 1 0]
+  Isomorphism mapping:
+    0 → 1
+    1 → 0
+    2 → 2
+
