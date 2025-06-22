@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-06-22 15:54:54)
-_Last checked: 2025-06-22 16:26:34_
+## 🚨 New results found! (last change: 2025-06-22 16:27:38)
+_Last checked: 2025-06-22 16:27:38_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,7 +13,7 @@ _Last checked: 2025-06-22 16:26:34_
 | 6 | ✅ YES |
 | 7 | ❌ NO |
 | 8 | ❌ NO |
-| 9 | ⚠️ Incomplete (✅ YES) |
+| 9 | ⚠️ Incomplete (❌ NO) |
 
 ---
 
@@ -78,7 +78,13 @@ $$
 $$
 
 ## n = 9
-> ✅ **cospectral ⇒ switching equivalent**
+> ❌ **cospectral ⇏ switching equivalence**
 
+### Characteristic Polynomial(s) (Non-switching-equivalent classes):
+$$
+\begin{aligned}
+  & x^9 &  & +36x^7 &  & +254x^5 &  & +404x^3 &  & +73x &  \\
+\end{aligned}
+$$
 
 > ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
