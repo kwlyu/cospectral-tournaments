@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-06-22 15:06:20)
-_Last checked: 2025-06-22 15:31:17_
+## 🚨 New results found! (last change: 2025-06-22 15:36:58)
+_Last checked: 2025-06-22 15:36:58_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,7 +13,7 @@ _Last checked: 2025-06-22 15:31:17_
 | 6 | ✅ YES |
 | 7 | ❌ NO |
 | 8 | ❌ NO |
-| 9 | ❌ NO |
+| 9 | ⚠️ Incomplete (❌ NO) |
 
 ---
 
@@ -47,7 +47,7 @@ _Last checked: 2025-06-22 15:31:17_
 ### Characteristic Polynomial(s) (Non-switching-equivalent classes):
 $$
 \begin{aligned}
-  & x^7 & \phantom{0} & +21x^5 & \phantom{0} & +115x^3 & \phantom{0} & +119x & \phantom{0} \\
+  & x^7 &  & +21x^5 &  & +115x^3 &  & +119x &  \\
 \end{aligned}
 $$
 
@@ -57,23 +57,23 @@ $$
 ### Characteristic Polynomial(s) (Non-switching-equivalent classes):
 $$
 \begin{aligned}
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +206x^4 & \phantom{0} & +396x^2 & \phantom{0} & +9 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +230x^4 & \phantom{0} & +604x^2 & \phantom{0} & +289 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +230x^4 & \phantom{0} & +508x^2 & \phantom{0} & +1 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +238x^4 & \phantom{0} & +652x^2 & \phantom{0} & +361 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +238x^4 & \phantom{0} & +588x^2 & \phantom{0} & +169 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +182x^4 & \phantom{0} & +252x^2 & \phantom{0} & +49 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +190x^4 & \phantom{0} & +268x^2 & \phantom{0} & +25 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +198x^4 & \phantom{0} & +284x^2 & \phantom{0} & +1 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +230x^4 & \phantom{0} & +476x^2 & \phantom{0} & +289 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +246x^4 & \phantom{0} & +700x^2 & \phantom{0} & +49 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +174x^4 & \phantom{0} & +300x^2 & \phantom{0} & +9 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +150x^4 & \phantom{0} & +252x^2 & \phantom{0} & +81 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +230x^4 & \phantom{0} & +540x^2 & \phantom{0} & +225 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +214x^4 & \phantom{0} & +444x^2 & \phantom{0} & +81 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +222x^4 & \phantom{0} & +492x^2 & \phantom{0} & +25 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +214x^4 & \phantom{0} & +476x^2 & \phantom{0} & +49 \\
-  & x^8 & \phantom{0} & +28x^6 & \phantom{0} & +206x^4 & \phantom{0} & +268x^2 & \phantom{0} & +9 \\
+  & x^8 &  & +28x^6 &  & +206x^4 &  & +396x^2 &  & +9 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +604x^2 &  & +289 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +508x^2 &  & +1 \\
+  & x^8 &  & +28x^6 &  & +238x^4 &  & +652x^2 &  & +361 \\
+  & x^8 &  & +28x^6 &  & +238x^4 &  & +588x^2 &  & +169 \\
+  & x^8 &  & +28x^6 &  & +182x^4 &  & +252x^2 &  & +49 \\
+  & x^8 &  & +28x^6 &  & +190x^4 &  & +268x^2 &  & +25 \\
+  & x^8 &  & +28x^6 &  & +198x^4 &  & +284x^2 &  & +1 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +476x^2 &  & +289 \\
+  & x^8 &  & +28x^6 &  & +246x^4 &  & +700x^2 &  & +49 \\
+  & x^8 &  & +28x^6 &  & +174x^4 &  & +300x^2 &  & +9 \\
+  & x^8 &  & +28x^6 &  & +150x^4 &  & +252x^2 &  & +81 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +540x^2 &  & +225 \\
+  & x^8 &  & +28x^6 &  & +214x^4 &  & +444x^2 &  & +81 \\
+  & x^8 &  & +28x^6 &  & +222x^4 &  & +492x^2 &  & +25 \\
+  & x^8 &  & +28x^6 &  & +214x^4 &  & +476x^2 &  & +49 \\
+  & x^8 &  & +28x^6 &  & +206x^4 &  & +268x^2 &  & +9 \\
 \end{aligned}
 $$
 
@@ -83,8 +83,10 @@ $$
 ### Characteristic Polynomial(s) (Non-switching-equivalent classes):
 $$
 \begin{aligned}
-  & x^9 & \phantom{0} & +36x^7 & \phantom{0} & +286x^5 & \phantom{0} & +532x^3 & \phantom{0} & +169x & \phantom{0} \\
-  & x^9 & \phantom{0} & +36x^7 & \phantom{0} & +254x^5 & \phantom{0} & +404x^3 & \phantom{0} & +73x & \phantom{0} \\
-  & x^9 & \phantom{0} & +36x^7 & \phantom{0} & +270x^5 & \phantom{0} & +500x^3 & \phantom{0} & +217x & \phantom{0} \\
+  & x^9 &  & +36x^7 &  & +286x^5 &  & +532x^3 &  & +169x &  \\
+  & x^9 &  & +36x^7 &  & +254x^5 &  & +404x^3 &  & +73x &  \\
+  & x^9 &  & +36x^7 &  & +270x^5 &  & +500x^3 &  & +217x &  \\
 \end{aligned}
 $$
+
+> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
