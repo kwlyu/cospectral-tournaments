@@ -175330,3 +175330,6 @@ Tournaments 649 and 541 are NOT switching equivalent.
 Tournaments 649 and 543 are NOT switching equivalent.
 Tournaments 649 and 544 are NOT switching equivalent.
 Tournaments 649 and 545 are NOT switching equivalent.
+
+================= Order n = 9 =================
+
