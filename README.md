@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-06-26 23:07:04)
-_Last checked: 2025-06-27 19:27:10_
+## 🚨 New results found! (last change: 2025-06-27 19:28:22)
+_Last checked: 2025-06-27 19:28:22_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -83,6 +83,7 @@ $$
 ### Characteristic Polynomial(s) (Non-switching-equivalent classes):
 $$
 \begin{aligned}
+  & x^9 &  & +36x^7 &  & +334x^5 &  & +884x^3 &  & +281x &  \\
   & x^9 &  & +36x^7 &  & +254x^5 &  & +532x^3 &  & +201x &  \\
   & x^9 &  & +36x^7 &  & +286x^5 &  & +532x^3 &  & +169x &  \\
   & x^9 &  & +36x^7 &  & +254x^5 &  & +404x^3 &  & +73x &  \\
