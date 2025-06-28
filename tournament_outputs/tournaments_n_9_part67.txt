@@ -191725,3 +191725,5 @@ Tournaments 243 and 413 are NOT switching equivalent.
 Tournaments 243 and 415 are NOT switching equivalent.
 Tournaments 243 and 416 are NOT switching equivalent.
 Tournaments 243 and 417 are NOT switching equivalent.
+Tournaments 243 and 418 are NOT switching equivalent.
+Tournaments 243 and 419 are NOT switching equivalent.
