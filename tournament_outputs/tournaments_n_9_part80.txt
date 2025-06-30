@@ -191716,3 +191716,11 @@ Tournaments 992 and 201 are NOT switching equivalent.
 Tournaments 992 and 202 are NOT switching equivalent.
 Tournaments 992 and 203 are NOT switching equivalent.
 Tournaments 992 and 204 are NOT switching equivalent.
+Tournaments 992 and 205 are NOT switching equivalent.
+Tournaments 992 and 206 are NOT switching equivalent.
+Tournaments 992 and 207 are NOT switching equivalent.
+Tournaments 992 and 209 are NOT switching equivalent.
+Tournaments 992 and 211 are NOT switching equivalent.
+Tournaments 992 and 212 are NOT switching equivalent.
+Tournaments 992 and 213 are NOT switching equivalent.
+Tournaments 992 and 214 are NOT switching equivalent.
