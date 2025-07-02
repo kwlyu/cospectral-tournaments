@@ -229,7 +229,6 @@ def results_to_md(results, found_orders):
                         lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
                 lines.append("\\end{aligned}")
                 lines.append("$$")
-
         lines.append("")  # Blank line for spacing
 
         # Add the specific "next order missing" note here
