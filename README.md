@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 17:25:35)
-_Last checked: 2025-07-02 17:25:35_
+## 🚨 New results found! (last change: 2025-07-02 17:26:35)
+_Last checked: 2025-07-02 17:26:35_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,13 +14,13 @@ _Last checked: 2025-07-02 17:25:35_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ⚠️ Incomplete (❌ NO) | 174/2045 (8.51%) |
+| 10 | ⚠️ Incomplete (❌ NO) | 175/2046 (8.55%) |
 
 ---
 
 **Progress (Order n = 10)**  
-Progress: Checked 2045/2067 charpoly classes (98.94%)  
-Checked 9723324/9733056 tournaments (99.90%)  
+Progress: Checked 2046/2067 charpoly classes (98.98%)  
+Checked 9723836/9733056 tournaments (99.91%)  
 
 ## n = 1
 > ✅ **cospectral ⇒ switching equivalent**
