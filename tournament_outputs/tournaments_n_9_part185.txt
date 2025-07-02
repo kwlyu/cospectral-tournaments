@@ -188701,4 +188701,4 @@ Tournaments 1645 and 364 are NOT switching equivalent.
 Tournaments 1645 and 365 are NOT switching equivalent.
 Tournaments 1645 and 366 are NOT switching equivalent.
 Tournaments 1645 and 367 are NOT switching equivalent.
-Tournaments 1645 and 368 are NOT switching equivalent.
+Tournaments 1645 and 368 are NOT switching equivalent.Tournaments 85 and 484 are NOT switching equivalent.

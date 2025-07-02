@@ -588212,4 +588212,4 @@ All tournaments in this class are mutually switching equivalent.
     7 → 7
     8 → 4
 
-   Switch to Tournament 218 using subset [3, 5, 6, 8]:
+   Switch to Tournament 218 using subset [3, 5, 6, 8]:Tournaments 85 and 406 are NOT switching equivalent.

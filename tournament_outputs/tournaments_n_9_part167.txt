@@ -193356,4 +193356,4 @@ Tournaments 155 and 1734 are NOT switching equivalent.
 Tournaments 155 and 1736 are NOT switching equivalent.
 Tournaments 155 and 1737 are NOT switching equivalent.
 Tournaments 155 and 1738 are NOT switching equivalent.
-Tournaments 155 and 1739 are NOT switching equivalent.
+Tournaments 155 and 1739 are NOT switching equivalent.Tournaments 85 and 475 are NOT switching equivalent.

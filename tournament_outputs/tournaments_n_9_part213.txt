@@ -189691,4 +189691,4 @@ Tournaments 1509 and 45 are NOT switching equivalent.
 Tournaments 1509 and 46 are NOT switching equivalent.
 Tournaments 1509 and 47 are NOT switching equivalent.
 Tournaments 1509 and 48 are NOT switching equivalent.
-Tournaments 1509 and 50 are NOT switching equivalent.
+Tournaments 1509 and 50 are NOT switching equivalent.Tournaments 85 and 498 are NOT switching equivalent.

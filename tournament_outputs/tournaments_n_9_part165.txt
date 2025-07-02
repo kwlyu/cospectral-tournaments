@@ -189344,4 +189344,4 @@ Tournaments 1772 and 1020 are NOT switching equivalent.
 Tournaments 1772 and 1021 are NOT switching equivalent.
 Tournaments 1772 and 1024 are NOT switching equivalent.
 Tournaments 1772 and 1025 are NOT switching equivalent.
-Tournaments 1772 and 1026 are NOT switching equivalent.
+Tournaments 1772 and 1026 are NOT switching equivalent.Tournaments 85 and 474 are NOT switching equivalent.

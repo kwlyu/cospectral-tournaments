@@ -604169,4 +604169,4 @@
     4 → 7
     5 → 8
     6 → 3
-    7 → 5
+    7 → 5Tournaments 85 and 382 are NOT switching equivalent.

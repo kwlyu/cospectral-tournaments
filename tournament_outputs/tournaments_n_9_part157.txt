@@ -192826,4 +192826,4 @@ Tournaments 782 and 892 are NOT switching equivalent.
 Tournaments 782 and 893 are NOT switching equivalent.
 Tournaments 782 and 894 are NOT switching equivalent.
 Tournaments 782 and 895 are NOT switching equivalent.
-Tournaments 782 and 896 are NOT switching equivalent.
+Tournaments 782 and 896 are NOT switching equivalent.Tournaments 85 and 469 are NOT switching equivalent.

@@ -196158,4 +196158,4 @@ Tournaments 40 and 895 are NOT switching equivalent.
 Tournaments 40 and 896 are NOT switching equivalent.
 Tournaments 40 and 898 are NOT switching equivalent.
 Tournaments 40 and 899 are NOT switching equivalent.
-Tournaments 40 and 900 are NOT switching equivalent.
+Tournaments 40 and 900 are NOT switching equivalent.Tournaments 85 and 437 are NOT switching equivalent.

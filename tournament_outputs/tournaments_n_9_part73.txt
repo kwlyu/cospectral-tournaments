@@ -191724,4 +191724,4 @@ Tournaments 588 and 2799 are NOT switching equivalent.
 Tournaments 588 and 2800 are NOT switching equivalent.
 Tournaments 588 and 2801 are NOT switching equivalent.
 Tournaments 588 and 2802 are NOT switching equivalent.
-Tournaments 588 and 2803 are NOT switching equivalent.
+Tournaments 588 and 2803 are NOT switching equivalent.Tournaments 85 and 419 are NOT switching equivalent.

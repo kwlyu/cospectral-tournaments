@@ -192337,4 +192337,4 @@ Tournaments 999 and 1068 are NOT switching equivalent.
 Tournaments 999 and 1070 are NOT switching equivalent.
 Tournaments 999 and 1071 are NOT switching equivalent.
 Tournaments 999 and 1072 are NOT switching equivalent.
-Tournaments 999 and 1073 are NOT switching equivalent.
+Tournaments 999 and 1073 are NOT switching equivalent.Tournaments 85 and 395 are NOT switching equivalent.

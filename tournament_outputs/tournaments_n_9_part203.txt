@@ -190686,4 +190686,4 @@ Tournaments 7 and 565 are NOT switching equivalent.
 Tournaments 7 and 566 are NOT switching equivalent.
 Tournaments 7 and 567 are NOT switching equivalent.
 Tournaments 7 and 568 are NOT switching equivalent.
-Tournaments 7 and 569 are NOT switching equivalent.
+Tournaments 7 and 569 are NOT switching equivalent.Tournaments 85 and 493 are NOT switching equivalent.

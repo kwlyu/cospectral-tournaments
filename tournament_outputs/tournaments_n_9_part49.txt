@@ -457022,4 +457022,4 @@ All tournaments in this class are mutually switching equivalent.
     2 → 6
     3 → 3
     4 → 0
-    5 → 5
+    5 → 5Tournaments 85 and 405 are NOT switching equivalent.

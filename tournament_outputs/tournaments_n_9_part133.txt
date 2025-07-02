@@ -194255,4 +194255,4 @@ Tournaments 156 and 1018 are NOT switching equivalent.
 Tournaments 156 and 1019 are NOT switching equivalent.
 Tournaments 156 and 1020 are NOT switching equivalent.
 Tournaments 156 and 1023 are NOT switching equivalent.
-Tournaments 156 and 1024 are NOT switching equivalent.
+Tournaments 156 and 1024 are NOT switching equivalent.Tournaments 85 and 456 are NOT switching equivalent.

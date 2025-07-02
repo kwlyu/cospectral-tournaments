@@ -191911,3 +191911,4 @@ Tournaments 261 and 679 are NOT switching equivalent.
 Tournaments 261 and 680 are NOT switching equivalent.
 Tournaments 261 and 681 are NOT switching equivalent.
 Tournaments 261 and 682 are NOT switching equivalent.
+Tournaments 85 and 507 are NOT switching equivalent.

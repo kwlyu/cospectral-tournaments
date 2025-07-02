@@ -189338,4 +189338,4 @@ Tournaments 1784 and 1176 are NOT switching equivalent.
 Tournaments 1784 and 1177 are NOT switching equivalent.
 Tournaments 1784 and 1178 are NOT switching equivalent.
 Tournaments 1784 and 1179 are NOT switching equivalent.
-Tournaments 1784 and 1180 are NOT switching equivalent.
+Tournaments 1784 and 1180 are NOT switching equivalent.Tournaments 85 and 448 are NOT switching equivalent.

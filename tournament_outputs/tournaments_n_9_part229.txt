@@ -194179,4 +194179,4 @@ Tournaments 124 and 2834 are NOT switching equivalent.
 Tournaments 124 and 2835 are NOT switching equivalent.
 Tournaments 124 and 2837 are NOT switching equivalent.
 Tournaments 124 and 2838 are NOT switching equivalent.
-Tournaments 124 and 2840 are NOT switching equivalent.
+Tournaments 124 and 2840 are NOT switching equivalent.Tournaments 85 and 506 are NOT switching equivalent.

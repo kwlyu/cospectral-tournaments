@@ -604168,4 +604168,4 @@ All tournaments in this class are mutually switching equivalent.
 [0 1 1 0 1 0 0 0 0]
 [1 1 1 0 1 0 1 0 1]
 [0 0 1 0 1 1 1 0 0]
-  Isomorphism mapping:
+  Isomorphism mapping:Tournaments 85 and 381 are NOT switching equivalent.

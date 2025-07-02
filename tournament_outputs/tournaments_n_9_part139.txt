@@ -192546,4 +192546,4 @@ Tournaments 801 and 389 are NOT switching equivalent.
 Tournaments 801 and 390 are NOT switching equivalent.
 Tournaments 801 and 391 are NOT switching equivalent.
 Tournaments 801 and 393 are NOT switching equivalent.
-Tournaments 801 and 394 are NOT switching equivalent.
+Tournaments 801 and 394 are NOT switching equivalent.Tournaments 85 and 460 are NOT switching equivalent.

@@ -188707,4 +188707,4 @@ Tournaments 1808 and 2432 are NOT switching equivalent.
 Tournaments 1808 and 2433 are NOT switching equivalent.
 Tournaments 1808 and 2434 are NOT switching equivalent.
 Tournaments 1808 and 2436 are NOT switching equivalent.
-Tournaments 1808 and 2437 are NOT switching equivalent.
+Tournaments 1808 and 2437 are NOT switching equivalent.Tournaments 85 and 485 are NOT switching equivalent.

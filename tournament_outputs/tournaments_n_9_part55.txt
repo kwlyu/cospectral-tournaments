@@ -604173,4 +604173,4 @@
     7 → 6
     8 → 7
 
-   Switch to Tournament 212 using subset [3, 6, 7, 8]:
+   Switch to Tournament 212 using subset [3, 6, 7, 8]:Tournaments 85 and 408 are NOT switching equivalent.

@@ -192155,4 +192155,4 @@ Tournaments 822 and 2346 are NOT switching equivalent.
 Tournaments 822 and 2347 are NOT switching equivalent.
 Tournaments 822 and 2348 are NOT switching equivalent.
 Tournaments 822 and 2349 are NOT switching equivalent.
-Tournaments 822 and 2350 are NOT switching equivalent.
+Tournaments 822 and 2350 are NOT switching equivalent.Tournaments 85 and 479 are NOT switching equivalent.

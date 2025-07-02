@@ -192821,4 +192821,4 @@ Tournaments 292 and 1181 are NOT switching equivalent.
 Tournaments 292 and 1182 are NOT switching equivalent.
 Tournaments 292 and 1183 are NOT switching equivalent.
 Tournaments 292 and 1185 are NOT switching equivalent.
-Tournaments 292 and 1186 are NOT switching equivalent.
+Tournaments 292 and 1186 are NOT switching equivalent.Tournaments 85 and 438 are NOT switching equivalent.

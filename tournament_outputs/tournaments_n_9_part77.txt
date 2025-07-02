@@ -191732,4 +191732,4 @@ Tournaments 819 and 818 are NOT switching equivalent.
 Tournaments 819 and 820 are NOT switching equivalent.
 Tournaments 819 and 821 are NOT switching equivalent.
 Tournaments 819 and 822 are NOT switching equivalent.
-Tournaments 819 and 823 are NOT switching equivalent.
+Tournaments 819 and 823 are NOT switching equivalent.Tournaments 85 and 421 are NOT switching equivalent.

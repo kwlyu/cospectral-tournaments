@@ -193702,4 +193702,4 @@ Tournaments 915 and 929 are NOT switching equivalent.
 Tournaments 915 and 930 are NOT switching equivalent.
 Tournaments 915 and 931 are NOT switching equivalent.
 Tournaments 915 and 932 are NOT switching equivalent.
-Tournaments 915 and 933 are NOT switching equivalent.
+Tournaments 915 and 933 are NOT switching equivalent.Tournaments 85 and 492 are NOT switching equivalent.

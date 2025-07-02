@@ -188707,4 +188707,4 @@ Tournaments 1481 and 865 are NOT switching equivalent.
 Tournaments 1481 and 866 are NOT switching equivalent.
 Tournaments 1481 and 867 are NOT switching equivalent.
 Tournaments 1481 and 868 are NOT switching equivalent.
-Tournaments 1481 and 869 are NOT switching equivalent.
+Tournaments 1481 and 869 are NOT switching equivalent.Tournaments 85 and 483 are NOT switching equivalent.

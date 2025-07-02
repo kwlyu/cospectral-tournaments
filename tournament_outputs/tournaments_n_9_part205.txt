@@ -193182,4 +193182,4 @@ Tournaments 310 and 1492 are NOT switching equivalent.
 Tournaments 310 and 1493 are NOT switching equivalent.
 Tournaments 310 and 1494 are NOT switching equivalent.
 Tournaments 310 and 1496 are NOT switching equivalent.
-Tournaments 310 and 1497 are NOT switching equivalent.
+Tournaments 310 and 1497 are NOT switching equivalent.Tournaments 85 and 494 are NOT switching equivalent.

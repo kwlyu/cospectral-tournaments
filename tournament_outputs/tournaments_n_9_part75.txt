@@ -191717,4 +191717,4 @@ Tournaments 704 and 8 are NOT switching equivalent.
 Tournaments 704 and 9 are NOT switching equivalent.
 Tournaments 704 and 10 are NOT switching equivalent.
 Tournaments 704 and 11 are NOT switching equivalent.
-Tournaments 704 and 12 are NOT switching equivalent.
+Tournaments 704 and 12 are NOT switching equivalent.Tournaments 85 and 420 are NOT switching equivalent.

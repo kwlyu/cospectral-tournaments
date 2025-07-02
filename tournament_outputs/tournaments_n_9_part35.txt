@@ -188865,4 +188865,4 @@ Tournaments 1552 and 1865 are NOT switching equivalent.
 Tournaments 1552 and 1866 are NOT switching equivalent.
 Tournaments 1552 and 1867 are NOT switching equivalent.
 Tournaments 1552 and 1868 are NOT switching equivalent.
-Tournaments 1552 and 1869 are NOT switching equivalent.
+Tournaments 1552 and 1869 are NOT switching equivalent.Tournaments 85 and 398 are NOT switching equivalent.

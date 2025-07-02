@@ -188708,4 +188708,4 @@ Tournaments 1972 and 1954 are NOT switching equivalent.
 Tournaments 1972 and 1956 are NOT switching equivalent.
 Tournaments 1972 and 1957 are NOT switching equivalent.
 Tournaments 1972 and 1958 are NOT switching equivalent.
-Tournaments 1972 and 1959 are NOT switching equivalent.
+Tournaments 1972 and 1959 are NOT switching equivalent.Tournaments 85 and 486 are NOT switching equivalent.

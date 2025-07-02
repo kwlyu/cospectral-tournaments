@@ -196388,4 +196388,4 @@ Tournaments 99 and 1111 are NOT switching equivalent.
 Tournaments 99 and 1112 are NOT switching equivalent.
 Tournaments 99 and 1114 are NOT switching equivalent.
 Tournaments 99 and 1115 are NOT switching equivalent.
-Tournaments 99 and 1117 are NOT switching equivalent.
+Tournaments 99 and 1117 are NOT switching equivalent.Tournaments 85 and 383 are NOT switching equivalent.

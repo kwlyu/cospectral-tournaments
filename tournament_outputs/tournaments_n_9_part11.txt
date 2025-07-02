@@ -193704,4 +193704,4 @@ Tournaments 856 and 672 are NOT switching equivalent.
 Tournaments 856 and 674 are NOT switching equivalent.
 Tournaments 856 and 675 are NOT switching equivalent.
 Tournaments 856 and 676 are NOT switching equivalent.
-Tournaments 856 and 678 are NOT switching equivalent.
+Tournaments 856 and 678 are NOT switching equivalent.Tournaments 85 and 385 are NOT switching equivalent.

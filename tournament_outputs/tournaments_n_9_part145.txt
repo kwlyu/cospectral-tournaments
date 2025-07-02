@@ -189068,4 +189068,4 @@ Tournaments 1437 and 1728 are NOT switching equivalent.
 Tournaments 1437 and 1729 are NOT switching equivalent.
 Tournaments 1437 and 1730 are NOT switching equivalent.
 Tournaments 1437 and 1732 are NOT switching equivalent.
-Tournaments 1437 and 1733 are NOT switching equivalent.
+Tournaments 1437 and 1733 are NOT switching equivalent.Tournaments 85 and 463 are NOT switching equivalent.

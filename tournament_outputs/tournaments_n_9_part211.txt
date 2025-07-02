@@ -189694,4 +189694,4 @@ Tournaments 1212 and 970 are NOT switching equivalent.
 Tournaments 1212 and 972 are NOT switching equivalent.
 Tournaments 1212 and 973 are NOT switching equivalent.
 Tournaments 1212 and 974 are NOT switching equivalent.
-Tournaments 1212 and 975 are NOT switching equivalent.
+Tournaments 1212 and 975 are NOT switching equivalent.Tournaments 85 and 497 are NOT switching equivalent.

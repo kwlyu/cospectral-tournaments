@@ -189689,4 +189689,4 @@ Tournaments 1196 and 1283 are NOT switching equivalent.
 Tournaments 1196 and 1284 are NOT switching equivalent.
 Tournaments 1196 and 1285 are NOT switching equivalent.
 Tournaments 1196 and 1288 are NOT switching equivalent.
-Tournaments 1196 and 1289 are NOT switching equivalent.
+Tournaments 1196 and 1289 are NOT switching equivalent.Tournaments 85 and 452 are NOT switching equivalent.

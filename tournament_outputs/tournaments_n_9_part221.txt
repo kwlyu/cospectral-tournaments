@@ -341361,4 +341361,4 @@ All tournaments in this class are mutually switching equivalent.
     3 → 8
     4 → 2
     5 → 3
-    6 → 0
+    6 → 0Tournaments 85 and 502 are NOT switching equivalent.

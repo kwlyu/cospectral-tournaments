@@ -604170,4 +604170,4 @@
 [1 1 1 1 1 0 0 1 0]
 [0 0 0 1 1 1 0 1 1]
 [1 1 1 1 0 0 0 0 1]
-[1 0 0 0 0 1 0 0 0]
+[1 0 0 0 0 1 0 0 0]Tournaments 85 and 404 are NOT switching equivalent.

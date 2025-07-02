@@ -192822,4 +192822,4 @@ Tournaments 543 and 1304 are NOT switching equivalent.
 Tournaments 543 and 1305 are NOT switching equivalent.
 Tournaments 543 and 1306 are NOT switching equivalent.
 Tournaments 543 and 1307 are NOT switching equivalent.
-Tournaments 543 and 1309 are NOT switching equivalent.
+Tournaments 543 and 1309 are NOT switching equivalent.Tournaments 85 and 440 are NOT switching equivalent.

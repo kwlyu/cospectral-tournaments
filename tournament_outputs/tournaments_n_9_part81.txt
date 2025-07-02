@@ -188760,4 +188760,4 @@ Tournaments 1048 and 2790 are NOT switching equivalent.
 Tournaments 1048 and 2791 are NOT switching equivalent.
 Tournaments 1048 and 2792 are NOT switching equivalent.
 Tournaments 1048 and 2793 are NOT switching equivalent.
-Tournaments 1048 and 2794 are NOT switching equivalent.
+Tournaments 1048 and 2794 are NOT switching equivalent.Tournaments 85 and 423 are NOT switching equivalent.

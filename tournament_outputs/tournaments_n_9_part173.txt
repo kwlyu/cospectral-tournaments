@@ -192163,4 +192163,4 @@ Tournaments 656 and 271 are NOT switching equivalent.
 Tournaments 656 and 272 are NOT switching equivalent.
 Tournaments 656 and 274 are NOT switching equivalent.
 Tournaments 656 and 275 are NOT switching equivalent.
-Tournaments 656 and 276 are NOT switching equivalent.
+Tournaments 656 and 276 are NOT switching equivalent.Tournaments 85 and 478 are NOT switching equivalent.

@@ -193188,4 +193188,4 @@ Tournaments 612 and 1281 are NOT switching equivalent.
 Tournaments 612 and 1283 are NOT switching equivalent.
 Tournaments 612 and 1285 are NOT switching equivalent.
 Tournaments 612 and 1286 are NOT switching equivalent.
-Tournaments 612 and 1287 are NOT switching equivalent.
+Tournaments 612 and 1287 are NOT switching equivalent.Tournaments 85 and 495 are NOT switching equivalent.

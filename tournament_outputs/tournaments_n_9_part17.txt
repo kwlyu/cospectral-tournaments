@@ -604367,4 +604367,4 @@ All tournaments in this class are mutually switching equivalent.
     0 → 7
     1 → 8
     2 → 5
-    3 → 6
+    3 → 6Tournaments 85 and 388 are NOT switching equivalent.

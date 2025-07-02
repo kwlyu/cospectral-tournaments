@@ -192161,4 +192161,4 @@ Tournaments 989 and 1853 are NOT switching equivalent.
 Tournaments 989 and 1854 are NOT switching equivalent.
 Tournaments 989 and 1857 are NOT switching equivalent.
 Tournaments 989 and 1858 are NOT switching equivalent.
-Tournaments 989 and 1859 are NOT switching equivalent.
+Tournaments 989 and 1859 are NOT switching equivalent.Tournaments 85 and 480 are NOT switching equivalent.

@@ -188285,4 +188285,4 @@ Tournaments 1727 and 2511 are NOT switching equivalent.
 Tournaments 1727 and 2512 are NOT switching equivalent.
 Tournaments 1727 and 2513 are NOT switching equivalent.
 Tournaments 1727 and 2514 are NOT switching equivalent.
-Tournaments 1727 and 2515 are NOT switching equivalent.
+Tournaments 1727 and 2515 are NOT switching equivalent.Tournaments 85 and 431 are NOT switching equivalent.

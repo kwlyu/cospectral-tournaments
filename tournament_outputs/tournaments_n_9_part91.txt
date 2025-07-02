@@ -188293,4 +188293,4 @@ Tournaments 1614 and 1967 are NOT switching equivalent.
 Tournaments 1614 and 1968 are NOT switching equivalent.
 Tournaments 1614 and 1969 are NOT switching equivalent.
 Tournaments 1614 and 1970 are NOT switching equivalent.
-Tournaments 1614 and 1971 are NOT switching equivalent.
+Tournaments 1614 and 1971 are NOT switching equivalent.Tournaments 85 and 430 are NOT switching equivalent.

@@ -192169,4 +192169,4 @@ Tournaments 322 and 1252 are NOT switching equivalent.
 Tournaments 322 and 1254 are NOT switching equivalent.
 Tournaments 322 and 1255 are NOT switching equivalent.
 Tournaments 322 and 1256 are NOT switching equivalent.
-Tournaments 322 and 1257 are NOT switching equivalent.
+Tournaments 322 and 1257 are NOT switching equivalent.Tournaments 85 and 476 are NOT switching equivalent.

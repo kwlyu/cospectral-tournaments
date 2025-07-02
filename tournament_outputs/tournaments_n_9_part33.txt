@@ -188872,4 +188872,4 @@ Tournaments 1368 and 855 are NOT switching equivalent.
 Tournaments 1368 and 856 are NOT switching equivalent.
 Tournaments 1368 and 857 are NOT switching equivalent.
 Tournaments 1368 and 858 are NOT switching equivalent.
-Tournaments 1368 and 859 are NOT switching equivalent.
+Tournaments 1368 and 859 are NOT switching equivalent.Tournaments 85 and 397 are NOT switching equivalent.

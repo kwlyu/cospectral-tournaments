@@ -604178,4 +604178,4 @@ All tournaments in this class are mutually switching equivalent.
 [0 1 0 0 1 0 1 1 0]
 [0 1 1 1 0 0 0 0 0]
 [1 0 0 1 0 0 1 0 0]
-[1 1 0 0 1 1 1 1 0]
+[1 1 0 0 1 1 1 1 0]Tournaments 85 and 503 are NOT switching equivalent.

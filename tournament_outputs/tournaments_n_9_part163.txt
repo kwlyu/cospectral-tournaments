@@ -189331,4 +189331,4 @@ Tournaments 1526 and 50 are NOT switching equivalent.
 Tournaments 1526 and 51 are NOT switching equivalent.
 Tournaments 1526 and 53 are NOT switching equivalent.
 Tournaments 1526 and 54 are NOT switching equivalent.
-Tournaments 1526 and 55 are NOT switching equivalent.
+Tournaments 1526 and 55 are NOT switching equivalent.Tournaments 85 and 472 are NOT switching equivalent.

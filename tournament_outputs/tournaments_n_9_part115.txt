@@ -189341,4 +189341,4 @@ Tournaments 1291 and 1043 are NOT switching equivalent.
 Tournaments 1291 and 1044 are NOT switching equivalent.
 Tournaments 1291 and 1045 are NOT switching equivalent.
 Tournaments 1291 and 1046 are NOT switching equivalent.
-Tournaments 1291 and 1047 are NOT switching equivalent.
+Tournaments 1291 and 1047 are NOT switching equivalent.Tournaments 85 and 445 are NOT switching equivalent.

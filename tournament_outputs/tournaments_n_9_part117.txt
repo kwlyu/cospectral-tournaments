@@ -189339,4 +189339,4 @@ Tournaments 1538 and 204 are NOT switching equivalent.
 Tournaments 1538 and 205 are NOT switching equivalent.
 Tournaments 1538 and 206 are NOT switching equivalent.
 Tournaments 1538 and 207 are NOT switching equivalent.
-Tournaments 1538 and 208 are NOT switching equivalent.
+Tournaments 1538 and 208 are NOT switching equivalent.Tournaments 85 and 447 are NOT switching equivalent.

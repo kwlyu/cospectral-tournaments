@@ -191891,4 +191891,4 @@ Tournaments 1032 and 1714 are NOT switching equivalent.
 Tournaments 1032 and 1715 are NOT switching equivalent.
 Tournaments 1032 and 1716 are NOT switching equivalent.
 Tournaments 1032 and 1717 are NOT switching equivalent.
-Tournaments 1032 and 1718 are NOT switching equivalent.
+Tournaments 1032 and 1718 are NOT switching equivalent.Tournaments 85 and 470 are NOT switching equivalent.

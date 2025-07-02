@@ -192330,4 +192330,4 @@ Tournaments 248 and 372 are NOT switching equivalent.
 Tournaments 248 and 373 are NOT switching equivalent.
 Tournaments 248 and 375 are NOT switching equivalent.
 Tournaments 248 and 376 are NOT switching equivalent.
-Tournaments 248 and 377 are NOT switching equivalent.
+Tournaments 248 and 377 are NOT switching equivalent.Tournaments 85 and 390 are NOT switching equivalent.

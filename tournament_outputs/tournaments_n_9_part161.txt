@@ -189343,4 +189343,4 @@ Tournaments 1279 and 885 are NOT switching equivalent.
 Tournaments 1279 and 886 are NOT switching equivalent.
 Tournaments 1279 and 887 are NOT switching equivalent.
 Tournaments 1279 and 888 are NOT switching equivalent.
-Tournaments 1279 and 889 are NOT switching equivalent.
+Tournaments 1279 and 889 are NOT switching equivalent.Tournaments 85 and 471 are NOT switching equivalent.

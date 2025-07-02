@@ -193700,4 +193700,4 @@ Tournaments 537 and 508 are NOT switching equivalent.
 Tournaments 537 and 509 are NOT switching equivalent.
 Tournaments 537 and 511 are NOT switching equivalent.
 Tournaments 537 and 513 are NOT switching equivalent.
-Tournaments 537 and 514 are NOT switching equivalent.
+Tournaments 537 and 514 are NOT switching equivalent.Tournaments 85 and 491 are NOT switching equivalent.

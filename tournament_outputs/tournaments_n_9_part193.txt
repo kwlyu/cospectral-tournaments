@@ -188707,4 +188707,4 @@ Tournaments 2300 and 989 are NOT switching equivalent.
 Tournaments 2300 and 990 are NOT switching equivalent.
 Tournaments 2300 and 991 are NOT switching equivalent.
 Tournaments 2300 and 992 are NOT switching equivalent.
-Tournaments 2300 and 993 are NOT switching equivalent.
+Tournaments 2300 and 993 are NOT switching equivalent.Tournaments 85 and 488 are NOT switching equivalent.

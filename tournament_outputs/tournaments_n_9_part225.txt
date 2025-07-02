@@ -604176,4 +604176,4 @@
     4 → 6
     5 → 8
     6 → 1
-    7 → 7
+    7 → 7Tournaments 85 and 504 are NOT switching equivalent.

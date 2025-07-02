@@ -192334,4 +192334,4 @@ Tournaments 623 and 1871 are NOT switching equivalent.
 Tournaments 623 and 1873 are NOT switching equivalent.
 Tournaments 623 and 1874 are NOT switching equivalent.
 Tournaments 623 and 1875 are NOT switching equivalent.
-Tournaments 623 and 1876 are NOT switching equivalent.
+Tournaments 623 and 1876 are NOT switching equivalent.Tournaments 85 and 393 are NOT switching equivalent.

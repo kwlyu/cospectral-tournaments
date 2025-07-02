@@ -188869,4 +188869,4 @@ Tournaments 2290 and 1352 are NOT switching equivalent.
 Tournaments 2290 and 1353 are NOT switching equivalent.
 Tournaments 2290 and 1354 are NOT switching equivalent.
 Tournaments 2290 and 1356 are NOT switching equivalent.
-Tournaments 2290 and 1357 are NOT switching equivalent.
+Tournaments 2290 and 1357 are NOT switching equivalent.Tournaments 85 and 402 are NOT switching equivalent.

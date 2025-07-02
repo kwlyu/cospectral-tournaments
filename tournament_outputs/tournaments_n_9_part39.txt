@@ -188865,4 +188865,4 @@ Tournaments 1921 and 1613 are NOT switching equivalent.
 Tournaments 1921 and 1614 are NOT switching equivalent.
 Tournaments 1921 and 1615 are NOT switching equivalent.
 Tournaments 1921 and 1616 are NOT switching equivalent.
-Tournaments 1921 and 1618 are NOT switching equivalent.
+Tournaments 1921 and 1618 are NOT switching equivalent.Tournaments 85 and 400 are NOT switching equivalent.

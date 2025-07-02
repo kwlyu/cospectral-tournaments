@@ -188706,4 +188706,4 @@ Tournaments 2464 and 487 are NOT switching equivalent.
 Tournaments 2464 and 488 are NOT switching equivalent.
 Tournaments 2464 and 490 are NOT switching equivalent.
 Tournaments 2464 and 491 are NOT switching equivalent.
-Tournaments 2464 and 492 are NOT switching equivalent.
+Tournaments 2464 and 492 are NOT switching equivalent.Tournaments 85 and 489 are NOT switching equivalent.

@@ -192171,4 +192171,4 @@ Tournaments 489 and 762 are NOT switching equivalent.
 Tournaments 489 and 763 are NOT switching equivalent.
 Tournaments 489 and 764 are NOT switching equivalent.
 Tournaments 489 and 765 are NOT switching equivalent.
-Tournaments 489 and 766 are NOT switching equivalent.
+Tournaments 489 and 766 are NOT switching equivalent.Tournaments 85 and 477 are NOT switching equivalent.

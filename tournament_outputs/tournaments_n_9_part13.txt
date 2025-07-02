@@ -190190,4 +190190,4 @@ Tournaments 1230 and 754 are NOT switching equivalent.
 Tournaments 1230 and 755 are NOT switching equivalent.
 Tournaments 1230 and 756 are NOT switching equivalent.
 Tournaments 1230 and 757 are NOT switching equivalent.
-Tournaments 1230 and 758 are NOT switching equivalent.
+Tournaments 1230 and 758 are NOT switching equivalent.Tournaments 85 and 386 are NOT switching equivalent.

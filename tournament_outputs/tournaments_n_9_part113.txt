@@ -191545,4 +191545,4 @@ Tournaments 1045 and 69 are NOT switching equivalent.
 Tournaments 1045 and 70 are NOT switching equivalent.
 Tournaments 1045 and 71 are NOT switching equivalent.
 Tournaments 1045 and 72 are NOT switching equivalent.
-Tournaments 1045 and 74 are NOT switching equivalent.
+Tournaments 1045 and 74 are NOT switching equivalent.Tournaments 85 and 444 are NOT switching equivalent.

@@ -188866,4 +188866,4 @@ Tournaments 1183 and 2121 are NOT switching equivalent.
 Tournaments 1183 and 2122 are NOT switching equivalent.
 Tournaments 1183 and 2123 are NOT switching equivalent.
 Tournaments 1183 and 2124 are NOT switching equivalent.
-Tournaments 1183 and 2125 are NOT switching equivalent.
+Tournaments 1183 and 2125 are NOT switching equivalent.Tournaments 85 and 396 are NOT switching equivalent.

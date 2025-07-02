@@ -604178,4 +604178,4 @@
 [1 0 0 1 0 0 0 0 1]
 [1 1 0 1 0 1 0 0 1]
 [1 1 1 0 1 1 1 0 0]
-[0 0 0 0 1 0 0 1 0]
+[0 0 0 0 1 0 0 1 0]Tournaments 85 and 455 are NOT switching equivalent.

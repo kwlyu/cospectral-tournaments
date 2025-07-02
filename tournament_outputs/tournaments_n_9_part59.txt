@@ -193703,4 +193703,4 @@ Tournaments 563 and 666 are NOT switching equivalent.
 Tournaments 563 and 667 are NOT switching equivalent.
 Tournaments 563 and 668 are NOT switching equivalent.
 Tournaments 563 and 669 are NOT switching equivalent.
-Tournaments 563 and 670 are NOT switching equivalent.
+Tournaments 563 and 670 are NOT switching equivalent.Tournaments 85 and 411 are NOT switching equivalent.

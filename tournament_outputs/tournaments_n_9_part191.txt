@@ -188707,4 +188707,4 @@ Tournaments 2136 and 1478 are NOT switching equivalent.
 Tournaments 2136 and 1480 are NOT switching equivalent.
 Tournaments 2136 and 1481 are NOT switching equivalent.
 Tournaments 2136 and 1482 are NOT switching equivalent.
-Tournaments 2136 and 1483 are NOT switching equivalent.
+Tournaments 2136 and 1483 are NOT switching equivalent.Tournaments 85 and 487 are NOT switching equivalent.
