@@ -57269,3 +57269,327 @@ Progress: Checked 1826/2067 charpoly classes (88.34%)
 ### Charpoly Class 1827 ###
 Characteristic Polynomial: x^10 + 45*x^8 + 562*x^6 + 2674*x^4 + 4557*x^2 + 2401
 Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1827/2067 charpoly classes (88.39%)
+         Checked 9255184/9733056 tournaments (95.09%)
+
+
+### Charpoly Class 1828 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 562*x^6 + 2834*x^4 + 5901*x^2 + 3969
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1828/2067 charpoly classes (88.44%)
+         Checked 9255440/9733056 tournaments (95.09%)
+
+
+### Charpoly Class 1829 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 602*x^6 + 3162*x^4 + 6789*x^2 + 4761
+Number of tournaments: 1024
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1  1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1  1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1  1  1  1 -1  1  1  0 -1 -1]
+[ 1  1 -1  1  1 -1  1  1  0 -1]
+[ 1 -1  1  1  1  1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1  1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1  1]
+[-1  1 -1  1  1  1  1  0 -1  1]
+[ 1 -1 -1  1 -1  1  1  1  0 -1]
+[ 1  1  1  1 -1  1 -1 -1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1829/2067 charpoly classes (88.49%)
+         Checked 9256464/9733056 tournaments (95.10%)
+
+
+### Charpoly Class 1830 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 570*x^6 + 2746*x^4 + 4389*x^2 + 441
+Number of tournaments: 448
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1  1 -1  1 -1]
+[ 1  1  1  1  0 -1 -1  1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1  1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1  1  1  1 -1  1  1  0 -1 -1]
+[ 1  1  1 -1  1 -1  1  1  0 -1]
+[ 1 -1  1  1  1  1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1  1]
+[ 1  0 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1 -1  1]
+[ 1  1  1  0 -1 -1  1 -1  1 -1]
+[ 1  1  1  1  0 -1 -1  1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1  1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1  1  1  1 -1  1  1  0 -1 -1]
+[ 1  1  1 -1  1 -1  1  1  0 -1]
+[-1  1 -1  1  1  1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1830/2067 charpoly classes (88.53%)
+         Checked 9256912/9733056 tournaments (95.11%)
+
+
+### Charpoly Class 1831 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 642*x^6 + 3522*x^4 + 5949*x^2 + 81
+Number of tournaments: 688
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[-1 -1  1  1  1  1  1  0 -1 -1]
+[ 1  1 -1  1 -1  1  1  1  0 -1]
+[ 1 -1  1 -1  1  1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1  1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1  1  1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[-1  1  1 -1  1  1  1  0 -1 -1]
+[ 1 -1 -1  1 -1  1  1  1  0 -1]
+[ 1 -1  1 -1  1  1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1831/2067 charpoly classes (88.58%)
+         Checked 9257600/9733056 tournaments (95.12%)
+
+
+### Charpoly Class 1832 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 658*x^6 + 3602*x^4 + 6381*x^2 + 1089
+Number of tournaments: 1024
+Tournaments 0 and 2 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1 -1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1  1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1  1]
+[-1  1 -1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1 -1  1  1  1  0 -1]
+[ 1  1  1  1 -1  1 -1  1  1  0]
+Tournament 2:
+[ 0 -1 -1 -1 -1  1 -1  1  1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1  1 -1  1]
+[-1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1 -1  1  1  1  1  0 -1 -1 -1]
+[-1  1  1  1 -1  1  1  0 -1  1]
+[-1  1 -1  1  1  1  1  1  0 -1]
+[ 1 -1  1  1 -1  1  1 -1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1832/2067 charpoly classes (88.63%)
+         Checked 9258624/9733056 tournaments (95.13%)
+
+
+### Charpoly Class 1833 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 4130*x^4 + 10269*x^2 + 7921
+Number of tournaments: 3328
+Tournaments 0 and 2 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1  1]
+[ 1  1  0 -1 -1 -1 -1  1 -1  1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[-1  1 -1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1 -1  1  1  1  0 -1]
+[ 1 -1 -1  1  1 -1  1  1  1  0]
+Tournament 2:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1  1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1  1  1]
+[ 1  1  1  0 -1 -1  1  1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1 -1  1 -1  1  1  1  0 -1  1]
+[ 1 -1 -1  1 -1  1  1  1  0 -1]
+[ 1  1 -1  1  1 -1  1 -1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1833/2067 charpoly classes (88.68%)
+         Checked 9261952/9733056 tournaments (95.16%)
+
+
+### Charpoly Class 1834 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 650*x^6 + 3882*x^4 + 10197*x^2 + 9801
+Number of tournaments: 512
+Tournaments 0 and 2 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1  1]
+[ 1  1  0 -1 -1 -1 -1  1  1  1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[-1  1 -1  1  1  1  1  0 -1 -1]
+[ 1 -1 -1  1 -1  1  1  1  0 -1]
+[ 1 -1 -1  1  1 -1  1  1  1  0]
+Tournament 2:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1 -1  1  1  1]
+[ 1  1  1  1  0 -1  1 -1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1 -1  1  0 -1 -1 -1]
+[-1  1  1 -1  1  1  1  0 -1 -1]
+[ 1  1 -1 -1  1  1  1  1  0 -1]
+[ 1 -1  1 -1  1  1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1834/2067 charpoly classes (88.73%)
+         Checked 9262464/9733056 tournaments (95.17%)
+
+
+### Charpoly Class 1835 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 594*x^6 + 3154*x^4 + 6573*x^2 + 3969
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1835/2067 charpoly classes (88.78%)
+         Checked 9262720/9733056 tournaments (95.17%)
+
+
+### Charpoly Class 1836 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 578*x^6 + 2754*x^4 + 4221*x^2 + 81
+Number of tournaments: 1024
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1  1]
+[-1  1 -1  1  1  1  1  0 -1  1]
+[ 1 -1 -1  1 -1  1  1  1  0 -1]
+[ 1  1  1 -1  1  1 -1 -1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1  1  1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1  1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[-1  1  1  1 -1  1  1  0 -1 -1]
+[-1  1 -1  1  1  1  1  1  0  1]
+[ 1  1  1 -1  1  1  1  1 -1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1836/2067 charpoly classes (88.82%)
+         Checked 9263744/9733056 tournaments (95.18%)
+
+
+### Charpoly Class 1837 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 690*x^6 + 4210*x^4 + 8653*x^2 + 225
+Number of tournaments: 2048
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1 -1  1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1 -1 -1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1 -1  1  1  1  0 -1]
+[ 1  1 -1  1  1 -1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1 -1  1]
+[ 1  1  0 -1 -1 -1 -1  1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1 -1 -1  1  1  1  1  0 -1 -1]
+[ 1  1 -1  1 -1  1  1  1  0 -1]
+[ 1 -1  1  1  1 -1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1837/2067 charpoly classes (88.87%)
+         Checked 9265792/9733056 tournaments (95.20%)
+
+
+### Charpoly Class 1838 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 3970*x^4 + 8029*x^2 + 81
+Number of tournaments: 512
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1  1]
+[ 1  0 -1 -1 -1 -1 -1  1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1 -1  1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1 -1 -1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1 -1  1  1  1  0 -1]
+[-1  1 -1  1  1 -1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1  1  1]
+[ 1  1  0 -1 -1 -1 -1  1  1 -1]
+[ 1  1  1  0 -1 -1  1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1  1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1 -1  1]
+[ 1  1  1 -1  1  1  0 -1 -1 -1]
+[ 1  1 -1  1 -1  1  1  0 -1 -1]
+[ 1 -1 -1  1  1  1  1  1  0 -1]
+[ 1 -1  1  1  1 -1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+Progress: Checked 1838/2067 charpoly classes (88.92%)
+         Checked 9266304/9733056 tournaments (95.20%)
+
+
+### Charpoly Class 1839 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 682*x^6 + 4106*x^4 + 9269*x^2 + 6889
+Number of tournaments: 512
