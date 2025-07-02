@@ -71182,3 +71182,5 @@ Tournaments 36 and 30 are NOT switching equivalent.
 Tournaments 36 and 31 are NOT switching equivalent.
 Tournaments 36 and 32 are NOT switching equivalent.
 Tournaments 36 and 33 are NOT switching equivalent.
+================= Order n = 9 =================
+

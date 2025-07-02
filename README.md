@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-02 11:59:43)
-_Last checked: 2025-07-02 13:07:45_
+## 🚨 New results found! (last change: 2025-07-02 13:08:45)
+_Last checked: 2025-07-02 13:08:45_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,9 +14,13 @@ _Last checked: 2025-07-02 13:07:45_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ❓ No results | - |
+| 10 | ⚠️ Incomplete (❌ NO) | 11/26 (42.31%) |
 
 ---
+
+**Progress (Order n = 10)**  
+Progress: Checked 26/2067 charpoly classes (1.26%)  
+Checked 25076/9733056 tournaments (0.26%)  
 
 ## n = 1
 > ✅ **cospectral ⇒ switching equivalent**
@@ -227,7 +231,27 @@ $$
 $$
 
 ## n = 10
-> ❓ **No results for this order.**
+> ❌ **cospectral ⇏ switching equivalence**
 
+### Characteristic Polynomial(s) (Non-switching-equivalent classes):
+$$
+\begin{aligned}
+  & x^10 &  & +45x^8 &  & +370x^6 &  & +786x^4 &  & +333x^2 &  & +1 \\
+  & x^10 &  & +45x^8 &  & +386x^6 &  & +930x^4 &  & +637x^2 &  & +49 \\
+  & x^10 &  & +45x^8 &  & +410x^6 &  & +986x^4 &  & +581x^2 &  & +25 \\
+  & x^10 &  & +45x^8 &  & +418x^6 &  & +994x^4 &  & +541x^2 &  & +49 \\
+  & x^10 &  & +45x^8 &  & +434x^6 &  & +1042x^4 &  & +525x^2 &  & +1 \\
+  & x^10 &  & +45x^8 &  & +442x^6 &  & +1050x^4 &  & +485x^2 &  & +25 \\
+  & x^10 &  & +45x^8 &  & +394x^6 &  & +1002x^4 &  & +597x^2 &  & +9 \\
+  & x^10 &  & +45x^8 &  & +402x^6 &  & +466x^4 &  & +109x^2 &  & +1 \\
+  & x^10 &  & +45x^8 &  & +450x^6 &  & +1058x^4 &  & +445x^2 &  & +49 \\
+  & x^10 &  & +45x^8 &  & +386x^6 &  & +962x^4 &  & +573x^2 &  & +81 \\
+  & x^10 &  & +45x^8 &  & +426x^6 &  & +1194x^4 &  & +373x^2 &  & +9 \\
+  & x^10 &  & +45x^8 &  & +362x^6 &  & +938x^4 &  & +693x^2 &  & +9 \\
+  & x^10 &  & +45x^8 &  & +402x^6 &  & +1106x^4 &  & +493x^2 &  & +1 \\
+  & x^10 &  & +45x^8 &  & +410x^6 &  & +730x^4 &  & +325x^2 &  & +25 \\
+  & x^10 &  & +45x^8 &  & +322x^6 &  & +834x^4 &  & +765x^2 &  & +81 \\
+\end{aligned}
+$$
 
 > ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._
