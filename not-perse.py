@@ -5,9 +5,9 @@ import hashlib
 from collections import defaultdict
 from datetime import datetime
 
-OUTPUT_DIR = "/Users/lyuk/Downloads/cospectral-tournaments/tournament_outputs"
+OUTPUT_DIR = "/Users/lyuk/Downloads/cospectral-tournaments/tournament_outputs_new"
 FILE_EXTENSION = ".txt"
-README_PATH = os.path.join("/Users/lyuk/Downloads/cospectral-tournaments", "README.md")
+README_PATH = os.path.join("/Users/lyuk/Downloads/cospectral-tournaments/tournament_outputs_new", "README.md")
 
 order_pattern = re.compile(r'Order n = (\d+)')
 filename_order_pattern = re.compile(r'_n_(\d+)(?:_part\d+)?\.txt$')

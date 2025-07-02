@@ -1,0 +1,197 @@
+
+================= Order n = 8 =================
+
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 70*x^4 + 28*x^2 + 1
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 110*x^4 + 108*x^2 + 9
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 3 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 134*x^4 + 92*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 4 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 158*x^4 + 172*x^2 + 25
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 5 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 166*x^4 + 188*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 6 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 182*x^4 + 252*x^2 + 49
+Number of tournaments: 276
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1  1]
+[ 1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1  1  1  0 -1]
+[ 1  1 -1  1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1  1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1  1  1  0 -1]
+[ 1  1  1  1 -1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+
+### Charpoly Class 7 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 190*x^4 + 268*x^2 + 25
+Number of tournaments: 256
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1 -1  1  1  1  1  0 -1]
+[ 1  1  1 -1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1]
+[ 1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1 -1  1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1  1 -1  1  1  1  0 -1]
+[ 1  1  1  1 -1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+
+### Charpoly Class 8 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 142*x^4 + 76*x^2 + 9
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 9 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 182*x^4 + 348*x^2 + 81
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 10 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 166*x^4 + 60*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 11 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 284*x^2 + 1
+Number of tournaments: 480
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1]
+[ 1  1  0 -1 -1 -1  1 -1]
+[ 1  1  1  0 -1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1  1 -1  1  1  1  0 -1]
+[ 1  1  1 -1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1  1 -1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1 -1  1]
+[ 1  1  1  1  0 -1 -1 -1]
+[-1  1  1  1  1  0 -1  1]
+[ 1 -1  1  1  1  1  0 -1]
+[ 1  1  1 -1  1 -1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+
+### Charpoly Class 12 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 174*x^4 + 300*x^2 + 9
+Number of tournaments: 128
+Tournaments 0 and 1 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1  1 -1]
+[ 1  1  1  1  0 -1 -1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1  1  1 -1  1  1  0 -1]
+[ 1 -1  1  1  1  1  1  0]
+Tournament 1:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1 -1]
+[ 1  1  0 -1 -1 -1 -1  1]
+[ 1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1  1  1  1 -1  1  0 -1]
+[ 1  1 -1  1  1  1  1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+
+### Charpoly Class 13 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 412*x^2 + 1
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 14 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 190*x^4 + 140*x^2 + 25
+Number of tournaments: 32
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 15 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 150*x^4 + 252*x^2 + 81
+Number of tournaments: 48
+Tournaments 0 and 3 are NOT switching equivalent (by McKay matrix isomorphism).
+Tournament 0:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1 -1  1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1 -1 -1 -1]
+[ 1  1  1  1  0 -1  1 -1]
+[ 1  1  1  1  1  0 -1 -1]
+[ 1  1  1  1 -1  1  0 -1]
+[ 1 -1  1  1  1  1  1  0]
+Tournament 3:
+[ 0 -1 -1 -1 -1 -1 -1 -1]
+[ 1  0 -1 -1 -1 -1  1 -1]
+[ 1  1  0 -1 -1 -1 -1 -1]
+[ 1  1  1  0 -1  1 -1 -1]
+[ 1  1  1  1  0 -1 -1 -1]
+[ 1  1  1 -1  1  0 -1 -1]
+[ 1 -1  1  1  1  1  0  1]
+[ 1  1  1  1  1  1 -1  0]
+Not all tournaments in this class are switching equivalent.
+Found a pair that is NOT switching equivalent. Skipping further checks in this class.
+
+
+### Charpoly Class 16 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 174*x^4 + 172*x^2 + 9
+Number of tournaments: 128
