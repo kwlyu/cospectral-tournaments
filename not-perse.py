@@ -189,14 +189,19 @@ def results_to_md(results, found_orders):
                 p = poly.replace(" ", "").replace("*", "") # Remove spaces and asterisks
                 terms = re.findall(r'[+-]?[^+-]+', p) # Split into terms (e.g., "x^8", "-2x^6", "+1")
                 degs = []
-                for t in terms:
-                    m = re.match(r'.*x\^(\d+)', t)
+                for i in range(len(terms)):
+                    t = terms[i]
+                    m = re.search(r'x\^(\d+)', t)
                     if m:
-                        degs.append(int(m.group(1)))
-                    elif 'x' in t: # Handle x^1
-                        degs.append(1)
-                    else: # Handle constant terms
-                        degs.append(0)
+                        exp = m.group(1)
+                        t = t.replace(f"x^{exp}", f"x^{{{exp}}}")
+                        deg = int(exp)
+                    elif 'x' in t:  # Handle x (degree 1)
+                        deg = 1
+                    else:
+                        deg = 0
+                    terms[i] = t  # update formatted term
+                    degs.append(deg)
                 max_deg = max(max_deg, max(degs, default=0))
                 split_polys.append((terms, degs))
             
