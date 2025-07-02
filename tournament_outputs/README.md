@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-02 08:53:16)
-_Last checked: 2025-07-02 09:26:20_
+## 🚨 New results found! (last change: 2025-07-02 09:29:36)
+_Last checked: 2025-07-02 09:29:36_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,7 +13,8 @@ _Last checked: 2025-07-02 09:26:20_
 | 6 | ✅ YES |
 | 7 | ❌ NO |
 | 8 | ❌ NO |
-| 9 | ⚠️ Incomplete (❌ NO) |
+| 9 | ❌ NO |
+| 10 | ❓ No results |
 
 ---
 
@@ -110,4 +111,8 @@ $$
 \end{aligned}
 $$
 
-> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
+## n = 10
+> ❓ **No results for this order.**
+
+
+> ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._
