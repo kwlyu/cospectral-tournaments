@@ -214,10 +214,16 @@ def results_to_md(results, found_orders):
                 aligned_rows.append(row)
             
             # Generate LaTeX aligned environment
-            lines.append("$$\n\\begin{aligned}")
+            # lines.append("$$\n\\begin{aligned}")
+            # for row in aligned_rows:
+            #     lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
+            # lines.append("\\end{aligned}\n$$")
+            lines.append("$$")
+            lines.append("\\begin{aligned}")
             for row in aligned_rows:
                 lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
-            lines.append("\\end{aligned}\n$$")
+            lines.append("\\end{aligned}")
+            lines.append("$$")
         lines.append("")  # Blank line for spacing
 
         # Add the specific "next order missing" note here
