@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-02 13:58:23)
-_Last checked: 2025-07-02 14:13:24_
+## 🚨 New results found! (last change: 2025-07-02 14:14:24)
+_Last checked: 2025-07-02 14:14:24_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,13 +14,13 @@ _Last checked: 2025-07-02 14:13:24_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ⚠️ Incomplete (❌ NO) | 11/26 (42.31%) |
+| 10 | ⚠️ Incomplete (❌ NO) | 12/30 (40.00%) |
 
 ---
 
 **Progress (Order n = 10)**  
-Progress: Checked 26/2067 charpoly classes (1.26%)  
-Checked 25076/9733056 tournaments (0.26%)  
+Progress: Checked 30/2067 charpoly classes (1.45%)  
+Checked 28660/9733056 tournaments (0.29%)  
 
 ## n = 1
 > ✅ **cospectral ⇒ switching equivalent**
@@ -311,6 +311,9 @@ $$
   & x^{10} &  & +45x^{8} &  & +402x^{6} &  & +1106x^{4} &  & +493x^{2} &  & +1 \\
   & x^{10} &  & +45x^{8} &  & +410x^{6} &  & +730x^{4} &  & +325x^{2} &  & +25 \\
   & x^{10} &  & +45x^{8} &  & +322x^{6} &  & +834x^{4} &  & +765x^{2} &  & +81 \\
+  & x^{10} &  & +45x^{8} &  & +402x^{6} &  & +850x^{4} &  & +237x^{2} &  & +1 \\
+  & x^{10} &  & +45x^{8} &  & +394x^{6} &  & +746x^{4} &  & +341x^{2} &  & +9 \\
+  & x^{10} &  & +45x^{8} &  & +426x^{6} &  & +810x^{4} &  & +245x^{2} &  & +9 \\
 \end{aligned}
 $$
 
