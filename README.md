@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-02 17:35:36)
-_Last checked: 2025-07-02 17:36:36_
+## 🚨 New results found! (last change: 2025-07-02 17:37:36)
+_Last checked: 2025-07-02 17:37:36_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,13 +14,10 @@ _Last checked: 2025-07-02 17:36:36_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ⚠️ Incomplete (❌ NO) | 183/2061 (8.88%) |
+| 10 | ❌ NO | 188/2067 (9.10%) |
+| 11 | ❓ No results | - |
 
 ---
-
-**Progress (Order n = 10)**  
-Progress: Checked 2061/2067 charpoly classes (99.71%)  
-Checked 9732200/9733056 tournaments (99.99%)  
 
 ## n = 1
 > ✅ **cospectral ⇒ switching equivalent**
@@ -2918,7 +2915,12 @@ $$
   & x^{10} &  & +45x^{8} &  & +754x^{6} &  & +5842x^{4} &  & +20685x^{2} &  & +25921 \\
   & x^{10} &  & +45x^{8} &  & +754x^{6} &  & +5746x^{4} &  & +19085x^{2} &  & +20449 \\
   & x^{10} &  & +45x^{8} &  & +738x^{6} &  & +5250x^{4} &  & +14237x^{2} &  & +5329 \\
+  & x^{10} &  & +45x^{8} &  & +690x^{6} &  & +3826x^{4} &  & +3405x^{2} &  & +225 \\
 \end{aligned}
 $$
 
-> ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._
+## n = 11
+> ❓ **No results for this order.**
+
+
+> ⚠️ _Note: Results for order n = 12 are not yet available. This suggests the data for n = 11 may not be complete or the analysis is ongoing._
