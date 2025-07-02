@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 08:50:53)
-_Last checked: 2025-07-02 08:50:53_
+## 🚨 New results found! (last change: 2025-07-02 08:52:53)
+_Last checked: 2025-07-02 08:52:53_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,7 +13,8 @@ _Last checked: 2025-07-02 08:50:53_
 | 6 | ✅ YES |
 | 7 | ❌ NO |
 | 8 | ❌ NO |
-| 9 | ⚠️ Incomplete (❌ NO) |
+| 9 | ❌ NO |
+| 10 | ❓ No results |
 
 ---
 
@@ -210,7 +211,23 @@ $$
   & x^9 &  & +36x^7 &  & +382x^5 &  & +1044x^3 &  & +329x &  \\
   & x^9 &  & +36x^7 &  & +414x^5 &  & +1556x^3 &  & +1065x &  \\
   & x^9 &  & +36x^7 &  & +430x^5 &  & +1844x^3 &  & +1785x &  \\
+  & x^9 &  & +36x^7 &  & +414x^5 &  & +1556x^3 &  & +297x &  \\
+  & x^9 &  & +36x^7 &  & +414x^5 &  & +1556x^3 &  & +553x &  \\
+  & x^9 &  & +36x^7 &  & +430x^5 &  & +1780x^3 &  & +825x &  \\
+  & x^9 &  & +36x^7 &  & +430x^5 &  & +1908x^3 &  & +2745x &  \\
+  & x^9 &  & +36x^7 &  & +430x^5 &  & +1844x^3 &  & +1529x &  \\
+  & x^9 &  & +36x^7 &  & +430x^5 &  & +1972x^3 &  & +2681x &  \\
+  & x^9 &  & +36x^7 &  & +414x^5 &  & +1620x^3 &  & +1257x &  \\
+  & x^9 &  & +36x^7 &  & +430x^5 &  & +1908x^3 &  & +2489x &  \\
+  & x^9 &  & +36x^7 &  & +446x^5 &  & +2196x^3 &  & +3465x &  \\
+  & x^9 &  & +36x^7 &  & +446x^5 &  & +2260x^3 &  & +3913x &  \\
+  & x^9 &  & +36x^7 &  & +414x^5 &  & +1492x^3 &  & +105x &  \\
+  & x^9 &  & +36x^7 &  & +462x^5 &  & +2548x^3 &  & +5145x &  \\
 \end{aligned}
 $$
 
-> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
+## n = 10
+> ❓ **No results for this order.**
+
+
+> ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._

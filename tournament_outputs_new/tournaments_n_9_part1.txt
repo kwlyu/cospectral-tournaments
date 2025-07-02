@@ -4137,3 +4137,23 @@ Found a pair that is NOT switching equivalent. Skipping further checks in this c
 ### Charpoly Class 180 ###
 Characteristic Polynomial: x^9 + 36*x^7 + 462*x^5 + 2484*x^3 + 4697*x
 Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 181 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 270*x^5 + 756*x^3 + 729*x
+Number of tournaments: 12
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 182 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 446*x^5 + 2132*x^3 + 2761*x
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 183 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 462*x^5 + 2420*x^3 + 3993*x
+Number of tournaments: 88
+All tournaments in this class are mutually switching equivalent.
+
