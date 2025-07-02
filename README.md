@@ -1,20 +1,19 @@
-## No new results. (last change: 2025-07-02 08:52:53)
-_Last checked: 2025-07-02 09:22:54_
+## 🚨 New results found! (last change: 2025-07-02 09:29:00)
+_Last checked: 2025-07-02 09:29:00_
 
 # Cospectral vs Switching Equivalence Results
 
-| n | Status |
-|---|--------|
-| 1 | ✅ YES |
-| 2 | ✅ YES |
-| 3 | ✅ YES |
-| 4 | ✅ YES |
-| 5 | ✅ YES |
-| 6 | ✅ YES |
-| 7 | ❌ NO |
-| 8 | ❌ NO |
-| 9 | ❌ NO |
-| 10 | ❓ No results |
+| n | Status | cospectral ⇒ switching |
+|---|--------|-------------------------|
+| 1 | ✅ YES | 1/1 (100.00%) |
+| 2 | ✅ YES | 1/1 (100.00%) |
+| 3 | ✅ YES | 1/1 (100.00%) |
+| 4 | ✅ YES | 2/2 (100.00%) |
+| 5 | ✅ YES | 2/2 (100.00%) |
+| 6 | ✅ YES | 6/6 (100.00%) |
+| 7 | ❌ NO | 10/11 (90.91%) |
+| 8 | ❌ NO | 33/50 (66.00%) |
+| 9 | ⚠️ Incomplete (❌ NO) | 44/183 (24.04%) |
 
 ---
 
@@ -226,8 +225,4 @@ $$
 \end{aligned}
 $$
 
-## n = 10
-> ❓ **No results for this order.**
-
-
-> ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._
+> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
