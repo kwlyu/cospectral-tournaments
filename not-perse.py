@@ -220,8 +220,11 @@ def results_to_md(results, found_orders):
             # lines.append("\\end{aligned}\n$$")
             lines.append("$$")
             lines.append("\\begin{aligned}")
+            # for row in aligned_rows:
+            #     lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
             for row in aligned_rows:
-                lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
+                if any(t.strip() for t in row):  # skip empty rows
+                    lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
             lines.append("\\end{aligned}")
             lines.append("$$")
         lines.append("")  # Blank line for spacing
