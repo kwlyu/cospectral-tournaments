@@ -601,3 +601,7 @@ Progress: Checked 26/2067 charpoly classes (1.26%)
 
 ================= Order n = 10 =================
 
+
+### Charpoly Class 27 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 394*x^6 + 874*x^4 + 213*x^2 + 9
+Number of tournaments: 512
