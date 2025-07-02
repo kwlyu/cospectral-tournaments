@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 08:38:25)
-_Last checked: 2025-07-02 08:38:25_
+## 🚨 New results found! (last change: 2025-07-02 08:39:25)
+_Last checked: 2025-07-02 08:39:25_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -12,7 +12,8 @@ _Last checked: 2025-07-02 08:38:25_
 | 5 | ✅ YES |
 | 6 | ✅ YES |
 | 7 | ❌ NO |
-| 8 | ⚠️ Incomplete (❌ NO) |
+| 8 | ❌ NO |
+| 9 | ❓ No results |
 
 ---
 
@@ -58,7 +59,26 @@ $$
 \begin{aligned}
   & x^8 &  & +28x^6 &  & +182x^4 &  & +252x^2 &  & +49 \\
   & x^8 &  & +28x^6 &  & +190x^4 &  & +268x^2 &  & +25 \\
+  & x^8 &  & +28x^6 &  & +198x^4 &  & +284x^2 &  & +1 \\
+  & x^8 &  & +28x^6 &  & +174x^4 &  & +300x^2 &  & +9 \\
+  & x^8 &  & +28x^6 &  & +150x^4 &  & +252x^2 &  & +81 \\
+  & x^8 &  & +28x^6 &  & +214x^4 &  & +444x^2 &  & +81 \\
+  & x^8 &  & +28x^6 &  & +222x^4 &  & +492x^2 &  & +25 \\
+  & x^8 &  & +28x^6 &  & +214x^4 &  & +476x^2 &  & +49 \\
+  & x^8 &  & +28x^6 &  & +206x^4 &  & +268x^2 &  & +9 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +540x^2 &  & +225 \\
+  & x^8 &  & +28x^6 &  & +206x^4 &  & +396x^2 &  & +9 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +604x^2 &  & +289 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +508x^2 &  & +1 \\
+  & x^8 &  & +28x^6 &  & +238x^4 &  & +652x^2 &  & +361 \\
+  & x^8 &  & +28x^6 &  & +238x^4 &  & +588x^2 &  & +169 \\
+  & x^8 &  & +28x^6 &  & +230x^4 &  & +476x^2 &  & +289 \\
+  & x^8 &  & +28x^6 &  & +246x^4 &  & +700x^2 &  & +49 \\
 \end{aligned}
 $$
 
-> ⚠️ _Note: Results for order n = 9 are not yet available. This suggests the data for n = 8 may not be complete or the analysis is ongoing._
+## n = 9
+> ❓ **No results for this order.**
+
+
+> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
