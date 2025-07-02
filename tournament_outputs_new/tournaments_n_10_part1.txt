@@ -58805,3 +58805,21 @@ Progress: Checked 1882/2067 charpoly classes (91.05%)
 ### Charpoly Class 1883 ###
 Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 4290*x^4 + 11613*x^2 + 11025
 Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1883/2067 charpoly classes (91.10%)
+         Checked 9390608/9733056 tournaments (96.48%)
+
+
+### Charpoly Class 1884 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 634*x^6 + 3354*x^4 + 7077*x^2 + 4761
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1884/2067 charpoly classes (91.15%)
+         Checked 9390864/9733056 tournaments (96.48%)
+
+
+### Charpoly Class 1885 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 634*x^6 + 3578*x^4 + 8037*x^2 + 5625
+Number of tournaments: 256
