@@ -182,3 +182,12 @@ Progress: Checked 9/2067 charpoly classes (0.44%)
 ### Charpoly Class 10 ###
 Characteristic Polynomial: x^10 + 45*x^8 + 330*x^6 + 490*x^4 + 149*x^2 + 9
 Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 10/2067 charpoly classes (0.48%)
+         Checked 7988/9733056 tournaments (0.08%)
+
+
+### Charpoly Class 11 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 386*x^6 + 1090*x^4 + 957*x^2 + 81
+Number of tournaments: 256
