@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 13:42:02)
-_Last checked: 2025-07-02 13:42:02_
+## No new results. (last change: 2025-07-02 13:42:02)
+_Last checked: 2025-07-02 13:43:02_
 
 # Cospectral vs Switching Equivalence Results
 
