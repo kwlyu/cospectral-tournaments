@@ -63422,3 +63422,12 @@ Progress: Checked 2051/2067 charpoly classes (99.23%)
 ### Charpoly Class 2052 ###
 Characteristic Polynomial: x^10 + 45*x^8 + 746*x^6 + 5546*x^4 + 17461*x^2 + 15625
 Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 2052/2067 charpoly classes (99.27%)
+         Checked 9726968/9733056 tournaments (99.94%)
+
+
+### Charpoly Class 2053 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 714*x^6 + 4586*x^4 + 9621*x^2 + 4489
+Number of tournaments: 512
