@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 09:29:36)
-_Last checked: 2025-07-02 09:29:36_
+## 🚨 New results found! (last change: 2025-07-02 09:31:16)
+_Last checked: 2025-07-02 09:31:16_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,8 +13,7 @@ _Last checked: 2025-07-02 09:29:36_
 | 6 | ✅ YES |
 | 7 | ❌ NO |
 | 8 | ❌ NO |
-| 9 | ❌ NO |
-| 10 | ❓ No results |
+| 9 | ⚠️ Incomplete (❌ NO) |
 
 ---
 
@@ -93,6 +92,7 @@ $$
   & x^9 &  & +36x^7 &  & +350x^5 &  & +916x^3 &  & +233x &  \\
   & x^9 &  & +36x^7 &  & +350x^5 &  & +980x^3 &  & +425x &  \\
   & x^9 &  & +36x^7 &  & +350x^5 &  & +1044x^3 &  & +617x &  \\
+  & x^9 &  & +36x^7 &  & +366x^5 &  & +1204x^3 &  & +953x &  \\
   & x^9 &  & +36x^7 &  & +350x^5 &  & +980x^3 &  & +681x &  \\
   & x^9 &  & +36x^7 &  & +286x^5 &  & +532x^3 &  & +169x &  \\
   & x^9 &  & +36x^7 &  & +254x^5 &  & +404x^3 &  & +73x &  \\
@@ -111,8 +111,4 @@ $$
 \end{aligned}
 $$
 
-## n = 10
-> ❓ **No results for this order.**
-
-
-> ⚠️ _Note: Results for order n = 11 are not yet available. This suggests the data for n = 10 may not be complete or the analysis is ongoing._
+> ⚠️ _Note: Results for order n = 10 are not yet available. This suggests the data for n = 9 may not be complete or the analysis is ongoing._
