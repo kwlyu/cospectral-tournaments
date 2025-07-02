@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-02 08:42:25)
-_Last checked: 2025-07-02 08:42:25_
+## 🚨 New results found! (last change: 2025-07-02 08:43:25)
+_Last checked: 2025-07-02 08:43:25_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -88,6 +88,8 @@ $$
   & x^9 &  & +36x^7 &  & +286x^5 &  & +532x^3 &  & +169x &  \\
   & x^9 &  & +36x^7 &  & +302x^5 &  & +564x^3 &  & +121x &  \\
   & x^9 &  & +36x^7 &  & +270x^5 &  & +564x^3 &  & +153x &  \\
+  & x^9 &  & +36x^7 &  & +254x^5 &  & +532x^3 &  & +201x &  \\
+  & x^9 &  & +36x^7 &  & +222x^5 &  & +468x^3 &  & +297x &  \\
 \end{aligned}
 $$
 
