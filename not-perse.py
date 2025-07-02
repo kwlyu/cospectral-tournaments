@@ -218,15 +218,18 @@ def results_to_md(results, found_orders):
             # for row in aligned_rows:
             #     lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
             # lines.append("\\end{aligned}\n$$")
-            lines.append("$$")
-            lines.append("\\begin{aligned}")
-            # for row in aligned_rows:
-            #     lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
-            for row in aligned_rows:
-                if any(t.strip() for t in row):  # skip empty rows
-                    lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
-            lines.append("\\end{aligned}")
-            lines.append("$$")
+            CHUNK_SIZE = 10
+            chunks = [aligned_rows[i:i + CHUNK_SIZE] for i in range(0, len(aligned_rows), CHUNK_SIZE)]
+
+            for chunk in chunks:
+                lines.append("$$")
+                lines.append("\\begin{aligned}")
+                for row in chunk:
+                    if any(t.strip() for t in row):
+                        lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
+                lines.append("\\end{aligned}")
+                lines.append("$$")
+
         lines.append("")  # Blank line for spacing
 
         # Add the specific "next order missing" note here
