@@ -1,3 +1,25 @@
 
 ================= Order n = 10 =================
 
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 210*x^6 + 210*x^4 + 45*x^2 + 1
+Number of tournaments: 52
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 1/2067 charpoly classes (0.05%)
+         Checked 52/9733056 tournaments (0.00%)
+
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 266*x^6 + 490*x^4 + 213*x^2 + 9
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+Progress: Checked 2/2067 charpoly classes (0.10%)
+         Checked 308/9733056 tournaments (0.00%)
+
+
+### Charpoly Class 3 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 306*x^6 + 530*x^4 + 141*x^2 + 1
+Number of tournaments: 512
