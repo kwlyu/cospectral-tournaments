@@ -17,7 +17,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 # This is the base directory where 'n' specific folders (n3, n4, etc.) will be created.
 # The README.md will also live directly within this directory.
 ROOT_OUTPUT_BASE_DIR = "tournament_outputs_by_class"
-README_PATH = os.path.join(ROOT_OUTPUT_BASE_DIR, "README.md")
+README_PATH = os.path.join("/Users/lyuk/Downloads/cospectral-tournaments", "README.md")
 FILE_EXTENSION = ".txt"
 
 # !!! IMPORTANT: SET THIS TO THE PATH OF YOUR FOLDER WITH EXISTING RESULTS !!!
