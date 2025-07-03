@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-03 17:20:31)
-_Last checked: 2025-07-03 17:20:31_
+## 🚨 New results found! (last change: 2025-07-03 17:21:31)
+_Last checked: 2025-07-03 17:21:31_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,19 +13,19 @@ _Last checked: 2025-07-03 17:20:31_
 | 6 | ✅ YES | 6/6 (100.00%) |
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
-| 9 | ⏳ Checking (1%) | 1/2 (50.00%) |
+| 9 | ⏳ Checking (11%) | 6/21 (28.57%) |
 
 ---
 
 ## 📊 Current Progress (Order n = 9)
 
-> Checking classes for n=9 (2/183 - 1.09%).
+> Checking classes for n=9 (21/183 - 11.48%).
 
 Tournaments Generated: `██████████████████████████████` (191536/191536 - 100.00%)
 
 
-Classes Checked: `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` (2/183 - 1.09%)
-  (✅ Yes: 1, ❌ No: 1)
+Classes Checked: `███░░░░░░░░░░░░░░░░░░░░░░░░░░░` (21/183 - 11.48%)
+  (✅ Yes: 6, ❌ No: 15)
 
 
 ---
@@ -77,10 +77,28 @@ x^8 + 28*x^6 + 246*x^4 + 700*x^2 + 49 \\
 
 <details><summary>Order n = 9</summary>
 
-### Cospectral BUT NOT Switching Equivalent (NO classes: 1)
+### Cospectral BUT NOT Switching Equivalent (NO classes: 15)
 
 $$ \begin{gather*}
+x^9 + 36*x^7 + 222*x^5 + 468*x^3 + 297*x \\
+x^9 + 36*x^7 + 270*x^5 + 500*x^3 + 217*x \\
+x^9 + 36*x^7 + 318*x^5 + 788*x^3 + 137*x \\
+x^9 + 36*x^7 + 366*x^5 + 820*x^3 + 313*x \\
+x^9 + 36*x^7 + 366*x^5 + 884*x^3 + 505*x \\
+x^9 + 36*x^7 + 382*x^5 + 1172*x^3 + 201*x \\
+x^9 + 36*x^7 + 382*x^5 + 1300*x^3 + 585*x \\
+x^9 + 36*x^7 + 382*x^5 + 1300*x^3 + 841*x \\
+x^9 + 36*x^7 + 382*x^5 + 1428*x^3 + 1481*x \\
+x^9 + 36*x^7 + 398*x^5 + 1460*x^3 + 921*x \\
+\end{gather*} $$
+
+
+$$ \begin{gather*}
+x^9 + 36*x^7 + 398*x^5 + 1588*x^3 + 2073*x \\
+x^9 + 36*x^7 + 414*x^5 + 1620*x^3 + 1001*x \\
 x^9 + 36*x^7 + 414*x^5 + 1620*x^3 + 1513*x \\
+x^9 + 36*x^7 + 414*x^5 + 1812*x^3 + 2601*x \\
+x^9 + 36*x^7 + 446*x^5 + 2196*x^3 + 3465*x \\
 \end{gather*} $$
 
 
