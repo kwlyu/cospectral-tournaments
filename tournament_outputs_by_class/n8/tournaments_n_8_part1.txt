@@ -1,0 +1,320 @@
+
+================= Order n = 8 (Part 1) =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 246*x^4 + 764*x^2 + 625
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 110*x^4 + 108*x^2 + 9
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 3 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 230*x^4 + 604*x^2 + 289
+Number of tournaments: 160
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 4 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 166*x^4 + 188*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 5 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 150*x^4 + 252*x^2 + 81
+Number of tournaments: 48
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 6 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 684*x^2 + 729
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 7 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 182*x^4 + 348*x^2 + 81
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 8 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 492*x^2 + 25
+Number of tournaments: 384
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 9 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 158*x^4 + 172*x^2 + 25
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 10 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 238*x^4 + 588*x^2 + 169
+Number of tournaments: 192
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 11 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 190*x^4 + 300*x^2 + 121
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 12 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 174*x^4 + 172*x^2 + 9
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 13 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 206*x^4 + 364*x^2 + 169
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 14 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 588*x^2 + 441
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 15 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 412*x^2 + 1
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 16 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 214*x^4 + 348*x^2 + 49
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 17 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 284*x^2 + 1
+Number of tournaments: 480
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 18 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 396*x^2 + 121
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 19 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 214*x^4 + 476*x^2 + 49
+Number of tournaments: 256
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 20 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 230*x^4 + 476*x^2 + 289
+Number of tournaments: 80
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 21 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 142*x^4 + 76*x^2 + 9
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 22 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 214*x^4 + 316*x^2 + 81
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 23 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 182*x^4 + 252*x^2 + 49
+Number of tournaments: 276
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 24 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 230*x^4 + 540*x^2 + 225
+Number of tournaments: 272
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 25 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 156*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 26 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 214*x^4 + 444*x^2 + 81
+Number of tournaments: 384
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 27 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 246*x^4 + 668*x^2 + 81
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 28 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 524*x^2 + 121
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 29 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 230*x^4 + 508*x^2 + 1
+Number of tournaments: 384
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 30 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 190*x^4 + 140*x^2 + 25
+Number of tournaments: 32
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 31 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 254*x^4 + 812*x^2 + 441
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 32 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 262*x^4 + 924*x^2 + 961
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 33 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 294*x^4 + 1372*x^2 + 2401
+Number of tournaments: 4
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 34 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 246*x^4 + 700*x^2 + 49
+Number of tournaments: 200
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 35 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 174*x^4 + 300*x^2 + 9
+Number of tournaments: 128
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 36 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 190*x^4 + 268*x^2 + 25
+Number of tournaments: 256
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 37 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 134*x^4 + 92*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 38 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 270*x^4 + 1036*x^2 + 1225
+Number of tournaments: 24
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 39 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 166*x^4 + 60*x^2 + 1
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 40 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 246*x^4 + 732*x^2 + 529
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 41 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 206*x^4 + 396*x^2 + 9
+Number of tournaments: 192
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 42 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 70*x^4 + 28*x^2 + 1
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 43 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 444*x^2 + 225
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 44 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 262*x^4 + 924*x^2 + 1089
+Number of tournaments: 32
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 45 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 206*x^4 + 268*x^2 + 9
+Number of tournaments: 384
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 46 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 198*x^4 + 28*x^2 + 1
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 47 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 238*x^4 + 620*x^2 + 9
+Number of tournaments: 128
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 48 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 238*x^4 + 652*x^2 + 361
+Number of tournaments: 192
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 49 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 254*x^4 + 748*x^2 + 121
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 50 ###
+Characteristic Polynomial: x^8 + 28*x^6 + 222*x^4 + 364*x^2 + 25
+Number of tournaments: 24
+All tournaments in this class are mutually switching equivalent.
+
+

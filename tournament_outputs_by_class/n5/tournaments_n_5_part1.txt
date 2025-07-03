@@ -1,0 +1,15 @@
+
+================= Order n = 5 (Part 1) =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^5 + 10*x^3 + 5*x
+Number of tournaments: 4
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^5 + 10*x^3 + 21*x
+Number of tournaments: 8
+All tournaments in this class are mutually switching equivalent.
+
+

@@ -5,6 +5,7 @@ import hashlib
 import threading
 from collections import defaultdict
 from datetime import datetime
+import json
 from sage.all import *
 
 # ===================== Environment Variables =====================
@@ -14,19 +15,15 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 # ===================== Global Constants and Paths =====================
-# This is the base directory where 'n' specific folders (n3, n4, etc.) will be created.
-# The README.md will also live directly within this directory.
 ROOT_OUTPUT_BASE_DIR = "tournament_outputs_by_class"
-README_PATH = os.path.join("/Users/lyuk/Downloads/cospectral-tournaments", "README.md")
 FILE_EXTENSION = ".txt"
 
-# !!! IMPORTANT: SET THIS TO THE PATH OF YOUR FOLDER WITH EXISTING RESULTS !!!
-# Example: PRE_EXISTING_RESULTS_DIR = "/Users/YourUser/Documents/OldTournamentResults"
-PRE_EXISTING_RESULTS_DIR = "/Users/lyuk/Downloads/cospectral-tournaments/tournament_outputs_new" # Placeholder, update this path
+# This script does not use PRE_EXISTING_RESULTS_DIR directly for computation flow.
+# It's kept here for consistency if you decide to re-integrate it later,
+# but it's primarily used by readme_generator.py now.
+PRE_EXISTING_RESULTS_DIR = "/Users/lyuk/Downloads/cospectral-tournaments/tournament_outputs_1-10" 
 
 os.makedirs(ROOT_OUTPUT_BASE_DIR, exist_ok=True)
-if PRE_EXISTING_RESULTS_DIR and not os.path.exists(PRE_EXISTING_RESULTS_DIR):
-    print(f"Warning: PRE_EXISTING_RESULTS_DIR '{PRE_EXISTING_RESULTS_DIR}' does not exist. No pre-existing results will be loaded.")
 
 # Data for number of non-isomorphic tournaments on n nodes (for progress calculation)
 NON_ISO_TOURNAMENTS = {
@@ -37,550 +34,578 @@ NON_ISO_TOURNAMENTS = {
     18: 1783398846284777975419600287232
 }
 
-# README Formatting Constants
-MAX_POLY_ROWS_PER_ALIGN_ENV = 10  # Max polynomials in one $$aligned$$ block
-MAX_ALIGN_ENVS_PER_SUBSECTION = 5 # Max aligned blocks before starting new collapsible section
-
 # File Size Limit for output .txt files (10 MB)
 MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024 
 
-# ===================== Regex Patterns for README Parsing =====================
-charpoly_pattern = re.compile(r'Characteristic Polynomial:\s*(.+)')
-switching_yes_pattern = re.compile(r'All tournaments in this class are mutually switching equivalent')
-trivial_switching_pattern = re.compile(r'Only one tournament - trivially switching equivalent')
-switching_no_pattern = re.compile(r'Not all tournaments in this class are switching equivalent')
-not_equiv_pattern = re.compile(r'Tournaments \d+ and \d+ are NOT switching equivalent')
+# Checkpointing constants
+CHECKPOINT_INTERVAL = 100000 # Save checkpoint every 100,000 tournaments generated (Phase 1)
+GENERATION_CHECKPOINT_FILE_NAME = "generation_checkpoint.json" # Checkpoint for Phase 1
+CHECKING_CHECKPOINT_FILE_NAME = "checking_checkpoint.json" # Checkpoint for Phase 2
 
-# ===================== Data Storage for Real-time Progress =====================
-overall_results_summary = {}
-overall_results_lock = threading.Lock()
-currently_processing_n = None
+# ===================== Data Storage for Real-time Progress (Internal to this script) =====================
+# These are now only for internal logging/display within this runner script, not for README generation.
+overall_results_summary_internal = {} 
+overall_results_lock_internal = threading.Lock() 
+currently_processing_n_internal = None
+
+# Global variable to store char poly from Phase 1 checkpoint for easy access in Phase 2
+char_poly_lookup = {} 
 
 # ===================== Core Computation Utilities =====================
 def seidel_matrix(T):
+    """Computes the Seidel matrix of a given tournament T."""
     A = T.adjacency_matrix()
     return A - A.transpose()
 
-def mckay_matrix(S):
-    S = seidel_matrix(S)
-    n = S.nrows()
+def _create_mckay_graph_from_seidel(S_matrix):
+    """
+    Constructs the McKay graph (as a DiGraph) from a Seidel matrix.
+    Args:
+        S_matrix: The Seidel matrix of a tournament.
+    Returns:
+        A Sage DiGraph representing the McKay graph.
+    """
+    n = S_matrix.nrows()
     D = zero_matrix(2 * n)
     for i in range(n):
         for j in range(n):
-            if S[i, j] == 1:
+            if S_matrix[i, j] == 1: # Edge i->j in tournament implies 1 in Seidel matrix
                 D[2*i, 2*j] = 1
                 D[2*i+1, 2*j+1] = 1
-            elif S[i, j] == -1:
+            elif S_matrix[i, j] == -1: # Edge j->i in tournament implies -1 in Seidel matrix
                 D[2*i, 2*j+1] = 1
                 D[2*i+1, 2*j] = 1
-    return D
+    return DiGraph(D)
 
-def mckay_check(A, B):
-    return DiGraph(A).is_isomorphic(DiGraph(B))
+def mckay_check(T1, T2):
+    """
+    Checks if two tournaments T1 and T2 are switching equivalent using McKay's criterion.
+    They are switching equivalent if and only if their McKay graphs are isomorphic.
+    Args:
+        T1: The first tournament (Sage DiGraph object).
+        T2: The second tournament (Sage DiGraph object).
+    Returns:
+        True if T1 and T2 are switching equivalent, False otherwise.
+    """
+    S1 = seidel_matrix(T1)
+    S2 = seidel_matrix(T2)
+    
+    G_mckay_1 = _create_mckay_graph_from_seidel(S1)
+    G_mckay_2 = _create_mckay_graph_from_seidel(S2)
+    
+    return G_mckay_1.is_isomorphic(G_mckay_2)
 
 def hash_charpoly(poly):
     return hashlib.md5(str(poly).encode()).hexdigest()[:8]
 
 # ===================== File Path Helpers for Main Computation =====================
 def get_computation_paths(n, h=None):
-    base = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}")
+    base_dir_for_n = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}") 
     return {
-        "class_dir": os.path.join(base, "classes"),
-        "class_file": os.path.join(base, "classes", f"class_{h}.txt") if h else None,
-        # The root_output_file path is now dynamically handled by _get_or_create_file_handle
-        # No longer a single static path for all output of n.
+        "n_dir": base_dir_for_n, 
+        "class_dir": os.path.join(base_dir_for_n, "classes"),
+        "class_file": os.path.join(base_dir_for_n, "classes", f"class_{h}.txt") if h else None,
     }
 
-# Helper to find the latest part file and its number for resuming
 def find_latest_part_file(n):
+    """
+    Finds the latest part file for the main output (tournaments_n_X_partY.txt)
+    for a given n.
+    """
     output_dir = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}")
     if not os.path.exists(output_dir):
-        return 0, None # No parts exist, start with 'base' file (part 0 convention)
+        return 0, None
 
-    max_part = 0 # 0 means the base file (e.g., tournaments_n_X.txt)
+    max_part = 0
     latest_filepath = None
     
-    # Check for base file first
+    # Check for base file (tournaments_n_X.txt) first
     base_file = os.path.join(output_dir, f"tournaments_n_{n}{FILE_EXTENSION}")
     if os.path.exists(base_file):
-        max_part = 0
+        max_part = 0 # Default part for the base file
         latest_filepath = base_file
 
-    # Check for part files
+    # Check for part files (tournaments_n_X_partY.txt)
     for filename in os.listdir(output_dir):
         match = re.match(rf'tournaments_n_{n}_part(\d+){re.escape(FILE_EXTENSION)}$', filename)
         if match:
             part_num = int(match.group(1))
-            if part_num > max_part: # If a part file has a higher number, it's the latest
+            if part_num >= max_part: # Use >= to pick latest part if base file exists
                 max_part = part_num
                 latest_filepath = os.path.join(output_dir, filename)
     
     return max_part, latest_filepath
 
-# ===================== Main Logic (sequential execution for each n) =====================
+# ===================== Phase 1: Generation and Classification =====================
 def run_sequential(n):
-    global currently_processing_n
-   
-    with overall_results_lock:
-        currently_processing_n = n
-        overall_results_summary[n] = {
+    global currently_processing_n_internal
+    
+    n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}")
+    os.makedirs(n_dir_path, exist_ok=True) 
+    checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
+
+    start_total_tournaments_generated = 0
+    initial_class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
+    initial_generated_charpoly_hashes = set()
+
+    if os.path.exists(checkpoint_path):
+        try:
+            with open(checkpoint_path, 'r') as f:
+                checkpoint_data = json.load(f)
+            start_total_tournaments_generated = checkpoint_data.get("total_tournaments_generated", 0)
+            
+            loaded_class_data = checkpoint_data.get("class_data_for_current_n", {})
+            for h_key, data in loaded_class_data.items():
+                split_key = h_key.split('_', 1) 
+                current_n_val = int(split_key[0])
+                current_h_val = split_key[1]
+                initial_class_data_for_current_n[(current_n_val, current_h_val)] = data
+                initial_generated_charpoly_hashes.add(current_h_val)
+            
+            print(f"[RESUME] Resuming n={n} from checkpoint. Already processed {start_total_tournaments_generated} tournaments.")
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not decode checkpoint file {checkpoint_path}: {e}. Starting from scratch for n={n}.")
+            start_total_tournaments_generated = 0
+            initial_class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
+            initial_generated_charpoly_hashes = set()
+            
+    total_tournaments_generated = start_total_tournaments_generated
+    class_data_for_current_n = initial_class_data_for_current_n
+    generated_charpoly_hashes = initial_generated_charpoly_hashes
+
+    with overall_results_lock_internal:
+        currently_processing_n_internal = n
+        overall_results_summary_internal[n] = {
             'completed': False,
-            'status': 'In Progress (Generation)', # New status for generation phase
-            'yes_classes': 0, 'no_classes': 0, 'total_classes': 0,
-            'current_progress_generated_tournaments': 0,
+            'status': 'In Progress (Generation)',
+            'yes_classes': 0, 'no_classes': 0, 'total_classes': len(generated_charpoly_hashes),
+            'current_progress_generated_tournaments': total_tournaments_generated,
             'current_progress_checked_classes': 0,
             'current_status_message': f"Generating tournaments for n={n}..."
         }
 
     print(f"[GEN/CHK] Starting processing for n={n}")
-   
+    
     paths_n = get_computation_paths(n)
     os.makedirs(paths_n["class_dir"], exist_ok=True)
-   
-    # Initialize class_data_for_current_n to store counts and poly string, NOT DiGraph objects
-    class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
 
-    # --- Generation Phase ---
-    generated_charpoly_hashes = set()
-    total_tournaments_generated = 0
-   
     tournaments_gen = digraphs.tournaments_nauty(n)
-   
-    for i, T in enumerate(tournaments_gen):
+    
+    for i, T in enumerate(tournaments_gen): 
+        if i < start_total_tournaments_generated:
+            if i % CHECKPOINT_INTERVAL == 0: 
+                print(f"[SKIP] Skipping tournament {i}/{start_total_tournaments_generated} for n={n}...")
+            continue 
+
         seidel_mat = seidel_matrix(T)
         poly = seidel_mat.charpoly()
         h = hash_charpoly(poly)
-       
-        # Update class info with count and polynomial string
+        
         class_info = class_data_for_current_n[(n, h)]
-        class_info["count"] += 1
+        class_info["count"] += 1 
         class_info["characteristic_polynomial"] = str(poly)
-        generated_charpoly_hashes.add((n, h))
-        total_tournaments_generated += 1
+        generated_charpoly_hashes.add(h) 
 
-        # Write the adjacency matrix string directly to file
+        # Write adjacency matrix without outer brackets for proper re-reading
+        matrix_str_lines = []
+        for row_idx in range(T.order()):
+            matrix_str_lines.append(" ".join(map(str, T.adjacency_matrix().row(row_idx))))
         with open(get_computation_paths(n, h=h)["class_file"], "a") as f:
-            f.write(str(T.adjacency_matrix()) + "\n\n")
-       
-        with overall_results_lock:
-            overall_results_summary[n]['current_progress_generated_tournaments'] = total_tournaments_generated
-            overall_results_summary[n]['total_classes'] = len(generated_charpoly_hashes)
+            f.write("\n".join(matrix_str_lines) + "\n\n")
+        
+        total_tournaments_generated += 1 
+
+        if total_tournaments_generated % CHECKPOINT_INTERVAL == 0:
+            try:
+                with open(checkpoint_path, 'w') as f:
+                    serializable_class_data = {f"{k[0]}_{k[1]}": v for k, v in class_data_for_current_n.items()}
+                    json.dump({
+                        "total_tournaments_generated": total_tournaments_generated,
+                        "class_data_for_current_n": serializable_class_data
+                    }, f)
+                print(f"[CHECKPOINT] Saved checkpoint at {total_tournaments_generated} tournaments for n={n}.")
+            except Exception as e:
+                print(f"Error saving checkpoint for n={n}: {e}")
+
+        with overall_results_lock_internal:
+            overall_results_summary_internal[n]['current_progress_generated_tournaments'] = total_tournaments_generated
+            overall_results_summary_internal[n]['total_classes'] = len(generated_charpoly_hashes) 
             expected_total_tournaments = NON_ISO_TOURNAMENTS.get(n, 0)
             if expected_total_tournaments == 0:
-                overall_results_summary[n]['current_status_message'] = f"Generated {total_tournaments_generated} tournaments for n={n} (total known: N/A)."
+                overall_results_summary_internal[n]['current_status_message'] = f"Generated {total_tournaments_generated} tournaments for n={n} (total known: N/A)."
             else:
                 gen_percent = (total_tournaments_generated / expected_total_tournaments) * 100
-                overall_results_summary[n]['current_status_message'] = f"Generated {total_tournaments_generated}/{expected_total_tournaments} tournaments for n={n} ({gen_percent:.2f}%)."
-           
+                overall_results_summary_internal[n]['current_status_message'] = f"Generated {total_tournaments_generated}/{expected_total_tournaments} tournaments for n={n} ({gen_percent:.2f}%)."
+            
     print(f"[GEN/CHK] Done generating for n={n}. Stored {total_tournaments_generated} tournaments into {len(generated_charpoly_hashes)} classes.")
-   
-    with overall_results_lock:
-        overall_results_summary[n]['current_status_message'] = f"Generation complete for n={n}. Switching equivalence check needs to be run separately."
-        overall_results_summary[n]['completed'] = True
-        overall_results_summary[n]['status'] = "GENERATION_ONLY" # Mark as generation complete
-        overall_results_summary[n]['yes_classes'] = 0 # No checks performed in this phase
-        overall_results_summary[n]['no_classes'] = 0 # No checks performed in this phase
-
-    # --- IMPORTANT: REMOVE OR COMMENT OUT THE ENTIRE "Checking Phase" BELOW THIS LINE ---
-    # The subsequent code for 'File Management for Output', '_get_or_create_file_handle_for_n',
-    # and the loop for 'Checking Phase' will need to be removed or commented out for now.
-    # This functionality will be part of the separate Phase 2 script.
-   
-    # Example of what to remove/comment out:
-    # # --- File Management for Output (New logic for splitting) ---
-    # current_part_num, latest_file_path_for_n = find_latest_part_file(n)
-    # ...
-    # # --- Checking Phase ---
-    # total_yes_classes = 0
-    # ...
-    # for idx, (n_key, h) in enumerate(sorted_hashes):
-    #     class_info = class_data_for_current_n[(n_key, h)]
-    #     tourn_list = class_info["tournaments"] # This would now be empty, but the logic expects it to be populated.
-    #     ...
-    #     A = mckay_matrix(tourn_list[i]) # This would fail without actual DiGraph objects
-    #     ...
-
-    with overall_results_lock:
-        if currently_processing_n == n:
-            currently_processing_n = None
-
-
-# ===================== README Parsing Helper =====================
-def _parse_lines_into_results(lines, order, results_dict):
-    """
-    Parses lines from a single results file (or combined parts) and updates the results_dict.
-    It appends new, unique polynomials to the lists.
-    """
-    current_poly = None
-    for line in lines:
-        poly_match = charpoly_pattern.search(line)
-        if poly_match:
-            current_poly = poly_match.group(1).strip()
-            continue
-
-        if switching_yes_pattern.search(line) or trivial_switching_pattern.search(line):
-            if current_poly:
-                if current_poly not in results_dict[order]['yes'] and current_poly not in results_dict[order]['no']:
-                    results_dict[order]['yes'].append(current_poly)
-                current_poly = None
-            continue
-        
-        if switching_no_pattern.search(line) or not_equiv_pattern.search(line):
-            if current_poly:
-                if current_poly not in results_dict[order]['yes'] and current_poly not in results_dict[order]['no']:
-                    results_dict[order]['no'].append(current_poly)
-                current_poly = None
-            continue
-
-# ===================== README Generation Logic =====================
-def generate_progress_bar(percent: float, width: int = 10, style='blocks'):
-    filled = int(percent * width)
-    empty = width - filled
-    if style == 'emoji':
-        return '🟩' * filled + '⬜' * empty
-    elif style == 'blocks':
-        return '█' * filled + '░' * empty
-    else:
-        return '⬛' * filled + '⬜' * empty
-
-def collect_results_for_readme():
-    """
-    Collects results from ROOT_OUTPUT_BASE_DIR and PRE_EXISTING_RESULTS_DIR.
-    Handles multipart files for both sources.
-    Returns a dictionary of results grouped by order, a set of found orders,
-    the maximum 'n' found in the pre-existing results directory,
-    and a set of 'n' values that were confirmed as completed by pre-existing files.
-    """
-    found_orders = set()
-    results = defaultdict(lambda: {'yes': [], 'no': []})
-    max_pre_existing_n = 0
-    pre_existing_completed_ns = set() 
-
-    # Helper to process files from a given base directory and structure
-    def _process_files_from_dir(base_dir, is_pre_existing=False):
-        nonlocal max_pre_existing_n
-        
-        # Map n to a list of its part file paths, sorted by part number
-        n_to_file_paths = defaultdict(list)
-
-        if base_dir == ROOT_OUTPUT_BASE_DIR:
-            # Look for n{n} subdirectories and their base/part files
-            for n_dir_name in os.listdir(base_dir):
-                if not n_dir_name.startswith('n') or not n_dir_name[1:].isdigit():
-                    continue
-                current_order = int(n_dir_name[1:])
-                output_dir = os.path.join(base_dir, n_dir_name)
-                
-                # Check for base file (tournaments_n_X.txt)
-                base_file = os.path.join(output_dir, f"tournaments_n_{current_order}{FILE_EXTENSION}")
-                if os.path.exists(base_file):
-                    n_to_file_paths[current_order].append((0, base_file)) # 0 for base file
-                    
-                # Check for part files (tournaments_n_X_partY.txt)
-                for filename in os.listdir(output_dir):
-                    match = re.match(rf'tournaments_n_{current_order}_part(\d+){re.escape(FILE_EXTENSION)}$', filename)
-                    if match:
-                        part_num = int(match.group(1))
-                        n_to_file_paths[current_order].append((part_num, os.path.join(output_dir, filename)))
-        
-        elif base_dir == PRE_EXISTING_RESULTS_DIR and os.path.exists(base_dir):
-            # Look for tournaments_n_X.txt or tournaments_n_X_partY.txt directly in the folder
-            for filename in os.listdir(base_dir):
-                base_match = re.match(r'tournaments_n_(\d+)\.txt$', filename)
-                part_match = re.match(r'tournaments_n_(\d+)_part(\d+)\.txt$', filename)
-
-                if base_match:
-                    current_order = int(base_match.group(1))
-                    n_to_file_paths[current_order].append((0, os.path.join(base_dir, filename)))
-                    max_pre_existing_n = max(max_pre_existing_n, current_order) 
-
-                elif part_match:
-                    current_order = int(part_match.group(1))
-                    part_num = int(part_match.group(2))
-                    n_to_file_paths[current_order].append((part_num, os.path.join(base_dir, filename)))
-                    max_pre_existing_n = max(max_pre_existing_n, current_order)
-        
-        # Now process the collected file paths for each n
-        for current_order, paths_with_parts in n_to_file_paths.items():
-            # Sort by part number to read in correct order (0 for base, then 1, 2, ...)
-            sorted_paths = sorted(paths_with_parts, key=lambda x: x[0])
-            
-            all_lines_for_n = []
-            found_any_part = False
-            for part_num, filepath in sorted_paths:
-                if os.path.exists(filepath):
-                    found_any_part = True
-                    try:
-                        with open(filepath, 'r') as f:
-                            all_lines_for_n.extend(f.readlines())
-                    except Exception as e:
-                        print(f"Error reading {filepath}: {e}")
-            
-            if found_any_part:
-                found_orders.add(current_order)
-                _parse_lines_into_results(all_lines_for_n, current_order, results)
-                
-                if is_pre_existing: # If data came from PRE_EXISTING_RESULTS_DIR
-                    # Mark as completed if not currently in progress and not already completed by current run
-                    if current_order not in overall_results_summary or \
-                       overall_results_summary[current_order].get('completed', False) or \
-                       not overall_results_summary[current_order].get('status', '').startswith('In Progress'):
-                        pre_existing_completed_ns.add(current_order)
-
-
-    _process_files_from_dir(ROOT_OUTPUT_BASE_DIR, is_pre_existing=False)
-    _process_files_from_dir(PRE_EXISTING_RESULTS_DIR, is_pre_existing=True)
-
-    return results, found_orders, max_pre_existing_n, pre_existing_completed_ns
-
-def results_to_md(results, found_orders, current_progress_info, pre_existing_completed_ns):
-    lines = []
-    if not found_orders:
-        return "No results found."
-
-    min_order = min(found_orders)
-    max_order = max(found_orders)
-
-    lines.append("# Cospectral vs Switching Equivalence Results\n")
-    lines.append("| n | Status | cospectral ⇒ switching |")
-    lines.append("|---|--------|-------------------------|")
-
-    for n in range(min_order, max_order + 1):
-        has_results_for_n = n in results and (results[n]['yes'] or results[n]['no'])
-        
-        is_completed_by_current_run = current_progress_info.get(n, {}).get('completed', False)
-        is_completed_by_pre_existing = n in pre_existing_completed_ns 
-
-        is_completed = is_completed_by_current_run or is_completed_by_pre_existing
-
-        if not has_results_for_n and not is_completed:
-            status_text = "❓ No results"
-            summary_text = "-"
-        elif is_completed:
-            yes = len(results[n]['yes'])
-            no = len(results[n]['no'])
-            total = yes + no
-            percent_yes = (yes / total) * 100 if total > 0 else 0
-            summary_text = f"{yes}/{total} ({percent_yes:.2f}%)"
-
-            if not results[n]['no']:
-                status_text = "✅ YES"
-            else:
-                status_text = "❌ NO"
-        else: # Has results but not marked complete (i.e., actively in progress for this 'n')
-            yes = len(results[n]['yes'])
-            no = len(results[n]['no'])
-            total = yes + no
-            percent_yes = (yes / total) * 100 if total > 0 else 0
-            summary_text = f"{yes}/{total} ({percent_yes:.2f}%)"
-            status_text = "⏳ In Progress" # This is correct for active progress.
-
-        lines.append(f"| {n} | {status_text} | {summary_text} |")
-
-    lines.append("\n---\n")
-
-    if currently_processing_n is not None:
-        progress_n = currently_processing_n
-        
-        with overall_results_lock:
-            active_n_info = overall_results_summary.get(progress_n)
-        
-        if active_n_info and not active_n_info.get('completed', True):
-            lines.append(f"## 📊 Current Progress (Order n = {progress_n})\n")
-            
-            if active_n_info.get('current_status_message'):
-                lines.append(f"> {active_n_info['current_status_message']}\n")
-
-            total_expected_tournaments = NON_ISO_TOURNAMENTS.get(progress_n, 0)
-            
-            generated = active_n_info.get('current_progress_generated_tournaments', 0)
-            if total_expected_tournaments > 0:
-                gen_percent = (generated / total_expected_tournaments)
-                gen_bar = generate_progress_bar(gen_percent, width=30)
-                lines.append(f"Tournaments Generated: `{gen_bar}` ({generated}/{total_expected_tournaments} - {gen_percent*100:.2f}%)")
-            elif generated > 0:
-                 lines.append(f"Tournaments Generated: {generated} (Total for n={progress_n} unknown)")
-            else:
-                 lines.append("Tournaments Generation: Not started yet.")
-            lines.append("\n")
-
-            checked_classes = active_n_info.get('current_progress_checked_classes', 0)
-            total_classes_found = active_n_info.get('total_classes', 0)
-            
-            if total_classes_found > 0:
-                checked_percent = (checked_classes / total_classes_found)
-                check_bar = generate_progress_bar(checked_percent, width=30)
-                lines.append(f"Classes Checked: `{check_bar}` ({checked_classes}/{total_classes_found} - {checked_percent*100:.2f}%)")
-                lines.append(f"  (✅ Yes: {active_n_info['yes_classes']}, ❌ No: {active_n_info['no_classes']})")
-            elif checked_classes > 0:
-                 lines.append(f"Classes Checked: {checked_classes} (Total classes for n={progress_n} unknown yet)")
-            else:
-                lines.append("Classes Checked: Not started yet.")
-            lines.append("\n")
-    lines.append("\n---\n")
-
-    for n in range(min_order, max_order + 1):
-        lines.append(f"## n = {n}")
-        has_results_for_n = n in results and (results[n]['yes'] or results[n]['no'])
-        
-        is_completed_by_current_run = current_progress_info.get(n, {}).get('completed', False)
-        is_completed_by_pre_existing = n in pre_existing_completed_ns 
-
-        is_completed = is_completed_by_current_run or is_completed_by_pre_existing
-
-        if not has_results_for_n and not is_completed:
-            lines.append("> ❓ **No results for this order yet.**\n")
-        elif not is_completed:
-            lines.append(f"> ⏳ **Processing in progress for order n = {n}.**\n")
-        elif not results[n]['no']:
-            lines.append("> ✅ **cospectral ⇒ switching equivalent**\n")
-        else:
-            lines.append("> ❌ **cospectral ⇏ switching equivalence**\n")
-            lines.append("### Characteristic Polynomial(s) (Non-switching-equivalent classes):")
-            
-            polys = results[n]['no']
-            
-            total_no_polys = len(polys)
-            poly_count = 0
-            subsection_idx = 0
-
-            while poly_count < total_no_polys:
-                subsection_idx += 1
-                subsection_title = f"Part {subsection_idx} (Polys {poly_count + 1} - {min(poly_count + MAX_ALIGN_ENVS_PER_SUBSECTION * MAX_POLY_ROWS_PER_ALIGN_ENV, total_no_polys)})"
-                
-                lines.append(f"<details><summary>Click to expand for {subsection_title}</summary>\n")
-                lines.append("\n")
-
-                aligned_block_count = 0
-                while aligned_block_count < MAX_ALIGN_ENVS_PER_SUBSECTION and poly_count < total_no_polys:
-                    
-                    current_aligned_polys = []
-                    for _ in range(MAX_POLY_ROWS_PER_ALIGN_ENV):
-                        if poly_count < total_no_polys:
-                            current_aligned_polys.append(polys[poly_count])
-                            poly_count += 1
-                        else:
-                            break
-
-                    if current_aligned_polys:
-                        max_deg = 0
-                        split_current_polys = []
-
-                        for poly in current_aligned_polys:
-                            p = poly.replace(" ", "").replace("*", "")
-                            terms = re.findall(r'[+-]?[^+-]+', p)
-                            degs = []
-                            for i in range(len(terms)):
-                                t = terms[i]
-                                m = re.search(r'x\^(\d+)', t)
-                                if m:
-                                    exp = m.group(1)
-                                    t = t.replace(f"x^{exp}", f"x^{{{exp}}}")
-                                    deg = int(exp)
-                                elif 'x' in t:
-                                    deg = 1
-                                else:
-                                    deg = 0
-                                terms[i] = t
-                                degs.append(deg)
-                            max_deg = max(max_deg, max(degs, default=0))
-                            split_current_polys.append((terms, degs))
-                        
-                        aligned_rows = []
-                        for terms, degs in split_current_polys:
-                            row = [''] * (max_deg + 1)
-                            for t, d in zip(terms, degs):
-                                row[max_deg - d] = t
-                            aligned_rows.append(row)
-                        
-                        lines.append("$$")
-                        lines.append("\\begin{aligned}")
-                        for row in aligned_rows:
-                            lines.append("  & " + " & ".join(t if t else "" for t in row) + " \\\\")
-                        lines.append("\\end{aligned}")
-                        lines.append("$$")
-                        lines.append("\n")
-                        aligned_block_count += 1
-                
-                lines.append("</details>\n")
-                lines.append("\n")
-
-        lines.append("")
-
-        if not is_completed:
-            lines.append(f"> ⚠️ _Note: Results for order n = {n} may be incomplete or analysis is ongoing._\n")
-        
-    return "\n".join(lines)
-
-
-def hash_readme_content(md):
-    return hashlib.sha256(md.encode('utf-8')).hexdigest()
-
-# ===================== Periodic README Updater Thread =====================
-readme_timer = None
-stop_readme_event = threading.Event()
-last_readme_hash = None 
-
-def run_readme_updater(interval_seconds):
-    global readme_timer
-    global last_readme_hash
-
-    if not stop_readme_event.is_set():
-        results, found_orders, _, pre_existing_completed_ns = collect_results_for_readme() 
-        
-        with overall_results_lock:
-            current_progress_info_copy = dict(overall_results_summary)
-
-        md_body = results_to_md(results, found_orders, current_progress_info_copy, pre_existing_completed_ns) 
-        current_hash = hash_readme_content(md_body)
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        header = []
-        if last_readme_hash is None:
-            header.append(f"## 🚨 Initial README generated! (last change: {now})")
-            last_readme_hash = current_hash
-        elif current_hash != last_readme_hash:
-            header.append(f"## 🚨 New results found! (last change: {now})")
-            last_readme_hash = current_hash
-        else:
-            header.append(f"## No new results. (last change: {now})")
-        header.append(f"_Last checked: {now}_\n")
-
-        with open(README_PATH, "w") as f:
-            f.write("\n".join(header) + "\n" + md_body)
-        
-        print(f"\n[README] README.md updated at {now}")
-        
-        readme_timer = threading.Timer(interval_seconds, run_readme_updater, args=[interval_seconds])
-        readme_timer.daemon = True
-        readme_timer.start()
-
-def start_readme_updater(interval_seconds=60):
-    run_readme_updater(interval_seconds) 
-
-def stop_readme_updater():
-    stop_readme_event.set()
-    if readme_timer:
-        readme_timer.cancel()
-        print("[README] README updater thread requested to stop.")
-
-# ===================== Main Execution =====================
-if __name__ == "__main__":
-    start_readme_updater(interval_seconds=60) # Keeping this for progress visibility, but you can comment it out if preferred.
-
-    # Determine starting N for computation
-    _, _, max_n_from_pre_existing, _ = collect_results_for_readme() 
-    start_n_computation = max(3, max_n_from_pre_existing + 1)
-    print(f"Starting computation from order n = {start_n_computation} (max pre-existing n: {max_n_from_pre_existing})")
-
+    
     try:
-        for n in range(start_n_computation, 19):
-            run_sequential(n)
-        
-        print("\nAll computations completed. Performing final README update...")
-        time.sleep(2) 
-        run_readme_updater(0) 
+        with open(checkpoint_path, 'w') as f:
+            serializable_class_data = {f"{k[0]}_{k[1]}": v for k, v in class_data_for_current_n.items()}
+            json.dump({
+                "total_tournaments_generated": total_tournaments_generated,
+                "class_data_for_current_n": serializable_class_data
+            }, f)
+        print(f"[CHECKPOINT] Saved final checkpoint at {total_tournaments_generated} tournaments for n={n}.")
+    except Exception as e:
+        print(f"Error saving final checkpoint for n={n}: {e}")
 
-    finally:
-        stop_readme_updater()
-        print("\nScript finished. README updater stopped.")
+    with overall_results_lock_internal:
+        overall_results_summary_internal[n]['current_status_message'] = f"Generation complete for n={n}. Switching equivalence check needs to be run separately."
+        overall_results_summary_internal[n]['completed'] = True
+        overall_results_summary_internal[n]['status'] = "GENERATION_ONLY" # Mark as generation only complete for next phase
+        overall_results_summary_internal[n]['yes_classes'] = 0 # Reset for checking phase
+        overall_results_summary_internal[n]['no_classes'] = 0 # Reset for checking phase
+
+    with overall_results_lock_internal:
+        if currently_processing_n_internal == n:
+            currently_processing_n_internal = None
+
+# ===================== Phase 2: Checking for Switching Equivalence =====================
+
+# Helper to read adjacency matrices from a file
+def read_adj_matrices_from_file(filepath):
+    """
+    Generator that yields each adjacency matrix string from a class_H.txt file.
+    Matrices are separated by double newlines.
+    """
+    current_matrix_lines = []
+    with open(filepath, 'r') as f:
+        for line in f:
+            stripped_line = line.strip()
+            if stripped_line == "": 
+                if current_matrix_lines:
+                    yield "\n".join(current_matrix_lines)
+                    current_matrix_lines = []
+            else:
+                current_matrix_lines.append(stripped_line)
+        if current_matrix_lines: 
+            yield "\n".join(current_matrix_lines)
+
+def run_checking_phase(n):
+    global currently_processing_n_internal, char_poly_lookup
+    
+    n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}")
+    checking_checkpoint_path = os.path.join(n_dir_path, CHECKING_CHECKPOINT_FILE_NAME)
+
+    # Initialize checking state
+    start_total_checked_classes = 0
+    start_total_yes_classes = 0
+    start_total_no_classes = 0
+    last_processed_class_filename = None
+    
+    # Attempt to load checking checkpoint
+    if os.path.exists(checking_checkpoint_path):
+        try:
+            with open(checking_checkpoint_path, 'r') as f:
+                chkpt_data = json.load(f)
+            last_processed_class_filename = chkpt_data.get("last_processed_class_filename")
+            start_total_checked_classes = chkpt_data.get("total_checked_classes", 0)
+            start_total_yes_classes = chkpt_data.get("total_yes_classes", 0)
+            start_total_no_classes = chkpt_data.get("total_no_classes", 0)
+            
+            if last_processed_class_filename == "COMPLETE":
+                print(f"[CHECK RESUME] Checking for n={n} already completed in a previous run. Skipping.")
+                with overall_results_lock_internal:
+                    overall_results_summary_internal[n]['completed'] = True
+                    overall_results_summary_internal[n]['status'] = "CHECKING_COMPLETE"
+                    overall_results_summary_internal[n]['current_progress_checked_classes'] = start_total_checked_classes
+                    overall_results_summary_internal[n]['yes_classes'] = start_total_yes_classes
+                    overall_results_summary_internal[n]['no_classes'] = start_total_no_classes
+                    overall_results_summary_internal[n]['current_status_message'] = ""
+                return # Exit if already completed
+            else:
+                print(f"[CHECK RESUME] Resuming checking for n={n} from class '{last_processed_class_filename}'. Already processed {start_total_checked_classes} classes.")
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not decode checking checkpoint file {checking_checkpoint_path}: {e}. Starting checking from scratch for n={n}.")
+            last_processed_class_filename = None
+
+    # Load generation checkpoint data (for char polys) - ensures char_poly_lookup is populated
+    generation_checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
+    if os.path.exists(generation_checkpoint_path):
+        try:
+            with open(generation_checkpoint_path, 'r') as f:
+                gen_chkpt_data = json.load(f)
+            loaded_class_data = gen_chkpt_data.get("class_data_for_current_n", {})
+            char_poly_lookup = {} 
+            for h_key, data in loaded_class_data.items():
+                split_key = h_key.split('_', 1) 
+                current_n_val = int(split_key[0])
+                current_h_val = split_key[1]
+                if "characteristic_polynomial" in data:
+                    char_poly_lookup[(current_n_val, current_h_val)] = data["characteristic_polynomial"]
+            print(f"[CHECK RESUME] Loaded characteristic polynomials for n={n} from generation checkpoint.")
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not decode generation checkpoint file {generation_checkpoint_path} for checking phase: {e}. Char polys might be re-derived.")
+
+
+    with overall_results_lock_internal:
+        overall_results_summary_internal[n]['status'] = "In Progress (Checking)"
+        overall_results_summary_internal[n]['current_progress_checked_classes'] = start_total_checked_classes
+        overall_results_summary_internal[n]['yes_classes'] = start_total_yes_classes
+        overall_results_summary_internal[n]['no_classes'] = start_total_no_classes
+        overall_results_summary_internal[n]['current_status_message'] = f"Starting switching equivalence check for n={n}..."
+
+    paths_n = get_computation_paths(n)
+    class_files_dir = paths_n["class_dir"]
+    
+    if not os.path.exists(class_files_dir):
+        print(f"Error: Class directory {class_files_dir} not found for n={n}. Skipping checking phase.")
+        with overall_results_lock_internal:
+            overall_results_summary_internal[n]['status'] = "CHECKING_SKIPPED"
+        return
+
+    class_filenames = sorted([f for f in os.listdir(class_files_dir) if f.startswith("class_") and f.endswith(".txt")])
+
+    total_checked_classes = start_total_checked_classes
+    total_yes_classes = start_total_yes_classes
+    total_no_classes = start_total_no_classes
+
+    # Output file management for the main results (tournaments_n_X.txt or parts)
+    current_part_num, latest_file_path_for_n = find_latest_part_file(n) 
+    
+    output_n_dir = paths_n["n_dir"] 
+    if latest_file_path_for_n and os.path.getsize(latest_file_path_for_n) < MAX_FILE_SIZE_BYTES:
+        current_output_file = open(latest_file_path_for_n, "a")
+    else:
+        current_part_num += 1
+        new_output_filename = os.path.join(output_n_dir, f"tournaments_n_{n}_part{current_part_num}{FILE_EXTENSION}")
+        current_output_file = open(new_output_filename, "w")
+    
+    # Write header if it's a new file
+    if current_part_num == 0 and not latest_file_path_for_n: 
+        current_output_file.write(f"\n================= Order n = {n} =================\n\n")
+    elif current_part_num > 0: 
+        current_output_file.write(f"\n================= Order n = {n} (Part {current_part_num}) =================\n\n")
+
+    # Flag to control skipping already processed files
+    skip_processing_classes = True if last_processed_class_filename else False
+    
+    for idx, class_filename in enumerate(class_filenames):
+        if skip_processing_classes:
+            if class_filename == last_processed_class_filename:
+                skip_processing_classes = False # Found the last processed, next iteration will process
+                print(f"[CHECK SKIP] Reached last processed class '{class_filename}'. Starting processing from the next class.")
+                continue # Skip the last processed one itself to avoid re-writing results for it.
+            else:
+                if idx % 100 == 0: 
+                    print(f"[CHECK SKIP] Skipping class file: {class_filename} for n={n} (already processed)...")
+                continue
+
+        # --- Actual processing for new classes ---
+        class_filepath = os.path.join(class_files_dir, class_filename)
+        h = class_filename[len("class_"): -len(".txt")] 
+
+        adj_matrix_strings_for_class = list(read_adj_matrices_from_file(class_filepath)) 
+        
+        num_tournaments_in_class = len(adj_matrix_strings_for_class)
+
+        if num_tournaments_in_class == 0:
+            print(f"Skipping empty class file: {class_filename}")
+            # Still update checkpoint for this class, as it's "processed" (found empty)
+            total_checked_classes += 1
+            continue 
+
+        char_poly_str = char_poly_lookup.get((n, h))
+        if not char_poly_str:
+            try:
+                first_adj_matrix_str = adj_matrix_strings_for_class[0]
+                # Robustly parse the matrix string into a list of lists of integers
+                rows_first = [list(map(int, line.split())) for line in first_adj_matrix_str.strip().split('\n')]
+                T_first = DiGraph(matrix(ZZ, rows_first))
+                seidel_mat_first = seidel_matrix(T_first)
+                char_poly_str = str(seidel_mat_first.charpoly())
+                print(f"Warning: Characteristic polynomial for (n={n}, h={h}) not found in checkpoint, re-derived.")
+            except Exception as e:
+                char_poly_str = "Error deriving polynomial"
+                print(f"Error deriving characteristic polynomial for (n={n}, h={h}): {e}")
+        
+        is_switching_equivalent = True
+        
+        if num_tournaments_in_class == 1:
+            is_switching_equivalent = True 
+        else:
+            for i in range(num_tournaments_in_class):
+                # Robustly parse the matrix string for T1
+                matrix_str_T1 = adj_matrix_strings_for_class[i]
+                rows_T1 = [list(map(int, line.split())) for line in matrix_str_T1.strip().split('\n')]
+                T1 = DiGraph(matrix(ZZ, rows_T1))
+                
+                for j in range(i + 1, num_tournaments_in_class): 
+                    # Robustly parse the matrix string for T2
+                    matrix_str_T2 = adj_matrix_strings_for_class[j]
+                    rows_T2 = [list(map(int, line.split())) for line in matrix_str_T2.strip().split('\n')]
+                    T2 = DiGraph(matrix(ZZ, rows_T2))
+                    
+                    if not mckay_check(T1, T2): # Now using the corrected mckay_check
+                        is_switching_equivalent = False
+                        break 
+                
+                if not is_switching_equivalent:
+                    break 
+
+        current_output_file.write(f"### Charpoly Class {total_checked_classes + 1} ###\n") # Use cumulative count for Class number
+        current_output_file.write(f"Characteristic Polynomial: {char_poly_str}\n")
+        current_output_file.write(f"Number of tournaments: {num_tournaments_in_class}\n")
+
+        if is_switching_equivalent:
+            current_output_file.write("All tournaments in this class are mutually switching equivalent.\n\n\n")
+            total_yes_classes += 1
+        else:
+            current_output_file.write("Not all tournaments in this class are switching equivalent.\n")
+            current_output_file.write("Tournaments in this class are NOT all mutually switching equivalent.\n\n\n")
+            total_no_classes += 1
+        
+        total_checked_classes += 1 # Increment AFTER writing results for the class
+
+        # Check file size and open new part if necessary
+        if current_output_file.tell() > MAX_FILE_SIZE_BYTES:
+            current_output_file.close()
+            current_part_num += 1
+            new_output_filename = os.path.join(output_n_dir, f"tournaments_n_{n}_part{current_part_num}{FILE_EXTENSION}")
+            current_output_file = open(new_output_filename, "w")
+            current_output_file.write(f"\n================= Order n = {n} (Part {current_part_num}) =================\n\n")
+        
+        # Save Phase 2 checkpoint after each class is successfully processed
+        try:
+            with open(checking_checkpoint_path, 'w') as f:
+                json.dump({
+                    "last_processed_class_filename": class_filename,
+                    "total_checked_classes": total_checked_classes,
+                    "total_yes_classes": total_yes_classes,
+                    "total_no_classes": total_no_classes
+                }, f)
+            # print(f"[CHECKPOINT] Saved checking checkpoint for n={n} at class: {class_filename}.") # Too verbose
+        except Exception as e:
+            print(f"Error saving checking checkpoint for n={n}: {e}")
+
+        with overall_results_lock_internal:
+            overall_results_summary_internal[n]['current_progress_checked_classes'] = total_checked_classes
+            overall_results_summary_internal[n]['yes_classes'] = total_yes_classes
+            overall_results_summary_internal[n]['no_classes'] = total_no_classes
+            overall_results_summary_internal[n]['status'] = "In Progress (Checking)"
+            overall_results_summary_internal[n]['current_status_message'] = f"Checking classes for n={n} ({total_checked_classes}/{len(class_filenames)})."
+
+    current_output_file.close() 
+    print(f"[CHECK] Completed checking phase for n={n}. Yes classes: {total_yes_classes}, No classes: {total_no_classes}")
+
+    # Final checkpoint after all classes are processed, marking completion
+    try:
+        with open(checking_checkpoint_path, 'w') as f:
+            json.dump({
+                "last_processed_class_filename": "COMPLETE", 
+                "total_checked_classes": total_checked_classes,
+                "total_yes_classes": total_yes_classes,
+                "total_no_classes": total_no_classes
+            }, f)
+        print(f"[CHECKPOINT] Saved final checking checkpoint for n={n}, marking as COMPLETE.")
+    except Exception as e:
+        print(f"Error saving final checking checkpoint for n={n}: {e}")
+
+    with overall_results_lock_internal:
+        overall_results_summary_internal[n]['completed'] = True
+        overall_results_summary_internal[n]['status'] = "CHECKING_COMPLETE"
+        overall_results_summary_internal[n]['current_status_message'] = "" 
+
+
+# ===================== Main Execution Loop =====================
+def main():
+    N_MIN = 1
+    N_MAX = 10 # Example, set your desired max 'n'
+    
+    # Determine max_n_from_primary_output_dir by checking existing checkpoints
+    max_n_from_primary_output_dir = 0
+    for n_dir_name in os.listdir(ROOT_OUTPUT_BASE_DIR):
+        if not n_dir_name.startswith('n') or not n_dir_name[1:].isdigit():
+            continue
+        current_order = int(n_dir_name[1:])
+        n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, n_dir_name)
+        checking_checkpoint_path = os.path.join(n_dir_path, CHECKING_CHECKPOINT_FILE_NAME)
+        
+        if os.path.exists(checking_checkpoint_path):
+            try:
+                with open(checking_checkpoint_path, 'r') as f:
+                    chkpt_data = json.load(f)
+                if chkpt_data.get("last_processed_class_filename") == "COMPLETE":
+                    max_n_from_primary_output_dir = max(max_n_from_primary_output_dir, current_order)
+            except json.JSONDecodeError:
+                pass # Corrupt checkpoint, ignore
+
+    print(f"Starting computation from order n = {N_MIN} (max pre-existing n: {max_n_from_primary_output_dir})")
+
+    start_n_computation = max(N_MIN, max_n_from_primary_output_dir + 1)
+    if N_MIN > max_n_from_primary_output_dir + 1:
+         print(f"Warning: N_MIN ({N_MIN}) is greater than max_n_from_primary_output_dir + 1 ({max_n_from_primary_output_dir + 1}). Computation will start from N_MIN.")
+
+    for n_val in range(start_n_computation, N_MAX + 1):
+        # Determine status from checkpoints for skipping phases
+        current_n_status_for_loop_check = 'PENDING'
+        n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n_val}")
+        checking_checkpoint_path = os.path.join(n_dir_path, CHECKING_CHECKPOINT_FILE_NAME)
+        generation_checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
+
+        if os.path.exists(checking_checkpoint_path):
+            try:
+                with open(checking_checkpoint_path, 'r') as f:
+                    chkpt_data = json.load(f)
+                if chkpt_data.get("last_processed_class_filename") == "COMPLETE":
+                    current_n_status_for_loop_check = "CHECKING_COMPLETE"
+            except json.JSONDecodeError:
+                pass
+        
+        if current_n_status_for_loop_check != "CHECKING_COMPLETE" and os.path.exists(generation_checkpoint_path):
+            try:
+                with open(generation_checkpoint_path, 'r') as f:
+                    gen_chkpt_data = json.load(f)
+                total_gen = gen_chkpt_data.get("total_tournaments_generated", 0)
+                expected_total_tournaments = NON_ISO_TOURNAMENTS.get(n_val, 0)
+                if expected_total_tournaments > 0 and total_gen >= expected_total_tournaments:
+                    current_n_status_for_loop_check = "GENERATION_ONLY"
+            except json.JSONDecodeError:
+                pass
+
+
+        # Phase 1: Generation
+        print(f"\n--- Starting Generation Phase for n={n_val} ---")
+        if current_n_status_for_loop_check in ["GENERATION_ONLY", "CHECKING_COMPLETE"]:
+            print(f"Skipping Generation Phase for n={n_val} as it was already marked as complete or generation-only complete.")
+        else:
+            run_sequential(n_val)
+
+        # Re-determine status after generation phase in case it just completed
+        current_n_status_for_loop_check = 'PENDING'
+        if os.path.exists(checking_checkpoint_path):
+            try:
+                with open(checking_checkpoint_path, 'r') as f:
+                    chkpt_data = json.load(f)
+                if chkpt_data.get("last_processed_class_filename") == "COMPLETE":
+                    current_n_status_for_loop_check = "CHECKING_COMPLETE"
+            except json.JSONDecodeError:
+                pass
+        
+        if current_n_status_for_loop_check != "CHECKING_COMPLETE" and os.path.exists(generation_checkpoint_path):
+            try:
+                with open(generation_checkpoint_path, 'r') as f:
+                    gen_chkpt_data = json.load(f)
+                total_gen = gen_chkpt_data.get("total_tournaments_generated", 0)
+                expected_total_tournaments = NON_ISO_TOURNAMENTS.get(n_val, 0)
+                if expected_total_tournaments > 0 and total_gen >= expected_total_tournaments:
+                    current_n_status_for_loop_check = "GENERATION_ONLY"
+            except json.JSONDecodeError:
+                pass
+
+
+        # Phase 2: Checking for Switching Equivalence
+        print(f"\n--- Starting Checking Phase for n={n_val} ---")
+        if current_n_status_for_loop_check == "GENERATION_ONLY":
+            run_checking_phase(n_val)
+        elif current_n_status_for_loop_check == "CHECKING_COMPLETE":
+            print(f"Skipping Checking Phase for n={n_val} as it was already marked as fully complete.")
+        else:
+            print(f"Skipping Checking Phase for n={n_val} as Generation was not marked as fully complete or status is not appropriate.")
+
+
+    print("\nAll requested computations completed.")
+
+if __name__ == "__main__":
+    main()

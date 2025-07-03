@@ -1,0 +1,15 @@
+
+================= Order n = 4 (Part 1) =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^4 + 6*x^2 + 9
+Number of tournaments: 2
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^4 + 6*x^2 + 1
+Number of tournaments: 2
+All tournaments in this class are mutually switching equivalent.
+
+
