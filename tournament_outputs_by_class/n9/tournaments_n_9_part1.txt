@@ -148,3 +148,96 @@ Number of tournaments: 256
 All tournaments in this class are mutually switching equivalent.
 
 
+### Charpoly Class 23 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 302*x^5 + 372*x^3 + 57*x
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 24 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 350*x^5 + 916*x^3 + 233*x
+Number of tournaments: 3072
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 25 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 270*x^5 + 756*x^3 + 729*x
+Number of tournaments: 12
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 26 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 462*x^5 + 2484*x^3 + 4697*x
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 27 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 350*x^5 + 1044*x^3 + 617*x
+Number of tournaments: 1792
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 28 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 350*x^5 + 596*x^3 + 41*x
+Number of tournaments: 1024
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 29 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 398*x^5 + 1332*x^3 + 25*x
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 30 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 334*x^5 + 628*x^3 + 25*x
+Number of tournaments: 1280
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 31 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 318*x^5 + 916*x^3 + 777*x
+Number of tournaments: 384
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 32 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 414*x^5 + 1556*x^3 + 809*x
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 33 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 366*x^5 + 1204*x^3 + 697*x
+Number of tournaments: 1024
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 34 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 414*x^5 + 1556*x^3 + 297*x
+Number of tournaments: 944
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 35 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 382*x^5 + 1044*x^3 + 585*x
+Number of tournaments: 512
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 36 ###
+Characteristic Polynomial: x^9 + 36*x^7 + 302*x^5 + 564*x^3 + 121*x
+Number of tournaments: 2304
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
