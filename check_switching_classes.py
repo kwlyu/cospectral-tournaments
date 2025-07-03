@@ -23,12 +23,10 @@ def mckay_matrix(S):
 def mckay_check(A, B):
     return DiGraph(A).is_isomorphic(DiGraph(B))
 
-def deserialize_tournament(g6):
-    return DiGraph(g6.strip())
-
 def check_class_file(filepath):
     with open(filepath, 'r') as f:
-        tourns = [deserialize_tournament(line) for line in f]
+        blocks = f.read().strip().split('\n\n')
+        tourns = [DiGraph(Matrix(eval(block))) for block in blocks if block.strip()]
 
     if len(tourns) <= 1:
         return "trivial"
