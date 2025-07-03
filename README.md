@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-03 17:18:31)
-_Last checked: 2025-07-03 17:19:31_
+## 🚨 New results found! (last change: 2025-07-03 17:20:31)
+_Last checked: 2025-07-03 17:20:31_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -13,19 +13,19 @@ _Last checked: 2025-07-03 17:19:31_
 | 6 | ✅ YES | 6/6 (100.00%) |
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
-| 9 | ❓ No results | - |
+| 9 | ⏳ Checking (1%) | 1/2 (50.00%) |
 
 ---
 
 ## 📊 Current Progress (Order n = 9)
 
-> Generated 100000/191536 tournaments for n=9 (52.21%).
+> Checking classes for n=9 (2/183 - 1.09%).
 
-Tournaments Generated: `███████████████░░░░░░░░░░░░░░░` (100000/191536 - 52.21%)
+Tournaments Generated: `██████████████████████████████` (191536/191536 - 100.00%)
 
 
-Classes Checked: `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` (0/183 - 0.00%)
-  (✅ Yes: 0, ❌ No: 0)
+Classes Checked: `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` (2/183 - 1.09%)
+  (✅ Yes: 1, ❌ No: 1)
 
 
 ---
@@ -70,6 +70,17 @@ x^8 + 28*x^6 + 230*x^4 + 604*x^2 + 289 \\
 x^8 + 28*x^6 + 238*x^4 + 588*x^2 + 169 \\
 x^8 + 28*x^6 + 238*x^4 + 652*x^2 + 361 \\
 x^8 + 28*x^6 + 246*x^4 + 700*x^2 + 49 \\
+\end{gather*} $$
+
+
+</details>
+
+<details><summary>Order n = 9</summary>
+
+### Cospectral BUT NOT Switching Equivalent (NO classes: 1)
+
+$$ \begin{gather*}
+x^9 + 36*x^7 + 414*x^5 + 1620*x^3 + 1513*x \\
 \end{gather*} $$
 
 
