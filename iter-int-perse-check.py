@@ -120,12 +120,12 @@ def find_latest_part_file(n):
 # ===================== Main Logic (sequential execution for each n) =====================
 def run_sequential(n):
     global currently_processing_n
-    
+   
     with overall_results_lock:
         currently_processing_n = n
         overall_results_summary[n] = {
             'completed': False,
-            'status': 'In Progress',
+            'status': 'In Progress (Generation)', # New status for generation phase
             'yes_classes': 0, 'no_classes': 0, 'total_classes': 0,
             'current_progress_generated_tournaments': 0,
             'current_progress_checked_classes': 0,
@@ -133,173 +133,77 @@ def run_sequential(n):
         }
 
     print(f"[GEN/CHK] Starting processing for n={n}")
-    
+   
     paths_n = get_computation_paths(n)
     os.makedirs(paths_n["class_dir"], exist_ok=True)
-    
-    class_data_for_current_n = defaultdict(lambda: {"tournaments": [], "checked_pairs": set(), "result_string": ""})
+   
+    # Initialize class_data_for_current_n to store counts and poly string, NOT DiGraph objects
+    class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
 
     # --- Generation Phase ---
     generated_charpoly_hashes = set()
     total_tournaments_generated = 0
-    
+   
     tournaments_gen = digraphs.tournaments_nauty(n)
-    # REMOVED: all_tournaments = list(tournaments_gen) # This line was causing memory issues
-    
-    # Iterate directly over the generator to avoid memory exhaustion
-    for i, T in enumerate(tournaments_gen): 
+   
+    for i, T in enumerate(tournaments_gen):
         seidel_mat = seidel_matrix(T)
         poly = seidel_mat.charpoly()
         h = hash_charpoly(poly)
-        
+       
+        # Update class info with count and polynomial string
         class_info = class_data_for_current_n[(n, h)]
-        class_info["tournaments"].append(T) # Still collecting tournaments for THIS class, not all
+        class_info["count"] += 1
         class_info["characteristic_polynomial"] = str(poly)
         generated_charpoly_hashes.add((n, h))
         total_tournaments_generated += 1
 
+        # Write the adjacency matrix string directly to file
         with open(get_computation_paths(n, h=h)["class_file"], "a") as f:
             f.write(str(T.adjacency_matrix()) + "\n\n")
-        
+       
         with overall_results_lock:
             overall_results_summary[n]['current_progress_generated_tournaments'] = total_tournaments_generated
-            overall_results_summary[n]['total_classes'] = len(generated_charpoly_hashes) 
+            overall_results_summary[n]['total_classes'] = len(generated_charpoly_hashes)
             expected_total_tournaments = NON_ISO_TOURNAMENTS.get(n, 0)
             if expected_total_tournaments == 0:
                 overall_results_summary[n]['current_status_message'] = f"Generated {total_tournaments_generated} tournaments for n={n} (total known: N/A)."
             else:
                 gen_percent = (total_tournaments_generated / expected_total_tournaments) * 100
                 overall_results_summary[n]['current_status_message'] = f"Generated {total_tournaments_generated}/{expected_total_tournaments} tournaments for n={n} ({gen_percent:.2f}%)."
-            
-    print(f"[GEN/CHK] Done generating for n={n}, starting full check.")
-    
+           
+    print(f"[GEN/CHK] Done generating for n={n}. Stored {total_tournaments_generated} tournaments into {len(generated_charpoly_hashes)} classes.")
+   
     with overall_results_lock:
-        overall_results_summary[n]['current_status_message'] = f"Checking classes for n={n}..."
-
-    # --- File Management for Output (New logic for splitting) ---
-    current_part_num, latest_file_path_for_n = find_latest_part_file(n)
-    current_output_file_handle = None
-    current_output_filepath = latest_file_path_for_n if latest_file_path_for_n else ""
-
-    def _get_or_create_file_handle_for_n():
-        nonlocal current_output_file_handle, current_output_filepath, current_part_num
-
-        # If a file is already open and not yet full, return it
-        if current_output_file_handle and os.path.getsize(current_output_filepath) < MAX_FILE_SIZE_BYTES:
-            return current_output_file_handle
-
-        # If an old file was open and is now full, close it
-        if current_output_file_handle:
-            current_output_file_handle.close()
-            print(f"[FILE] Closed {current_output_filepath} (exceeded size limit).")
-            # If the last file was the base file (part 0), the next is part 1.
-            # Otherwise, increment the part number.
-            current_part_num = 1 if current_part_num == 0 else current_part_num + 1 
-
-        # Determine the filename for the new/current part
-        if current_part_num == 0: # Convention: 0 means the base file (no _partX suffix)
-            file_name = f"tournaments_n_{n}{FILE_EXTENSION}"
-        else: # For subsequent parts
-            file_name = f"tournaments_n_{n}_part{current_part_num}{FILE_EXTENSION}"
-
-        output_dir = os.path.join(ROOT_OUTPUT_BASE_DIR, f"n{n}")
-        os.makedirs(output_dir, exist_ok=True)
-        current_output_filepath = os.path.join(output_dir, file_name)
-
-        mode = "a" # Always append to an existing file or create a new one
-        try:
-            current_output_file_handle = open(current_output_filepath, mode)
-            # Write header ONLY if the file was just created or is empty
-            if os.path.getsize(current_output_filepath) == 0:
-                current_output_file_handle.write(f"================= Order n = {n} ================\n\n")
-            print(f"[FILE] Opened/re-opened {current_output_filepath} for writing (part {current_part_num if current_part_num != 0 else 'base'}).")
-            return current_output_file_handle
-        except Exception as e:
-            print(f"Error opening file {current_output_filepath}: {e}")
-            raise # Re-raise to stop computation if file can't be opened
-
-    # --- Checking Phase ---
-    # aggregated_output_parts is no longer needed since we write incrementally
-    
-    total_yes_classes = 0
-    total_no_classes = 0
-    all_classes_are_switching_equivalent_for_n = True
-
-    sorted_hashes = sorted(list(generated_charpoly_hashes))
-
-    for idx, (n_key, h) in enumerate(sorted_hashes):
-        class_info = class_data_for_current_n[(n_key, h)]
-        tourn_list = class_info["tournaments"]
-        checked_pairs = class_info["checked_pairs"]
-        char_poly_str = class_info["characteristic_polynomial"]
-
-        class_header = f"### Charpoly Class {idx + 1} ###\n"
-        class_header += f"Characteristic Polynomial: {char_poly_str}\n"
-        class_header += f"Number of tournaments: {len(tourn_list)}\n"
-        
-        result_message = ""
-        is_current_class_all_equivalent = True
-
-        if len(tourn_list) < 2:
-            result_message = "All tournaments in this class are mutually switching equivalent.\n"
-        else:
-            for i in range(len(tourn_list)):
-                for j in range(i + 1, len(tourn_list)):
-                    if (i, j) not in checked_pairs:
-                        A = mckay_matrix(tourn_list[i])
-                        B = mckay_matrix(tourn_list[j])
-                        if not mckay_check(A, B):
-                            result_message = f"Tournaments {i} and {j} are NOT switching equivalent (by McKay matrix isomorphism).\n"
-                            # We omit printing large matrices to the main output file to save space
-                            # result_message += f"Tournament {i}:\n{tourn_list[i].adjacency_matrix()}\n"
-                            # result_message += f"Tournament {j}:\n{tourn_list[j].adjacency_matrix()}\n"
-                            
-                            result_message += "Not all tournaments in this class are switching equivalent.\n"
-                            result_message += "Found a pair that is NOT switching equivalent. Skipping further checks in this class.\n"
-                            is_current_class_all_equivalent = False
-                            all_classes_are_switching_equivalent_for_n = False
-                            break
-                        checked_pairs.add((i, j))
-                if not is_current_class_all_equivalent:
-                    break
-            
-            if is_current_class_all_equivalent:
-                result_message = "All tournaments in this class are mutually switching equivalent.\n"
-        
-        # Write directly to the current output file part
-        output_file_handle = _get_or_create_file_handle_for_n()
-        output_file_handle.write(class_header + result_message + "\n")
-
-        if is_current_class_all_equivalent:
-            total_yes_classes += 1
-        else:
-            total_no_classes += 1
-
-        with overall_results_lock:
-            overall_results_summary[n]['current_progress_checked_classes'] = idx + 1
-            overall_results_summary[n]['yes_classes'] = total_yes_classes
-            overall_results_summary[n]['no_classes'] = total_no_classes
-            
-            checked_percent = ((idx + 1) / len(sorted_hashes)) * 100
-            overall_results_summary[n]['current_status_message'] = f"Checked {idx + 1}/{len(sorted_hashes)} charpoly classes for n={n} ({checked_percent:.2f}%)."
-
-
-    # --- Final cleanup for this n's files ---
-    if current_output_file_handle:
-        current_output_file_handle.close()
-        print(f"[FILE] Closed final part file {current_output_filepath} for n={n}.")
-
-    print(f"[GEN/CHK] Done processing for n={n}. Results written to {os.path.join(ROOT_OUTPUT_BASE_DIR, f'n{n}')} files.")
-
-    with overall_results_lock:
+        overall_results_summary[n]['current_status_message'] = f"Generation complete for n={n}. Switching equivalence check needs to be run separately."
         overall_results_summary[n]['completed'] = True
-        overall_results_summary[n]['status'] = "✅ YES" if all_classes_are_switching_equivalent_for_n else "❌ NO"
-        overall_results_summary[n]['current_status_message'] = "" # Clear temporary message
-        overall_results_summary[n]['total_classes'] = len(generated_charpoly_hashes)
+        overall_results_summary[n]['status'] = "GENERATION_ONLY" # Mark as generation complete
+        overall_results_summary[n]['yes_classes'] = 0 # No checks performed in this phase
+        overall_results_summary[n]['no_classes'] = 0 # No checks performed in this phase
+
+    # --- IMPORTANT: REMOVE OR COMMENT OUT THE ENTIRE "Checking Phase" BELOW THIS LINE ---
+    # The subsequent code for 'File Management for Output', '_get_or_create_file_handle_for_n',
+    # and the loop for 'Checking Phase' will need to be removed or commented out for now.
+    # This functionality will be part of the separate Phase 2 script.
+   
+    # Example of what to remove/comment out:
+    # # --- File Management for Output (New logic for splitting) ---
+    # current_part_num, latest_file_path_for_n = find_latest_part_file(n)
+    # ...
+    # # --- Checking Phase ---
+    # total_yes_classes = 0
+    # ...
+    # for idx, (n_key, h) in enumerate(sorted_hashes):
+    #     class_info = class_data_for_current_n[(n_key, h)]
+    #     tourn_list = class_info["tournaments"] # This would now be empty, but the logic expects it to be populated.
+    #     ...
+    #     A = mckay_matrix(tourn_list[i]) # This would fail without actual DiGraph objects
+    #     ...
 
     with overall_results_lock:
         if currently_processing_n == n:
             currently_processing_n = None
+
 
 # ===================== README Parsing Helper =====================
 def _parse_lines_into_results(lines, order, results_dict):
