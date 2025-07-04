@@ -11708,3 +11708,63 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 1694 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 650*x^6 + 3274*x^4 + 5781*x^2 + 2025
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1695 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 626*x^6 + 3058*x^4 + 3213*x^2 + 225
+Number of tournaments: 11264
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1696 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 530*x^6 + 1650*x^4 + 1581*x^2 + 289
+Number of tournaments: 8192
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1697 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 482*x^6 + 1794*x^4 + 2205*x^2 + 81
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1698 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 642*x^6 + 3234*x^4 + 3709*x^2 + 49
+Number of tournaments: 11264
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1699 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 506*x^6 + 1946*x^4 + 2085*x^2 + 25
+Number of tournaments: 1024
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1700 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 482*x^6 + 1282*x^4 + 669*x^2 + 81
+Number of tournaments: 1280
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1701 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 706*x^6 + 4482*x^4 + 9469*x^2 + 1681
+Number of tournaments: 13824
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1702 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 538*x^6 + 2074*x^4 + 2757*x^2 + 729
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
