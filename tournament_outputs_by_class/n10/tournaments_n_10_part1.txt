@@ -7248,3 +7248,107 @@ Number of tournaments: 256
 All tournaments in this class are mutually switching equivalent.
 
 
+### Charpoly Class 1049 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 682*x^6 + 4202*x^4 + 10485*x^2 + 8649
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1050 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 578*x^6 + 2594*x^4 + 3389*x^2 + 49
+Number of tournaments: 3072
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1051 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 650*x^6 + 3338*x^4 + 5013*x^2 + 169
+Number of tournaments: 7680
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1052 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 4034*x^4 + 8413*x^2 + 1681
+Number of tournaments: 4608
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1053 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 3842*x^4 + 7133*x^2 + 81
+Number of tournaments: 5120
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1054 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 546*x^6 + 1922*x^4 + 2013*x^2 + 81
+Number of tournaments: 4608
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1055 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 618*x^6 + 2762*x^4 + 2549*x^2 + 169
+Number of tournaments: 5120
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1056 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 618*x^6 + 2602*x^4 + 1333*x^2 + 9
+Number of tournaments: 4096
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1057 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 586*x^6 + 2154*x^4 + 2325*x^2 + 9
+Number of tournaments: 4864
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1058 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 658*x^6 + 3442*x^4 + 5421*x^2 + 2209
+Number of tournaments: 2048
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1059 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 642*x^6 + 3362*x^4 + 6013*x^2 + 3249
+Number of tournaments: 6656
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1060 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 586*x^6 + 2538*x^4 + 2965*x^2 + 9
+Number of tournaments: 6144
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1061 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 666*x^6 + 3546*x^4 + 4933*x^2 + 25
+Number of tournaments: 15872
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1062 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 634*x^6 + 2906*x^4 + 2853*x^2 + 729
+Number of tournaments: 4096
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1063 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 690*x^6 + 4210*x^4 + 9037*x^2 + 2401
+Number of tournaments: 9728
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
