@@ -1,5 +1,5 @@
-## No new results. (last change: 2025-07-03 19:44:35)
-_Last checked: 2025-07-03 19:45:35_
+## 🚨 New results found! (last change: 2025-07-03 19:46:35)
+_Last checked: 2025-07-03 19:46:35_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,19 +14,19 @@ _Last checked: 2025-07-03 19:45:35_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ⏳ Checking (6%) | 12/119 (10.08%) |
+| 10 | ⏳ Checking (6%) | 13/121 (10.74%) |
 
 ---
 
 ## 📊 Current Progress (Order n = 10)
 
-> Checking classes for n=10 (119/2068 - 5.75%).
+> Checking classes for n=10 (121/2068 - 5.85%).
 
 Tournaments Generated: `██████████████████████████████` (9733056/9733056 - 100.00%)
 
 
-Classes Checked: `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` (119/2068 - 5.75%)
-  (✅ Yes: 12, ❌ No: 107)
+Classes Checked: `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` (121/2068 - 5.85%)
+  (✅ Yes: 13, ❌ No: 108)
 
 
 ---
@@ -279,7 +279,7 @@ x^9 + 36*x^7 + 462*x^5 + 2548*x^3 + 5145*x \\
 
 <details><summary>Order n = 10</summary>
 
-### Cospectral BUT NOT Switching Equivalent (NO classes: 107)
+### Cospectral BUT NOT Switching Equivalent (NO classes: 108)
 
 $$ \begin{gather*}
 x^10 + 45*x^8 + 450*x^6 + 1602*x^4 + 1917*x^2 + 81 \\
@@ -417,11 +417,12 @@ x^10 + 45*x^8 + 674*x^6 + 3938*x^4 + 7965*x^2 + 3249 \\
 x^10 + 45*x^8 + 682*x^6 + 4010*x^4 + 8181*x^2 + 4489 \\
 x^10 + 45*x^8 + 682*x^6 + 4234*x^4 + 9397*x^2 + 2025 \\
 x^10 + 45*x^8 + 690*x^6 + 4050*x^4 + 6541*x^2 + 961 \\
-x^10 + 45*x^8 + 706*x^6 + 4578*x^4 + 11325*x^2 + 7921 \\
+x^10 + 45*x^8 + 698*x^6 + 4378*x^4 + 9189*x^2 + 25 \\
 \end{gather*} $$
 
 
 $$ \begin{gather*}
+x^10 + 45*x^8 + 706*x^6 + 4578*x^4 + 11325*x^2 + 7921 \\
 x^10 + 45*x^8 + 706*x^6 + 4610*x^4 + 10877*x^2 + 1681 \\
 x^10 + 45*x^8 + 714*x^6 + 4874*x^4 + 13013*x^2 + 5929 \\
 x^10 + 45*x^8 + 714*x^6 + 4874*x^4 + 13909*x^2 + 13225 \\
