@@ -13854,3 +13854,57 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 2006 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 394*x^6 + 874*x^4 + 213*x^2 + 9
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2007 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 586*x^6 + 2090*x^4 + 2581*x^2 + 841
+Number of tournaments: 2560
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 2008 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 650*x^6 + 3306*x^4 + 3669*x^2 + 9
+Number of tournaments: 12288
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 2009 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 450*x^6 + 1314*x^4 + 701*x^2 + 49
+Number of tournaments: 1024
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 2010 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 610*x^6 + 3170*x^4 + 5725*x^2 + 3249
+Number of tournaments: 52
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 2011 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 642*x^6 + 3458*x^4 + 5949*x^2 + 1681
+Number of tournaments: 2048
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 2012 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 714*x^6 + 4714*x^4 + 11285*x^2 + 3721
+Number of tournaments: 10752
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 2013 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 722*x^6 + 5010*x^4 + 13997*x^2 + 9409
+Number of tournaments: 1536
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
