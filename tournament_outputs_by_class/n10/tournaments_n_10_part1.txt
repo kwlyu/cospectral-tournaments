@@ -12797,3 +12797,9 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 1852 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 530*x^6 + 850*x^4 + 109*x^2 + 1
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
