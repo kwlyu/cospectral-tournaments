@@ -5413,3 +5413,16 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 783 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 578*x^6 + 2530*x^4 + 4029*x^2 + 1521
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 784 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 642*x^6 + 3618*x^4 + 8061*x^2 + 5041
+Number of tournaments: 3072
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
