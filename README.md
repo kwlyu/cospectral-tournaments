@@ -1,5 +1,5 @@
-## 🚨 New results found! (last change: 2025-07-03 21:35:38)
-_Last checked: 2025-07-03 21:35:38_
+## 🚨 New results found! (last change: 2025-07-03 21:36:38)
+_Last checked: 2025-07-03 21:36:38_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -14,19 +14,19 @@ _Last checked: 2025-07-03 21:35:38_
 | 7 | ❌ NO | 10/11 (90.91%) |
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
-| 10 | ⏳ Checking (74%) | 125/1537 (8.13%) |
+| 10 | ⏳ Checking (74%) | 126/1538 (8.19%) |
 
 ---
 
 ## 📊 Current Progress (Order n = 10)
 
-> Checking classes for n=10 (1537/2068 - 74.32%).
+> Checking classes for n=10 (1538/2068 - 74.37%).
 
 Tournaments Generated: `██████████████████████████████` (9733056/9733056 - 100.00%)
 
 
-Classes Checked: `██████████████████████░░░░░░░░` (1537/2068 - 74.32%)
-  (✅ Yes: 125, ❌ No: 1412)
+Classes Checked: `██████████████████████░░░░░░░░` (1538/2068 - 74.37%)
+  (✅ Yes: 126, ❌ No: 1412)
 
 
 ---
