@@ -6910,3 +6910,16 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 1000 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 666*x^6 + 3546*x^4 + 5445*x^2 + 25
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1001 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 570*x^6 + 2074*x^4 + 1381*x^2 + 25
+Number of tournaments: 9728
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
