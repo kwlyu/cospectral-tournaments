@@ -13467,3 +13467,106 @@ Not all tournaments in this class are switching equivalent.
 Tournaments in this class are NOT all mutually switching equivalent.
 
 
+### Charpoly Class 1950 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 346*x^6 + 730*x^4 + 389*x^2 + 25
+Number of tournaments: 512
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1951 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 706*x^6 + 4386*x^4 + 8125*x^2 + 49
+Number of tournaments: 4096
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1952 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 602*x^6 + 2586*x^4 + 3205*x^2 + 729
+Number of tournaments: 7680
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1953 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 554*x^6 + 2378*x^4 + 2997*x^2 + 169
+Number of tournaments: 3584
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1954 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 602*x^6 + 2298*x^4 + 2245*x^2 + 441
+Number of tournaments: 3072
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1955 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 690*x^6 + 4210*x^4 + 8525*x^2 + 2401
+Number of tournaments: 6144
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1956 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 538*x^6 + 2170*x^4 + 2949*x^2 + 441
+Number of tournaments: 256
+All tournaments in this class are mutually switching equivalent.
+
+
+### Charpoly Class 1957 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 458*x^6 + 1002*x^4 + 533*x^2 + 9
+Number of tournaments: 3072
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1958 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 578*x^6 + 2242*x^4 + 1149*x^2 + 81
+Number of tournaments: 9728
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1959 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 610*x^6 + 2882*x^4 + 4125*x^2 + 529
+Number of tournaments: 4608
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1960 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 658*x^6 + 3442*x^4 + 3757*x^2 + 289
+Number of tournaments: 26112
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1961 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 554*x^6 + 1962*x^4 + 501*x^2 + 9
+Number of tournaments: 7680
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1962 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 674*x^6 + 3586*x^4 + 3293*x^2 + 81
+Number of tournaments: 5632
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1963 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 594*x^6 + 2386*x^4 + 2605*x^2 + 1
+Number of tournaments: 3584
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
+### Charpoly Class 1964 ###
+Characteristic Polynomial: x^10 + 45*x^8 + 586*x^6 + 2026*x^4 + 1429*x^2 + 9
+Number of tournaments: 9728
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+
+
