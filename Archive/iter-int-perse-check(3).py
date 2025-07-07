@@ -47,7 +47,7 @@ char_poly_lookup = {}
 # ===================== Control Flag for Rewriting =====================
 # Set this to True to rewrite results for orders 1-10 with counterexamples.
 # Set to False after the initial rewrite to resume normal operation.
-REWRITE_COMPLETED_ORDERS = False
+REWRITE_COMPLETED_ORDERS = False 
 REWRITE_TARGET_ORDERS = range(9, 11) # Orders to rewrite (1 to 10 inclusive)
 
 # ===================== Core Computation Utilities =====================
@@ -687,31 +687,6 @@ def rewrite_results_with_counterexamples(n: int):
 
     current_output_file.close()
     print(f"[REWRITE] Finished rewriting results for n={n}. Found {total_no_classes_rewritten} 'NOT switching equivalent' classes.")
-
-# ===================== Helper to select next N to process =====================
-def select_next_n_to_process(current_progress_info):
-    """
-    Selects the next 'n' value to process based on its completion status.
-    Prioritizes incomplete generation, then incomplete checking.
-    """
-    # Orders to iterate through (e.g., from N_MIN to N_MAX)
-    # Assuming N_MAX is defined in main.
-    N_MIN_GLOBAL = 1 # Define a global or pass N_MIN, N_MAX as arguments
-    N_MAX_GLOBAL = 18 # Define a global or pass N_MIN, N_MAX as arguments
-
-    # Check for orders that are PENDING or In Progress (Generation)
-    for n_val in range(N_MIN_GLOBAL, N_MAX_GLOBAL + 1):
-        status = current_progress_info.get(n_val, {}).get('status', 'PENDING')
-        if status in ["PENDING", "In Progress (Generation)"]:
-            return n_val
-
-    # If all generations are complete, check for orders that are GENERATION_ONLY or In Progress (Checking)
-    for n_val in range(N_MIN_GLOBAL, N_MAX_GLOBAL + 1):
-        status = current_progress_info.get(n_val, {}).get('status', 'PENDING')
-        if status in ["GENERATION_ONLY", "In Progress (Checking)"]:
-            return n_val
-            
-    return None # All orders are CHECKING_COMPLETE
 
 # ===================== Main Execution Loop =====================
 def main():
