@@ -47,7 +47,7 @@ char_poly_lookup = {}
 # ===================== Control Flag for Rewriting =====================
 # Set this to True to rewrite results for orders 1-10 with counterexamples.
 # Set to False after the initial rewrite to resume normal operation.
-REWRITE_COMPLETED_ORDERS = True 
+REWRITE_COMPLETED_ORDERS = False 
 REWRITE_TARGET_ORDERS = range(1, 11) # Orders to rewrite (1 to 10 inclusive)
 
 # ===================== Core Computation Utilities =====================
