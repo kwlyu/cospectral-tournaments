@@ -1,0 +1,33 @@
+
+================= Order n = 6 =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 55*x^2 + 25
+Number of tournaments: 8
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 47*x^2 + 1
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 3 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 39*x^2 + 9
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 4 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 63*x^2 + 81
+Number of tournaments: 4
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 5 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 15*x^2 + 1
+Number of tournaments: 6
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 6 ###
+Characteristic Polynomial: x^6 + 15*x^4 + 63*x^2 + 49
+Number of tournaments: 6
+All tournaments in this class are mutually switching equivalent.
+

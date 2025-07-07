@@ -1,0 +1,76 @@
+
+================= Order n = 7 =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 131*x^3 + 231*x
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 2 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 147*x^3 + 343*x
+Number of tournaments: 6
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 3 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 35*x^3 + 7*x
+Number of tournaments: 10
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 4 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 115*x^3 + 183*x
+Number of tournaments: 32
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 5 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 99*x^3 + 135*x
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 6 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 99*x^3 + 7*x
+Number of tournaments: 24
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 7 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 83*x^3 + 23*x
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 8 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 99*x^3 + 71*x
+Number of tournaments: 64
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 9 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 115*x^3 + 55*x
+Number of tournaments: 16
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 10 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 67*x^3 + 39*x
+Number of tournaments: 32
+All tournaments in this class are mutually switching equivalent.
+
+### Charpoly Class 11 ###
+Characteristic Polynomial: x^7 + 21*x^5 + 115*x^3 + 119*x
+Number of tournaments: 128
+Not all tournaments in this class are switching equivalent.
+Tournaments in this class are NOT all mutually switching equivalent.
+Counterexample: Tournament 0 (from 0-indexed list) and Tournament 1 are not switching equivalent.
+Tournament 0 Seidel Matrix:
+[ 0 -1 -1 -1 -1 -1 -1]
+  [ 1  0 -1 -1 -1  1 -1]
+  [ 1  1  0 -1 -1 -1  1]
+  [ 1  1  1  0 -1 -1 -1]
+  [ 1  1  1  1  0 -1 -1]
+  [ 1 -1  1  1  1  0 -1]
+  [ 1  1 -1  1  1  1  0]
+Tournament 1 Seidel Matrix:
+[ 0 -1 -1 -1 -1 -1 -1]
+  [ 1  0 -1 -1 -1  1 -1]
+  [ 1  1  0 -1 -1 -1 -1]
+  [ 1  1  1  0 -1 -1  1]
+  [ 1  1  1  1  0 -1 -1]
+  [ 1 -1  1  1  1  0 -1]
+  [ 1  1  1 -1  1  1  0]
+

@@ -1,0 +1,8 @@
+
+================= Order n = 3 =================
+
+### Charpoly Class 1 ###
+Characteristic Polynomial: x^3 + 3*x
+Number of tournaments: 2
+All tournaments in this class are mutually switching equivalent.
+
