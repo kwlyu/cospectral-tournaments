@@ -511,7 +511,7 @@ def run_checking_phase(n):
 # ===================== Main Execution Loop =====================
 def main():
     N_MIN = 1
-    N_MAX = 10 # Example, set your desired max 'n'
+    N_MAX = 18 # Example, set your desired max 'n'
     
     # Determine max_n_from_primary_output_dir by checking existing checkpoints
     max_n_from_primary_output_dir = 0
