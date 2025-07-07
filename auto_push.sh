@@ -22,6 +22,6 @@ while true; do
         echo "Pushed changes to GitHub."
     fi
 
-    echo "Sleeping for 1 minute..."
-    sleep 60
+    echo "Sleeping for 1 second..."
+    sleep 1
 done
