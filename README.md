@@ -1,5 +1,5 @@
 ## No new results. (last change: 2025-07-03 22:40:41)
-_Last checked: 2025-07-07 08:04:54_
+_Last checked: 2025-07-07 08:05:54_
 
 # Cospectral vs Switching Equivalence Results
 
@@ -15,6 +15,7 @@ _Last checked: 2025-07-07 08:04:54_
 | 8 | ❌ NO | 33/50 (66.00%) |
 | 9 | ❌ NO | 44/183 (24.04%) |
 | 10 | ❌ NO | 189/2068 (9.14%) |
+| 11 | ❓ No results | - |
 
 ## Detailed Results
 
