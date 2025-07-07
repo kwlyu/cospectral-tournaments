@@ -25,7 +25,7 @@ def format_timedelta(td):
     return " ".join(parts)
 
 # ===================== Constants and Paths (Duplicated for Independence) =====================
-README_PATH = os.path.join('/Users/PC/E/Kunwu/School/Undergrad/Carleton/Activities/ISO/OPT/MK Research/Tournaments/Week 4/Sage/cospectral-tournaments-main', "README.md")
+README_PATH = os.path.join('/Users/lyuk/Downloads/cospectral-tournaments', "README.md")
 ROOT_OUTPUT_BASE_DIR = "tournament_outputs_by_class"
 FILE_EXTENSION = ".txt"
 PRE_EXISTING_RESULTS_DIR = "NO" # Set to "NO" as requested
