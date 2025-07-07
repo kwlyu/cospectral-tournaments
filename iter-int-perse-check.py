@@ -5,8 +5,10 @@ import hashlib
 import threading
 from collections import defaultdict
 from datetime import datetime
-import json
 from sage.all import *
+import json
+import math # For math.ceil
+import sys # For sys.exit
 
 # Import constants and functions from readme_generator.py
 # This ensures that main_runner uses the same definitions for directories,
@@ -47,8 +49,8 @@ char_poly_lookup = {}
 # ===================== Control Flag for Rewriting =====================
 # Set this to True to rewrite results for orders 1-10 with counterexamples.
 # Set to False after the initial rewrite to resume normal operation.
-REWRITE_COMPLETED_ORDERS = False
-REWRITE_TARGET_ORDERS = range(9, 11) # Orders to rewrite (1 to 10 inclusive)
+REWRITE_COMPLETED_ORDERS = False # Changed to False after initial rewrite
+REWRITE_TARGET_ORDERS = range(1, 11) # Orders to rewrite (1 to 10 inclusive)
 
 # ===================== Core Computation Utilities =====================
 def seidel_matrix(T):
@@ -146,7 +148,8 @@ def run_sequential(n):
     start_total_tournaments_generated = 0
     initial_class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
     initial_generated_charpoly_hashes = set()
-
+    gen_phase_start_time_epoch = time.time() # Default start time for current run
+    
     if os.path.exists(checkpoint_path):
         try:
             with open(checkpoint_path, 'r') as f:
@@ -160,14 +163,23 @@ def run_sequential(n):
                 current_h_val = split_key[1]
                 initial_class_data_for_current_n[(current_n_val, current_h_val)] = data
                 initial_generated_charpoly_hashes.add(current_h_val)
-            
+
+            # Preserve original start time if resuming, otherwise use current time
+            if "start_time_epoch" in checkpoint_data:
+                gen_phase_start_time_epoch = checkpoint_data["start_time_epoch"]
+            else:
+                 # If checkpoint exists but no start_time_epoch, treat as new start
+                print(f"Warning: Old checkpoint format detected for n={n}. Resetting generation start time.")
+                gen_phase_start_time_epoch = time.time()
+                
             print(f"[RESUME] Resuming n={n} from checkpoint. Already processed {start_total_tournaments_generated} tournaments.")
         except json.JSONDecodeError as e:
             print(f"Warning: Could not decode checkpoint file {checkpoint_path}: {e}. Starting from scratch for n={n}.")
             start_total_tournaments_generated = 0
             initial_class_data_for_current_n = defaultdict(lambda: {"count": 0, "characteristic_polynomial": ""})
             initial_generated_charpoly_hashes = set()
-            
+            gen_phase_start_time_epoch = time.time() # New start time if corrupted
+
     total_tournaments_generated = start_total_tournaments_generated
     class_data_for_current_n = initial_class_data_for_current_n
     generated_charpoly_hashes = initial_generated_charpoly_hashes
@@ -180,7 +192,8 @@ def run_sequential(n):
             'yes_classes': 0, 'no_classes': 0, 'total_classes': len(generated_charpoly_hashes),
             'current_progress_generated_tournaments': total_tournaments_generated,
             'current_progress_checked_classes': 0,
-            'current_status_message': f"Generating tournaments for n={n}..."
+            'current_status_message': f"Generating tournaments for n={n}...",
+            'generation_start_time_epoch': gen_phase_start_time_epoch # Store the actual start time
         }
 
     print(f"[GEN/CHK] Starting processing for n={n}")
@@ -190,6 +203,19 @@ def run_sequential(n):
 
     tournaments_gen = digraphs.tournaments_nauty(n)
     
+    # Save checkpoint at the very beginning to establish start_time_epoch
+    try:
+        with open(checkpoint_path, 'w') as f:
+            serializable_class_data = {f"{k[0]}_{k[1]}": v for k, v in class_data_for_current_n.items()}
+            json.dump({
+                "total_tournaments_generated": total_tournaments_generated,
+                "class_data_for_current_n": serializable_class_data,
+                "start_time_epoch": gen_phase_start_time_epoch, # Save initial start time
+                "last_update_time_epoch": time.time() # And current update time
+            }, f)
+    except Exception as e:
+        print(f"Error saving initial checkpoint for n={n}: {e}")
+
     for i, T in enumerate(tournaments_gen): 
         if i < start_total_tournaments_generated:
             if i % CHECKPOINT_INTERVAL == 0: 
@@ -220,7 +246,9 @@ def run_sequential(n):
                     serializable_class_data = {f"{k[0]}_{k[1]}": v for k, v in class_data_for_current_n.items()}
                     json.dump({
                         "total_tournaments_generated": total_tournaments_generated,
-                        "class_data_for_current_n": serializable_class_data
+                        "class_data_for_current_n": serializable_class_data,
+                        "start_time_epoch": gen_phase_start_time_epoch, # Persist original start time
+                        "last_update_time_epoch": time.time() # Update last update time
                     }, f)
                 print(f"[CHECKPOINT] Saved checkpoint at {total_tournaments_generated} tournaments for n={n}.")
             except Exception as e:
@@ -238,12 +266,15 @@ def run_sequential(n):
             
     print(f"[GEN/CHK] Done generating for n={n}. Stored {total_tournaments_generated} tournaments into {len(generated_charpoly_hashes)} classes.")
     
+    # Save final generation checkpoint
     try:
         with open(checkpoint_path, 'w') as f:
             serializable_class_data = {f"{k[0]}_{k[1]}": v for k, v in class_data_for_current_n.items()}
             json.dump({
                 "total_tournaments_generated": total_tournaments_generated,
-                "class_data_for_current_n": serializable_class_data
+                "class_data_for_current_n": serializable_class_data,
+                "start_time_epoch": gen_phase_start_time_epoch, # Persist original start time
+                "last_update_time_epoch": time.time() # Final update time
             }, f)
         print(f"[CHECKPOINT] Saved final checkpoint at {total_tournaments_generated} tournaments for n={n}.")
     except Exception as e:
@@ -292,7 +323,8 @@ def run_checking_phase(n):
     start_total_yes_classes = 0
     start_total_no_classes = 0
     last_processed_class_filename = None
-    
+    chk_phase_start_time_epoch = time.time() # Default start time for current run
+
     # Attempt to load checking checkpoint
     if os.path.exists(checking_checkpoint_path):
         try:
@@ -302,6 +334,13 @@ def run_checking_phase(n):
             start_total_checked_classes = chkpt_data.get("total_checked_classes", 0)
             start_total_yes_classes = chkpt_data.get("total_yes_classes", 0)
             start_total_no_classes = chkpt_data.get("total_no_classes", 0)
+
+            # Preserve original start time if resuming
+            if "start_time_epoch" in chkpt_data:
+                chk_phase_start_time_epoch = chkpt_data["start_time_epoch"]
+            else:
+                print(f"Warning: Old checking checkpoint format detected for n={n}. Resetting checking start time.")
+                chk_phase_start_time_epoch = time.time()
             
             if last_processed_class_filename == "COMPLETE":
                 print(f"[CHECK RESUME] Checking for n={n} already completed in a previous run. Skipping.")
@@ -318,6 +357,7 @@ def run_checking_phase(n):
         except json.JSONDecodeError as e:
             print(f"Warning: Could not decode checking checkpoint file {checking_checkpoint_path}: {e}. Starting checking from scratch for n={n}.")
             last_processed_class_filename = None
+            chk_phase_start_time_epoch = time.time() # New start time if corrupted
 
     # Load generation checkpoint data (for char polys) - ensures char_poly_lookup is populated
     generation_checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
@@ -344,6 +384,8 @@ def run_checking_phase(n):
         overall_results_summary_internal[n]['yes_classes'] = start_total_yes_classes
         overall_results_summary_internal[n]['no_classes'] = start_total_no_classes
         overall_results_summary_internal[n]['current_status_message'] = f"Starting switching equivalence check for n={n}..."
+        overall_results_summary_internal[n]['checking_start_time_epoch'] = chk_phase_start_time_epoch # Store the actual start time
+
 
     paths_n = get_computation_paths(n)
     class_files_dir = paths_n["class_dir"]
@@ -377,6 +419,20 @@ def run_checking_phase(n):
     elif current_part_num > 0: 
         current_output_file.write(f"\n================= Order n = {n} (Part {current_part_num}) =================\n\n")
 
+    # Save checkpoint at the very beginning to establish start_time_epoch
+    try:
+        with open(checking_checkpoint_path, 'w') as f:
+            json.dump({
+                "last_processed_class_filename": last_processed_class_filename,
+                "total_checked_classes": total_checked_classes,
+                "total_yes_classes": total_yes_classes,
+                "total_no_classes": total_no_classes,
+                "start_time_epoch": chk_phase_start_time_epoch, # Save initial start time
+                "last_update_time_epoch": time.time() # And current update time
+            }, f)
+    except Exception as e:
+        print(f"Error saving initial checking checkpoint for n={n}: {e}")
+
     # Flag to control skipping already processed files
     skip_processing_classes = True if last_processed_class_filename else False
     
@@ -403,6 +459,19 @@ def run_checking_phase(n):
             print(f"Skipping empty class file: {class_filename}")
             # Still update checkpoint for this class, as it's "processed" (found empty)
             total_checked_classes += 1
+            # Save Phase 2 checkpoint after each class is successfully processed
+            try:
+                with open(checking_checkpoint_path, 'w') as f:
+                    json.dump({
+                        "last_processed_class_filename": class_filename,
+                        "total_checked_classes": total_checked_classes,
+                        "total_yes_classes": total_yes_classes,
+                        "total_no_classes": total_no_classes,
+                        "start_time_epoch": chk_phase_start_time_epoch, # Persist original start time
+                        "last_update_time_epoch": time.time() # Update last update time
+                    }, f)
+            except Exception as e:
+                print(f"Error saving checking checkpoint for n={n}: {e}")
             continue 
 
         char_poly_str = char_poly_lookup.get((n, h))
@@ -499,7 +568,9 @@ def run_checking_phase(n):
                     "last_processed_class_filename": class_filename,
                     "total_checked_classes": total_checked_classes,
                     "total_yes_classes": total_yes_classes,
-                    "total_no_classes": total_no_classes
+                    "total_no_classes": total_no_classes,
+                    "start_time_epoch": chk_phase_start_time_epoch, # Persist original start time
+                    "last_update_time_epoch": time.time() # Update last update time
                 }, f)
             # print(f"[CHECKPOINT] Saved checking checkpoint for n={n} at class: {class_filename}.") # Too verbose
         except Exception as e:
@@ -522,7 +593,9 @@ def run_checking_phase(n):
                 "last_processed_class_filename": "COMPLETE", 
                 "total_checked_classes": total_checked_classes,
                 "total_yes_classes": total_yes_classes,
-                "total_no_classes": total_no_classes
+                "total_no_classes": total_no_classes,
+                "start_time_epoch": chk_phase_start_time_epoch, # Persist original start time
+                "last_update_time_epoch": time.time() # Final update time
             }, f)
         print(f"[CHECKPOINT] Saved final checking checkpoint for n={n}, marking as COMPLETE.")
     except Exception as e:
@@ -643,9 +716,9 @@ def rewrite_results_with_counterexamples(n: int):
                     seidel_mat_T2_ce = seidel_matrix(T2_ce)
 
                     class_output_lines.append(f"Counterexample: Tournament {counterexample_idx1} (from 0-indexed list) and Tournament {counterexample_idx2} are not switching equivalent.")
-                    class_output_lines.append(f"Tournament {counterexample_idx1} Seidel Matrix:")
+                    class_output_lines.append(f"Tournament {counterexample_idx1} Seidel Matrix:\n")
                     class_output_lines.append(str(seidel_mat_T1_ce).replace('\n', '\n  ')) # Indent matrix
-                    class_output_lines.append(f"Tournament {counterexample_idx2} Seidel Matrix:")
+                    class_output_lines.append(f"Tournament {counterexample_idx2} Seidel Matrix:\n")
                     class_output_lines.append(str(seidel_mat_T2_ce).replace('\n', '\n  ')) # Indent matrix
                 except Exception as e:
                     class_output_lines.append(f"Error printing counterexample matrices: {e}")
@@ -767,7 +840,7 @@ def main():
          print(f"Warning: N_MIN ({N_MIN}) is greater than max_n_from_primary_output_dir + 1 ({max_n_from_primary_output_dir + 1}). Computation will start from N_MIN.")
 
     # Main runner loop interval
-    MAIN_RUNNER_LOOP_INTERVAL_SECONDS = 30 
+    MAIN_RUNNER_LOOP_INTERVAL_SECONDS = 1 
 
     while True:
         try:
@@ -806,6 +879,10 @@ def main():
             print(f"[RUNNER] Loop complete for n={next_n_to_process}. Waiting {MAIN_RUNNER_LOOP_INTERVAL_SECONDS} seconds for next check.")
             time.sleep(MAIN_RUNNER_LOOP_INTERVAL_SECONDS)
 
+        except KeyboardInterrupt:
+            print("\n[RUNNER] KeyboardInterrupt detected. Shutting down gracefully...")
+            update_readme_main() # Final README update on exit
+            sys.exit(0) # Exit the script
         except Exception as e:
             print(f"[RUNNER ERROR] An error occurred in the main runner loop: {e}")
             print("[RUNNER] Retrying after 60 seconds...")

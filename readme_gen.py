@@ -3,12 +3,29 @@ import re
 import time
 import json
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta # Import timedelta
 import threading
 import hashlib # For calculating content hash
 
+def format_timedelta(td):
+    """Formats a timedelta object as a human-readable string."""
+    total_seconds = int(td.total_seconds())
+    days, remainder = divmod(total_seconds, 86400)
+    hours, remainder = divmod(remainder, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    parts = []
+    if days > 0:
+        parts.append(f"{days}d")
+    if hours > 0:
+        parts.append(f"{hours}h")
+    if minutes > 0:
+        parts.append(f"{minutes}m")
+    if seconds > 0 or not parts:
+        parts.append(f"{seconds}s")
+    return " ".join(parts)
+
 # ===================== Constants and Paths (Duplicated for Independence) =====================
-README_PATH = os.path.join("/Users/lyuk/Downloads/cospectral-tournaments", "README.md")
+README_PATH = os.path.join('/Users/PC/E/Kunwu/School/Undergrad/Carleton/Activities/ISO/OPT/MK Research/Tournaments/Week 4/Sage/cospectral-tournaments-main', "README.md")
 ROOT_OUTPUT_BASE_DIR = "tournament_outputs_by_class"
 FILE_EXTENSION = ".txt"
 PRE_EXISTING_RESULTS_DIR = "NO" # Set to "NO" as requested
@@ -126,105 +143,159 @@ def collect_all_data_for_readme():
     completed_ns_in_primary_output = set() # 'n' values fully completed in ROOT_OUTPUT_BASE_DIR
 
     # Process files from ROOT_OUTPUT_BASE_DIR
-    for n_dir_name in os.listdir(ROOT_OUTPUT_BASE_DIR):
-        if not n_dir_name.startswith('n') or not n_dir_name[1:].isdigit():
-            continue
-        current_order = int(n_dir_name[1:])
-        found_orders.add(current_order)
-        n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, n_dir_name)
+    if os.path.exists(ROOT_OUTPUT_BASE_DIR):
+        for n_dir_name in os.listdir(ROOT_OUTPUT_BASE_DIR):
+            if not n_dir_name.startswith('n') or not n_dir_name[1:].isdigit():
+                continue
+            current_order = int(n_dir_name[1:])
+            found_orders.add(current_order)
+            n_dir_path = os.path.join(ROOT_OUTPUT_BASE_DIR, n_dir_name)
 
-        # Initialize progress info for this order
-        current_progress_info[current_order] = {
-            'completed': False,
-            'status': 'PENDING',
-            'yes_classes': 0, 'no_classes': 0, 'total_classes': 0,
-            'current_progress_generated_tournaments': 0,
-            'current_progress_checked_classes': 0,
-            'current_status_message': ""
-        }
+            # Initialize progress info for this order
+            current_progress_info[current_order] = {
+                'completed': False,
+                'status': 'PENDING',
+                'yes_classes': 0, 'no_classes': 0, 'total_classes': 0,
+                'current_progress_generated_tournaments': 0,
+                'current_progress_checked_classes': 0,
+                'current_status_message': "",
+                'generation_start_time_epoch': None,
+                'generation_last_update_time_epoch': None,
+                'checking_start_time_epoch': None,
+                'checking_last_update_time_epoch': None,
+                'estimated_completion_time_gen': None,
+                'estimated_completion_time_chk': None,
+                'rate_gen_per_min': None,
+                'rate_chk_per_min': None
+            }
 
-        # Read generation checkpoint first to get base progress and total classes
-        generation_checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
-        if os.path.exists(generation_checkpoint_path):
-            try:
-                with open(generation_checkpoint_path, 'r') as f:
-                    gen_chkpt_data = json.load(f)
-                total_gen = gen_chkpt_data.get("total_tournaments_generated", 0)
-                class_data = gen_chkpt_data.get("class_data_for_current_n", {})
-                total_classes = len(class_data) # Total classes found during generation
+            # Read generation checkpoint first to get base progress and total classes
+            generation_checkpoint_path = os.path.join(n_dir_path, GENERATION_CHECKPOINT_FILE_NAME)
+            if os.path.exists(generation_checkpoint_path):
+                try:
+                    with open(generation_checkpoint_path, 'r') as f:
+                        gen_chkpt_data = json.load(f)
+                    total_gen = gen_chkpt_data.get("total_tournaments_generated", 0)
+                    class_data = gen_chkpt_data.get("class_data_for_current_n", {})
+                    total_classes = len(class_data) # Total classes found during generation
 
-                current_progress_info[current_order].update({
-                    'current_progress_generated_tournaments': total_gen,
-                    'total_classes': total_classes # Set total classes from generation
-                })
+                    gen_start_epoch = gen_chkpt_data.get("start_time_epoch")
+                    gen_last_update_epoch = gen_chkpt_data.get("last_update_time_epoch")
 
-                expected_total_tournaments = NON_ISO_TOURNAMENTS.get(current_order, 0)
-                if expected_total_tournaments > 0 and total_gen >= expected_total_tournaments:
-                    current_progress_info[current_order]['status'] = "GENERATION_ONLY"
-                    current_progress_info[current_order]['current_status_message'] = "Generation complete. Ready for checking."
-                elif total_gen > 0:
-                    current_progress_info[current_order]['status'] = "In Progress (Generation)"
-                    gen_percent = (total_gen / expected_total_tournaments) * 100 if expected_total_tournaments > 0 else 0
-                    current_progress_info[current_order]['current_status_message'] = \
-                        f"Generated {total_gen}/{expected_total_tournaments} tournaments for n={current_order} ({gen_percent:.2f}%)."
-            except json.JSONDecodeError:
-                pass # Corrupt checkpoint, ignore
-
-        # Check for CHECKING_COMPLETE status or in-progress checking
-        checking_checkpoint_path = os.path.join(n_dir_path, CHECKING_CHECKPOINT_FILE_NAME)
-        if os.path.exists(checking_checkpoint_path):
-            try:
-                with open(checking_checkpoint_path, 'r') as f:
-                    chkpt_data = json.load(f)
-                
-                checked_classes = chkpt_data.get("total_checked_classes", 0)
-                yes_classes = chkpt_data.get("total_yes_classes", 0)
-                no_classes = chkpt_data.get("total_no_classes", 0)
-
-                current_progress_info[current_order].update({
-                    'current_progress_checked_classes': checked_classes,
-                    'yes_classes': yes_classes,
-                    'no_classes': no_classes
-                })
-
-                if chkpt_data.get("last_processed_class_filename") == "COMPLETE":
-                    completed_ns_in_primary_output.add(current_order)
                     current_progress_info[current_order].update({
-                        'completed': True,
-                        'status': "CHECKING_COMPLETE",
-                        'current_status_message': "" # Clear message for completed tasks
+                        'current_progress_generated_tournaments': total_gen,
+                        'total_classes': total_classes,
+                        'generation_start_time_epoch': gen_start_epoch,
+                        'generation_last_update_time_epoch': gen_last_update_epoch
                     })
-                else: # Still in progress of checking
-                    current_progress_info[current_order]['status'] = "In Progress (Checking)"
-                    check_percent = (checked_classes / current_progress_info[current_order]['total_classes']) * 100 \
-                        if current_progress_info[current_order]['total_classes'] > 0 else 0
-                    current_progress_info[current_order]['current_status_message'] = \
-                        f"Checking classes for n={current_order} ({checked_classes}/{current_progress_info[current_order]['total_classes']} - {check_percent:.2f}%)."
-            except json.JSONDecodeError:
-                pass # Corrupt checkpoint, status remains as determined by generation checkpoint or initialized
+
+                    expected_total_tournaments = NON_ISO_TOURNAMENTS.get(current_order, 0)
+                    
+                    # --- Calculate ETA for Generation ---
+                    if gen_start_epoch and gen_last_update_epoch and gen_start_epoch != gen_last_update_epoch:
+                        time_elapsed_gen = datetime.fromtimestamp(gen_last_update_epoch) - datetime.fromtimestamp(gen_start_epoch)
+                        if time_elapsed_gen.total_seconds() > 0 and total_gen > 0:
+                            rate_gen_per_sec = total_gen / time_elapsed_gen.total_seconds()
+                            rate_gen_per_min = rate_gen_per_sec * 60
+                            current_progress_info[current_order]['rate_gen_per_min'] = f"{rate_gen_per_min:.2f} tourns/min"
+
+                            if expected_total_tournaments > 0 and total_gen < expected_total_tournaments:
+                                remaining_to_generate = expected_total_tournaments - total_gen
+                                if rate_gen_per_sec > 0:
+                                    estimated_time_remaining_seconds = remaining_to_generate / rate_gen_per_sec
+                                    current_progress_info[current_order]['estimated_completion_time_gen'] = format_timedelta(timedelta(seconds=estimated_time_remaining_seconds))
 
 
-        # Collect results from the output files (tournaments_n_X_partY.txt) in ROOT_OUTPUT_BASE_DIR
-        output_dir = os.path.join(ROOT_OUTPUT_BASE_DIR, n_dir_name)
-        
-        relevant_files = []
-        base_file = os.path.join(output_dir, f"tournaments_n_{current_order}{FILE_EXTENSION}")
-        if os.path.exists(base_file):
-            relevant_files.append(base_file)
-        
-        for filename in os.listdir(output_dir):
-            match = re.match(rf'tournaments_n_{current_order}_part(\d+){re.escape(FILE_EXTENSION)}$', filename)
-            if match:
-                relevant_files.append(os.path.join(output_dir, filename))
-        
-        relevant_files.sort()
+                    if expected_total_tournaments > 0 and total_gen >= expected_total_tournaments:
+                        current_progress_info[current_order]['status'] = "GENERATION_ONLY"
+                        current_progress_info[current_order]['current_status_message'] = "Generation complete. Ready for checking."
+                    elif total_gen > 0:
+                        current_progress_info[current_order]['status'] = "In Progress (Generation)"
+                        gen_percent = (total_gen / expected_total_tournaments) * 100 if expected_total_tournaments > 0 else 0
+                        current_progress_info[current_order]['current_status_message'] = \
+                            f"Generated {total_gen}/{expected_total_tournaments} tournaments for n={current_order} ({gen_percent:.2f}%)."
+                except json.JSONDecodeError:
+                    print(f"Warning: Could not decode generation checkpoint for n={current_order}. Skipping.")
 
-        for filepath in relevant_files:
-            try:
-                with open(filepath, 'r') as f:
-                    _parse_lines_into_results(f.readlines(), current_order, results)
-            except Exception as e:
-                print(f"Warning: Could not read/parse {filepath}: {e}")
+
+            # Check for CHECKING_COMPLETE status or in-progress checking
+            checking_checkpoint_path = os.path.join(n_dir_path, CHECKING_CHECKPOINT_FILE_NAME)
+            if os.path.exists(checking_checkpoint_path):
+                try:
+                    with open(checking_checkpoint_path, 'r') as f:
+                        chkpt_data = json.load(f)
+                    
+                    checked_classes = chkpt_data.get("total_checked_classes", 0)
+                    yes_classes = chkpt_data.get("total_yes_classes", 0)
+                    no_classes = chkpt_data.get("total_no_classes", 0)
+
+                    chk_start_epoch = chkpt_data.get("start_time_epoch")
+                    chk_last_update_epoch = chkpt_data.get("last_update_time_epoch")
+
+                    current_progress_info[current_order].update({
+                        'current_progress_checked_classes': checked_classes,
+                        'yes_classes': yes_classes,
+                        'no_classes': no_classes,
+                        'checking_start_time_epoch': chk_start_epoch,
+                        'checking_last_update_time_epoch': chk_last_update_epoch
+                    })
+
+                    # --- Calculate ETA for Checking ---
+                    if chk_start_epoch and chk_last_update_epoch and chk_start_epoch != chk_last_update_epoch:
+                        time_elapsed_chk = datetime.fromtimestamp(chk_last_update_epoch) - datetime.fromtimestamp(chk_start_epoch)
+                        total_classes_for_n = current_progress_info[current_order]['total_classes'] # From generation phase
+
+                        if time_elapsed_chk.total_seconds() > 0 and checked_classes > 0 and total_classes_for_n > 0:
+                            rate_chk_per_sec = checked_classes / time_elapsed_chk.total_seconds()
+                            rate_chk_per_min = rate_chk_per_sec * 60
+                            current_progress_info[current_order]['rate_chk_per_min'] = f"{rate_chk_per_min:.2f} classes/min"
+
+                            if checked_classes < total_classes_for_n:
+                                remaining_to_check = total_classes_for_n - checked_classes
+                                if rate_chk_per_sec > 0:
+                                    estimated_time_remaining_seconds = remaining_to_check / rate_chk_per_sec
+                                    current_progress_info[current_order]['estimated_completion_time_chk'] = format_timedelta(timedelta(seconds=estimated_time_remaining_seconds))
+
+
+                    if chkpt_data.get("last_processed_class_filename") == "COMPLETE":
+                        completed_ns_in_primary_output.add(current_order)
+                        current_progress_info[current_order].update({
+                            'completed': True,
+                            'status': "CHECKING_COMPLETE",
+                            'current_status_message': "" # Clear message for completed tasks
+                        })
+                    else: # Still in progress of checking
+                        current_progress_info[current_order]['status'] = "In Progress (Checking)"
+                        check_percent = (checked_classes / current_progress_info[current_order]['total_classes']) * 100 \
+                            if current_progress_info[current_order]['total_classes'] > 0 else 0
+                        current_progress_info[current_order]['current_status_message'] = \
+                            f"Checking classes for n={current_order} ({checked_classes}/{current_progress_info[current_order]['total_classes']} - {check_percent:.2f}%)."
+                except json.JSONDecodeError:
+                    print(f"Warning: Could not decode checking checkpoint for n={current_order}. Skipping.")
+
+
+            # Collect results from the output files (tournaments_n_X_partY.txt) in ROOT_OUTPUT_BASE_DIR
+            output_dir = os.path.join(ROOT_OUTPUT_BASE_DIR, n_dir_name)
+            
+            relevant_files = []
+            base_file = os.path.join(output_dir, f"tournaments_n_{current_order}{FILE_EXTENSION}")
+            if os.path.exists(base_file):
+                relevant_files.append(base_file)
+            
+            if os.path.exists(output_dir): # Check if output_dir actually exists
+                for filename in os.listdir(output_dir):
+                    match = re.match(rf'tournaments_n_{current_order}_part(\d+){re.escape(FILE_EXTENSION)}$', filename)
+                    if match:
+                        relevant_files.append(os.path.join(output_dir, filename))
+                
+            relevant_files.sort()
+
+            for filepath in relevant_files:
+                try:
+                    with open(filepath, 'r') as f:
+                        _parse_lines_into_results(f.readlines(), current_order, results)
+                except Exception as e:
+                    print(f"Warning: Could not read/parse {filepath}: {e}")
 
     # Process files from PRE_EXISTING_RESULTS_DIR (if defined and different from ROOT_OUTPUT_BASE_DIR)
     if PRE_EXISTING_RESULTS_DIR != "NO" and os.path.exists(PRE_EXISTING_RESULTS_DIR) and PRE_EXISTING_RESULTS_DIR != ROOT_OUTPUT_BASE_DIR:
@@ -242,15 +313,30 @@ def collect_all_data_for_readme():
                 # For pre-existing, assume they are complete for README display unless primary output says otherwise
                 if current_order not in completed_ns_in_primary_output:
                     completed_ns_in_primary_output.add(current_order) 
-                    current_progress_info[current_order].update({
+                    # Initialize full progress info for pre-existing as if it was completed
+                    current_progress_info[current_order] = {
                         'completed': True,
-                        'status': "CHECKING_COMPLETE", # Assume complete if from pre-existing and not in primary
-                        'current_status_message': "Loaded from pre-existing results."
-                    })
+                        'status': "CHECKING_COMPLETE", 
+                        'current_status_message': "Loaded from pre-existing results.",
+                        'yes_classes': 0, 'no_classes': 0, 'total_classes': 0,
+                        'current_progress_generated_tournaments': NON_ISO_TOURNAMENTS.get(current_order, 0),
+                        'current_progress_checked_classes': 0, # Will be set by _parse_lines_into_results
+                        'generation_start_time_epoch': None, 'generation_last_update_time_epoch': None,
+                        'checking_start_time_epoch': None, 'checking_last_update_time_epoch': None,
+                        'estimated_completion_time_gen': "N/A", 'estimated_completion_time_chk': "N/A",
+                        'rate_gen_per_min': "N/A", 'rate_chk_per_min': "N/A"
+                    }
 
                 try:
                     with open(filepath, 'r') as f:
-                        _parse_lines_into_results(f.readlines(), current_order, results)
+                        file_lines = f.readlines()
+                        _parse_lines_into_results(file_lines, current_order, results)
+                        # Update counts for pre-existing from parsed results
+                        current_progress_info[current_order]['yes_classes'] = len(results[current_order]['yes'])
+                        current_progress_info[current_order]['no_classes'] = len(results[current_order]['no'])
+                        current_progress_info[current_order]['total_classes'] = len(results[current_order]['yes']) + len(results[current_order]['no'])
+                        current_progress_info[current_order]['current_progress_checked_classes'] = current_progress_info[current_order]['total_classes']
+
                 except Exception as e:
                     print(f"Warning: Could not read/parse {filepath} from pre-existing dir: {e}")
 
@@ -269,7 +355,8 @@ def render_current_progress_section(current_progress_info):
         info = current_progress_info[n]
         if not info.get('completed', False) and (
             info.get('status') == "In Progress (Generation)" or
-            info.get('status') == "In Progress (Checking)"
+            info.get('status') == "In Progress (Checking)" or
+            info.get('status') == "GENERATION_ONLY" # Consider generation_only as active until checking starts
         ):
             active_n = n
             break
@@ -290,6 +377,12 @@ def render_current_progress_section(current_progress_info):
             gen_percent = (generated / total_expected_tournaments)
             gen_bar = generate_progress_bar(gen_percent, width=30)
             lines.append(f"Tournaments Generated: `{gen_bar}` ({generated}/{total_expected_tournaments} - {gen_percent*100:.2f}%)")
+            
+            # Display Generation ETA and Rate
+            if active_n_info['estimated_completion_time_gen']:
+                lines.append(f"  Estimated Completion (Generation): {active_n_info['estimated_completion_time_gen']}")
+            if active_n_info['rate_gen_per_min']:
+                lines.append(f"  Rate (Generation): {active_n_info['rate_gen_per_min']}")
         elif generated > 0:
             lines.append(f"Tournaments Generated: {generated} (Total for n={active_n} unknown)")
         else:
@@ -304,6 +397,12 @@ def render_current_progress_section(current_progress_info):
             check_bar = generate_progress_bar(checked_percent, width=30)
             lines.append(f"Classes Checked: `{check_bar}` ({checked_classes}/{total_classes_found} - {checked_percent*100:.2f}%)")
             lines.append(f"  (✅ Yes: {active_n_info['yes_classes']}, ❌ No: {active_n_info['no_classes']})")
+            
+            # Display Checking ETA and Rate
+            if active_n_info['estimated_completion_time_chk']:
+                lines.append(f"  Estimated Completion (Checking): {active_n_info['estimated_completion_time_chk']}")
+            if active_n_info['rate_chk_per_min']:
+                lines.append(f"  Rate (Checking): {active_n_info['rate_chk_per_min']}")
         elif checked_classes > 0:
             lines.append(f"Classes Checked: {checked_classes} (Total classes for n={active_n} unknown yet)")
         else:
@@ -312,6 +411,7 @@ def render_current_progress_section(current_progress_info):
         lines.append("---\n")
 
     return lines
+
 
 def results_to_md(results, found_orders, current_progress_info, completed_ns_in_primary_output, header_lines):
     lines = []
